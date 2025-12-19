@@ -208,7 +208,7 @@ def optimize_exceptional_point():
         maxiter=500,      # Reduced for faster testing
         popsize=15,
         strategy='best1bin',
-        seed=42,
+        seed=812,
         disp=True,
         workers=1,        # Use single process to avoid pickle issues
         updating='immediate',
