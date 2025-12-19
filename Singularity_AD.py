@@ -178,7 +178,7 @@ def optimize_exceptional_point():
 
     # Parameter bounds: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4, C0]
     bounds = [
-        (0.0, 10.0),     # theta0 (mrad)
+        (0.1, 10.0),     # theta0 (mrad) - must be > 0 to avoid division by zero
         (0.5, 10.0),     # Pt thickness (nm)
         (1.0, 50.0),     # C layer 1
         (0.5, 3.0),      # Fe layer 1 (resonant)
@@ -377,10 +377,14 @@ def plot_results(eigvals, real_parts, imag_parts, loss):
 if __name__ == "__main__":
     result, theta0, Layers, C0 = optimize_exceptional_point()
 
-    # Save results
+    # Save results (save parameter array instead of Layers structure)
+    # Extract layer thicknesses for saving
+    thicknesses = [layer[1] for layer in Layers[:-1]]  # Exclude substrate
+
     np.savez('exceptional_point_params_AD.npz',
+             params=result.x,  # All optimization parameters
              theta0=theta0,
-             Layers=Layers,
              C0=C0,
+             thicknesses=thicknesses,  # Layer thicknesses
              loss=result.fun)
     print("\nParameters saved to: exceptional_point_params_AD.npz")
