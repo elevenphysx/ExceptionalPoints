@@ -32,16 +32,16 @@ def build_layers(params, fixed_materials):
     Build layer structure from optimization parameters
 
     Structure: Pt-C-Fe-C-Fe-C-Fe-C-Pt(inf)
-    params = [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4, C0]
+    params = [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4]
 
     Returns:
         theta0: incident angle (mrad)
         Layers: list of (material, thickness, is_resonant)
-        C0: constant parameter
+        C0: constant parameter (fixed)
     """
     theta0 = params[0]
     thicknesses = params[1:9]  # 8 finite layers
-    C0 = params[9]
+    C0 = 7.74 * 1.06 * 0.5  # Fixed value from original code (CFe)
 
     Platinum, Carbon, Iron = fixed_materials
 
@@ -176,7 +176,8 @@ def optimize_exceptional_point():
 
         return False
 
-    # Parameter bounds: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4, C0]
+    # Parameter bounds: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4]
+    # C0 is fixed at 7.74 * 1.06 * 0.5 = 4.1022 (not optimized)
     bounds = [
         (0.1, 10.0),     # theta0 (mrad) - must be > 0 to avoid division by zero
         (0.5, 10.0),     # Pt thickness (nm)
@@ -187,7 +188,6 @@ def optimize_exceptional_point():
         (1.0, 50.0),     # C layer 3
         (0.5, 3.0),      # Fe layer 3 (resonant)
         (1.0, 50.0),     # C layer 4
-        (3.0, 5.0),      # C0
     ]
 
     print("=" * 70)
@@ -263,7 +263,7 @@ def optimize_exceptional_point():
 
     output += f"\nLoss = {loss:.6e}\n\n"
     output += f"theta0 = {theta0:.4f} mrad\n"
-    output += f"C0     = {C0:.4f}\n\n"
+    output += f"C0     = {C0:.4f} (fixed)\n\n"
 
     output += "Layer Structure (nm):\n"
     layer_names = ['Pt', 'C', 'Fe*', 'C', 'Fe*', 'C', 'Fe*', 'C', 'Pt(sub)']
