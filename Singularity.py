@@ -82,7 +82,7 @@ def objective_function(params, fixed_materials, return_details=False):
         loss = np.var(real_parts) + np.var(imag_parts)
 
         if return_details:
-            return loss, eigvals, real_parts, imag_parts
+            return loss, eigvals, real_parts, imag_parts, G, G1
         return loss
 
     except Exception as e:
@@ -104,6 +104,11 @@ def optimize_exceptional_point():
     convergence_threshold = 1e-6
     iteration_count = [0]  # Use list to allow modification in callback
 
+    # Open log file for writing iteration history
+    log_file = open('optimization_log.txt', 'w', encoding='utf-8')
+    log_file.write("Exceptional Point Optimization Log\n")
+    log_file.write("=" * 70 + "\n\n")
+
     # Callback function to display progress and check convergence
     def callback(xk, convergence=None):
         """
@@ -114,25 +119,33 @@ def optimize_exceptional_point():
         iteration_count[0] += 1
 
         # Compute eigenvalues for current best solution
-        loss, eigvals, real_parts, imag_parts = objective_function(
+        loss, eigvals, real_parts, imag_parts, G, G1 = objective_function(
             xk, fixed_materials, return_details=True
         )
 
-        # Display progress
-        print(f"\n--- Iteration {iteration_count[0]} ---")
-        print(f"Loss (variance) = {loss:.6e}")
-        print("Eigenvalues:")
+        # Display progress (to both console and file)
+        output = f"\n--- Iteration {iteration_count[0]} ---\n"
+        output += f"Loss (variance) = {loss:.6e}\n"
+        output += "Eigenvalues:\n"
         for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
-            print(f"  λ_{i+1} = {re:+10.6f} {im:+10.6f}i")
+            output += f"  λ_{i+1} = {re:+10.6f} {im:+10.6f}i\n"
 
         # Check degeneracy
         re_std = np.std(real_parts)
         im_std = np.std(imag_parts)
-        print(f"Std(Re) = {re_std:.6e}, Std(Im) = {im_std:.6e}")
+        output += f"Std(Re) = {re_std:.6e}, Std(Im) = {im_std:.6e}\n"
+
+        # Write to both console and file
+        print(output, end='')
+        log_file.write(output)
+        log_file.flush()
 
         # Early stopping check
         if loss < convergence_threshold:
-            print(f"\n✓ Converged! Loss < {convergence_threshold}")
+            msg = f"\n✓ Converged! Loss < {convergence_threshold}\n"
+            print(msg, end='')
+            log_file.write(msg)
+            log_file.flush()
             return True  # Stop optimization
 
         return False  # Continue
@@ -202,42 +215,63 @@ def optimize_exceptional_point():
         final_result = result_de
 
     # Display final results
-    print("\n" + "=" * 70)
-    print("FINAL RESULT:")
-    print("=" * 70)
+    output = "\n" + "=" * 70 + "\n"
+    output += "FINAL RESULT:\n"
+    output += "=" * 70 + "\n"
 
-    loss, eigvals, real_parts, imag_parts = objective_function(
+    loss, eigvals, real_parts, imag_parts, G, G1 = objective_function(
         final_result.x, fixed_materials, return_details=True
     )
 
     theta0, Layers, C0 = build_layers(final_result.x, fixed_materials)
 
-    print(f"\nLoss = {loss:.6e}\n")
-    print(f"theta0 = {theta0:.4f} mrad")
-    print(f"C0     = {C0:.4f}\n")
+    output += f"\nLoss = {loss:.6e}\n\n"
+    output += f"theta0 = {theta0:.4f} mrad\n"
+    output += f"C0     = {C0:.4f}\n\n"
 
-    print("Layer Structure (nm):")
+    output += "Layer Structure (nm):\n"
     layer_names = ['Pt', 'C', 'Fe*', 'C', 'Fe*', 'C', 'Fe*', 'C', 'Pt(sub)']
     for i, (name, layer) in enumerate(zip(layer_names, Layers)):
         thickness = layer[1]
-        resonant = '*' if layer[2] == 1 else ''
-        print(f"  Layer {i}: {name:8s} = {thickness:7.3f} nm {resonant}")
+        resonant = ' (resonant)' if layer[2] == 1 else ''
+        output += f"  Layer {i}: {name:8s} = {thickness:7.3f} nm{resonant}\n"
 
-    print("\nEigenvalue Analysis:")
-    print("  λᵢ = Re + Im·i")
-    print("  " + "-" * 50)
+    output += "\nEigenvalue Analysis:\n"
+    output += "  λᵢ = Re + Im·i\n"
+    output += "  " + "-" * 50 + "\n"
     for i, (eig, re, im) in enumerate(zip(eigvals, real_parts, imag_parts)):
-        print(f"  λ_{i+1} = {re:+10.6f} {im:+10.6f}i")
+        output += f"  λ_{i+1} = {re:+10.6f} {im:+10.6f}i\n"
 
     # Check degeneracy
     re_std = np.std(real_parts)
     im_std = np.std(imag_parts)
-    print("\n  Degeneracy Check:")
-    print(f"    Std(Re) = {re_std:.6e}  {'✓' if re_std < 0.01 else '✗'}")
-    print(f"    Std(Im) = {im_std:.6e}  {'✓' if im_std < 0.01 else '✗'}")
+    output += "\n  Degeneracy Check:\n"
+    output += f"    Std(Re) = {re_std:.6e}  {'✓' if re_std < 0.01 else '✗'}\n"
+    output += f"    Std(Im) = {im_std:.6e}  {'✓' if im_std < 0.01 else '✗'}\n"
+
+    # Display matrices
+    output += "\n" + "=" * 70 + "\n"
+    output += "Matrix Analysis:\n"
+    output += "=" * 70 + "\n"
+
+    output += f"\nOriginal Green Matrix G (shape: {G.shape}):\n"
+    np.set_printoptions(precision=6, suppress=True, linewidth=100)
+    output += str(G) + "\n"
+
+    output += f"\nTransformed Matrix G1 = -G - 0.5i·I (shape: {G1.shape}):\n"
+    output += str(G1) + "\n"
+
+    # Write to both console and file
+    print(output, end='')
+    log_file.write(output)
+    log_file.flush()
 
     # Visualization
     plot_results(eigvals, real_parts, imag_parts)
+
+    # Close log file
+    log_file.close()
+    print("\nOptimization log saved to: optimization_log.txt")
 
     return final_result, theta0, Layers, C0
 

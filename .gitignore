@@ -15,6 +15,7 @@ build/
 *.png
 *.npz
 *.xlsx
+*.txt
 
 # IDE
 .vscode/
