@@ -371,7 +371,7 @@ def plot_results(eigvals, real_parts, imag_parts, loss):
     plt.tight_layout()
     plt.savefig('exceptional_point_AD.png', dpi=300, bbox_inches='tight')
     print("\nFigure saved as: exceptional_point_AD.png")
-    plt.show()
+    plt.close()  # Close figure without displaying
 
 
 if __name__ == "__main__":
