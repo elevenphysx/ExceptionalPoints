@@ -125,6 +125,44 @@ def optimize_exceptional_point():
     Platinum = (1.713e-5, 2.518e-6)
     fixed_materials = (Platinum, Carbon, Iron)
 
+    # Convergence threshold for early stopping
+    convergence_threshold = 1e-6
+    iteration_count = [0]
+
+    # Callback function to display progress
+    def callback(xk, convergence=None):
+        """Display eigenvalues at each iteration"""
+        iteration_count[0] += 1
+
+        # Compute eigenvalues for current best solution
+        loss, eigvals, real_parts, imag_parts, a, b, c = objective_trace_det(
+            xk, fixed_materials, return_details=True
+        )
+
+        # Display progress
+        print(f"\n--- Iteration {iteration_count[0]} ---")
+        print(f"Loss = {loss:.6e}")
+        print("Eigenvalues:")
+        for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
+            print(f"  λ_{i+1} = {re:+10.6f} {im:+10.6f}i")
+
+        # Check degeneracy
+        re_std = np.std(real_parts)
+        im_std = np.std(imag_parts)
+        print(f"Std(Re) = {re_std:.6e}, Std(Im) = {im_std:.6e}")
+
+        # EP3 conditions
+        cond1 = 3*b - a**2
+        cond2 = 27*c + 9*a*b + 2*a**3
+        print(f"Algebraic: |3b-a²| = {np.abs(cond1):.3e}, |27c+9ab+2a³| = {np.abs(cond2):.3e}")
+
+        # Early stopping
+        if loss < convergence_threshold:
+            print(f"\n✓ Converged! Loss < {convergence_threshold}")
+            return True
+
+        return False
+
     # Parameter bounds: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4, C0]
     bounds = [
         (0.0, 10.0),     # theta0 (mrad)
@@ -161,7 +199,10 @@ def optimize_exceptional_point():
         disp=True,
         workers=1,        # Use single process to avoid pickle issues
         updating='immediate',
-        polish=False
+        polish=False,
+        callback=callback,  # Display eigenvalues at each iteration
+        atol=convergence_threshold,  # Absolute tolerance
+        tol=0.01          # Relative tolerance
     )
 
     print("\n" + "=" * 70)
