@@ -191,7 +191,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
             output = f"Loss (variance) = {loss:.6e}\n"
             output += "Eigenvalues:\n"
             for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
-                output += f"  λ_{i+1} = {re:+10.6f} {im:+10.6f}i\n"
+                output += f"  λ_{i+1} = {re:+15.8f} {im:+15.8f}i\n"
 
             # Check degeneracy
             re_std = np.std(real_parts)
@@ -323,7 +323,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
                 output = f"Loss (variance) = {loss:.6e}\n"
                 output += "Eigenvalues:\n"
                 for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
-                    output += f"  λ_{i+1} = {re:+10.6f} {im:+10.6f}i\n"
+                    output += f"  λ_{i+1} = {re:+15.8f} {im:+15.8f}i\n"
 
                 # Check degeneracy
                 re_std = np.std(real_parts)
