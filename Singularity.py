@@ -287,7 +287,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
     optimizers = [
         ('Nelder-Mead', {'maxiter': maxiter_nm, 'disp': True,
-                        'xatol': 0, 'fatol': 0}),  # Disable convergence check - run to maxiter
+                        'xatol': 1e-20, 'fatol': 1e-20, 'adaptive': False}),  # Extremely small tolerances - run to maxiter
         # ('Powell', {'maxiter': maxiter_powell, 'disp': True,
         #            'ftol': 0, 'xtol': 0}),  # Temporarily disabled - early stopping issue
     ]
@@ -410,21 +410,21 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
     theta0, Layers, C0 = build_layers(final_result.x, fixed_materials)
 
     output += f"\nLoss = {loss:.6e}\n\n"
-    output += f"theta0 = {theta0:.4f} mrad\n"
-    output += f"C0     = {C0:.4f} (fixed)\n\n"
+    output += f"theta0 = {theta0:.8f} mrad\n"
+    output += f"C0     = {C0:.8f} (fixed)\n\n"
 
     output += "Layer Structure (nm):\n"
     layer_names = ['Pt', 'C', 'Fe*', 'C', 'Fe*', 'C', 'Fe*', 'C', 'Pt(sub)']
     for i, (name, layer) in enumerate(zip(layer_names, Layers)):
         thickness = layer[1]
         resonant = ' (resonant)' if layer[2] == 1 else ''
-        output += f"  Layer {i}: {name:8s} = {thickness:7.3f} nm{resonant}\n"
+        output += f"  Layer {i}: {name:8s} = {thickness:12.8f} nm{resonant}\n"
 
     output += "\nEigenvalue Analysis:\n"
     output += "  λᵢ = Re + Im·i\n"
     output += "  " + "-" * 50 + "\n"
     for i, (eig, re, im) in enumerate(zip(eigvals, real_parts, imag_parts)):
-        output += f"  λ_{i+1} = {re:+10.6f} {im:+10.6f}i\n"
+        output += f"  λ_{i+1} = {re:+15.8f} {im:+15.8f}i\n"
 
     # Check degeneracy
     re_std = np.std(real_parts)
