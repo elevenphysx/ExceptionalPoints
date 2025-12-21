@@ -1,0 +1,438 @@
+Exceptional Point Optimization Log
+======================================================================
+
+
+--- Iteration 1/1000 (0.1%) ---
+Loss (variance) = 1.098850e-01
+Eigenvalues:
+  λ_1 =  -0.408550  -0.982286i
+  λ_2 =  +0.125546  -0.509235i
+  λ_3 =  +0.045625  -1.024488i
+Std(Re) = 2.352118e-01, Std(Im) = 2.335817e-01
+differential_evolution step 10/1000 (1.0%): f(x)= 0.086988686951152
+differential_evolution step 20/1000 (2.0%): f(x)= 0.020513479083537
+differential_evolution step 30/1000 (3.0%): f(x)= 0.020513479083537
+differential_evolution step 40/1000 (4.0%): f(x)= 0.020513479083537
+differential_evolution step 50/1000 (5.0%): f(x)= 0.020513479083537
+differential_evolution step 60/1000 (6.0%): f(x)= 0.020513479083537
+differential_evolution step 70/1000 (7.0%): f(x)= 0.012379072936964
+differential_evolution step 80/1000 (8.0%): f(x)= 0.012379072936964
+differential_evolution step 90/1000 (9.0%): f(x)= 0.012379072936964
+
+--- Iteration 100/1000 (10.0%) ---
+Loss (variance) = 1.237907e-02
+Eigenvalues:
+  λ_1 =  +0.094994  -0.744156i
+  λ_2 =  +0.064798  -0.750860i
+  λ_3 =  +0.056456  -0.514187i
+Std(Re) = 1.655484e-02, Std(Im) = 1.100228e-01
+differential_evolution step 110/1000 (11.0%): f(x)= 0.012379072936964
+differential_evolution step 120/1000 (12.0%): f(x)= 0.012379072936964
+differential_evolution step 130/1000 (13.0%): f(x)= 0.012379072936964
+differential_evolution step 140/1000 (14.0%): f(x)= 0.012379072936964
+differential_evolution step 150/1000 (15.0%): f(x)= 0.011744261320518
+differential_evolution step 160/1000 (16.0%): f(x)= 0.011744261320518
+differential_evolution step 170/1000 (17.0%): f(x)= 0.011744261320518
+differential_evolution step 180/1000 (18.0%): f(x)= 0.011744261320518
+differential_evolution step 190/1000 (19.0%): f(x)= 0.010202966581809
+
+--- Iteration 200/1000 (20.0%) ---
+Loss (variance) = 9.861353e-03
+Eigenvalues:
+  λ_1 =  +0.000110  -0.727254i
+  λ_2 =  +0.109204  -0.673327i
+  λ_3 =  +0.094796  -0.522365i
+Std(Re) = 4.839043e-02, Std(Im) = 8.671631e-02
+differential_evolution step 210/1000 (21.0%): f(x)= 0.009861352780557
+differential_evolution step 220/1000 (22.0%): f(x)= 0.009187822126520
+differential_evolution step 230/1000 (23.0%): f(x)= 0.009187822126520
+differential_evolution step 240/1000 (24.0%): f(x)= 0.009187822126520
+differential_evolution step 250/1000 (25.0%): f(x)= 0.009187822126520
+differential_evolution step 260/1000 (26.0%): f(x)= 0.009187822126520
+differential_evolution step 270/1000 (27.0%): f(x)= 0.009187822126520
+differential_evolution step 280/1000 (28.0%): f(x)= 0.008836099807947
+differential_evolution step 290/1000 (29.0%): f(x)= 0.008836099807947
+
+--- Iteration 300/1000 (30.0%) ---
+Loss (variance) = 7.901262e-03
+Eigenvalues:
+  λ_1 =  -0.168026  -0.547003i
+  λ_2 =  -0.128814  -0.672288i
+  λ_3 =  -0.052815  -0.725792i
+Std(Re) = 4.782726e-02, Std(Im) = 7.492540e-02
+differential_evolution step 310/1000 (31.0%): f(x)= 0.006784455356841
+differential_evolution step 320/1000 (32.0%): f(x)= 0.006784455356841
+differential_evolution step 330/1000 (33.0%): f(x)= 0.006784455356841
+differential_evolution step 340/1000 (34.0%): f(x)= 0.006439389863473
+differential_evolution step 350/1000 (35.0%): f(x)= 0.005577918381074
+differential_evolution step 360/1000 (36.0%): f(x)= 0.005577918381074
+differential_evolution step 370/1000 (37.0%): f(x)= 0.005577918381074
+differential_evolution step 380/1000 (38.0%): f(x)= 0.005577918381074
+differential_evolution step 390/1000 (39.0%): f(x)= 0.005577918381074
+
+--- Iteration 400/1000 (40.0%) ---
+Loss (variance) = 5.577918e-03
+Eigenvalues:
+  λ_1 =  +0.189869  -0.641970i
+  λ_2 =  +0.067609  -0.604806i
+  λ_3 =  +0.015580  -0.616375i
+Std(Re) = 7.305334e-02, Std(Im) = 1.552827e-02
+differential_evolution step 410/1000 (41.0%): f(x)= 0.005577918381074
+differential_evolution step 420/1000 (42.0%): f(x)= 0.005577918381074
+differential_evolution step 430/1000 (43.0%): f(x)= 0.005577918381074
+differential_evolution step 440/1000 (44.0%): f(x)= 0.005577918381074
+differential_evolution step 450/1000 (45.0%): f(x)= 0.005577918381074
+differential_evolution step 460/1000 (46.0%): f(x)= 0.005577918381074
+differential_evolution step 470/1000 (47.0%): f(x)= 0.005577918381074
+differential_evolution step 480/1000 (48.0%): f(x)= 0.005577918381074
+differential_evolution step 490/1000 (49.0%): f(x)= 0.003919922969523
+
+--- Iteration 500/1000 (50.0%) ---
+Loss (variance) = 3.919923e-03
+Eigenvalues:
+  λ_1 =  +0.140044  -0.566764i
+  λ_2 =  +0.125394  -0.666856i
+  λ_3 =  +0.087731  -0.705922i
+Std(Re) = 2.203485e-02, Std(Im) = 5.860365e-02
+differential_evolution step 510/1000 (51.0%): f(x)= 0.003919922969523
+differential_evolution step 520/1000 (52.0%): f(x)= 0.003919922969523
+differential_evolution step 530/1000 (53.0%): f(x)= 0.003919922969523
+differential_evolution step 540/1000 (54.0%): f(x)= 0.003919922969523
+differential_evolution step 550/1000 (55.0%): f(x)= 0.003919922969523
+differential_evolution step 560/1000 (56.0%): f(x)= 0.003919922969523
+differential_evolution step 570/1000 (57.0%): f(x)= 0.003919922969523
+differential_evolution step 580/1000 (58.0%): f(x)= 0.003919922969523
+differential_evolution step 590/1000 (59.0%): f(x)= 0.003919922969523
+
+--- Iteration 600/1000 (60.0%) ---
+Loss (variance) = 3.850054e-03
+Eigenvalues:
+  λ_1 =  +0.111540  -0.690055i
+  λ_2 =  +0.111603  -0.548618i
+  λ_3 =  +0.065301  -0.605884i
+Std(Re) = 2.181227e-02, Std(Im) = 5.808854e-02
+differential_evolution step 610/1000 (61.0%): f(x)= 0.003850054101128
+differential_evolution step 620/1000 (62.0%): f(x)= 0.003850054101128
+differential_evolution step 630/1000 (63.0%): f(x)= 0.003850054101128
+differential_evolution step 640/1000 (64.0%): f(x)= 0.003850054101128
+differential_evolution step 650/1000 (65.0%): f(x)= 0.003850054101128
+differential_evolution step 660/1000 (66.0%): f(x)= 0.003850054101128
+differential_evolution step 670/1000 (67.0%): f(x)= 0.003850054101128
+differential_evolution step 680/1000 (68.0%): f(x)= 0.003184895973728
+differential_evolution step 690/1000 (69.0%): f(x)= 0.003184895973728
+
+--- Iteration 700/1000 (70.0%) ---
+Loss (variance) = 3.184896e-03
+Eigenvalues:
+  λ_1 =  -0.186997  -0.646888i
+  λ_2 =  -0.061120  -0.637008i
+  λ_3 =  -0.117713  -0.690267i
+Std(Re) = 5.147620e-02, Std(Im) = 2.313216e-02
+differential_evolution step 710/1000 (71.0%): f(x)= 0.003184895973728
+differential_evolution step 720/1000 (72.0%): f(x)= 0.003184895973728
+differential_evolution step 730/1000 (73.0%): f(x)= 0.003184895973728
+differential_evolution step 740/1000 (74.0%): f(x)= 0.003184895973728
+differential_evolution step 750/1000 (75.0%): f(x)= 0.001856176271245
+differential_evolution step 760/1000 (76.0%): f(x)= 0.001856176271245
+differential_evolution step 770/1000 (77.0%): f(x)= 0.001856176271245
+differential_evolution step 780/1000 (78.0%): f(x)= 0.001856176271245
+differential_evolution step 790/1000 (79.0%): f(x)= 0.001813090481712
+
+--- Iteration 800/1000 (80.0%) ---
+Loss (variance) = 1.813090e-03
+Eigenvalues:
+  λ_1 =  -0.125212  -0.598423i
+  λ_2 =  -0.126313  -0.654895i
+  λ_3 =  -0.053413  -0.649720i
+Std(Re) = 3.410877e-02, Std(Im) = 2.548887e-02
+differential_evolution step 810/1000 (81.0%): f(x)= 0.001813090481712
+differential_evolution step 820/1000 (82.0%): f(x)= 0.001813090481712
+differential_evolution step 830/1000 (83.0%): f(x)= 0.001813090481712
+differential_evolution step 840/1000 (84.0%): f(x)= 0.001183626666734
+differential_evolution step 850/1000 (85.0%): f(x)= 0.001183626666734
+differential_evolution step 860/1000 (86.0%): f(x)= 0.001139002946691
+differential_evolution step 870/1000 (87.0%): f(x)= 0.001139002946691
+differential_evolution step 880/1000 (88.0%): f(x)= 0.001139002946691
+differential_evolution step 890/1000 (89.0%): f(x)= 0.001139002946691
+
+--- Iteration 900/1000 (90.0%) ---
+Loss (variance) = 7.571421e-04
+Eigenvalues:
+  λ_1 =  -0.127740  -0.653796i
+  λ_2 =  -0.106814  -0.620162i
+  λ_3 =  -0.074238  -0.656419i
+Std(Re) = 2.201406e-02, Std(Im) = 1.650828e-02
+differential_evolution step 910/1000 (91.0%): f(x)= 0.000533391683980
+differential_evolution step 920/1000 (92.0%): f(x)= 0.000533391683980
+differential_evolution step 930/1000 (93.0%): f(x)= 0.000533391683980
+differential_evolution step 940/1000 (94.0%): f(x)= 0.000533391683980
+differential_evolution step 950/1000 (95.0%): f(x)= 0.000533391683980
+differential_evolution step 960/1000 (96.0%): f(x)= 0.000437467879016
+differential_evolution step 970/1000 (97.0%): f(x)= 0.000431742165651
+differential_evolution step 980/1000 (98.0%): f(x)= 0.000431742165651
+differential_evolution step 990/1000 (99.0%): f(x)= 0.000285816731536
+
+--- Iteration 1000/1000 (100.0%) ---
+Loss (variance) = 2.858167e-04
+Eigenvalues:
+  λ_1 =  -0.117104  -0.615691i
+  λ_2 =  -0.111508  -0.636733i
+  λ_3 =  -0.092733  -0.647781i
+Std(Re) = 1.042314e-02, Std(Im) = 1.331070e-02
+
+======================================================================
+Phase 2: Local Refinement (Gradient-Free Optimizers)
+======================================================================
+
+======================================================================
+[Phase 2.1] Nelder-Mead Optimizer
+Starting from loss = 2.858167e-04
+Maxiter = 1000 (or optimizer's own convergence criteria)
+======================================================================
+
+
+--- Nelder-Mead Iteration 1/1000 (0.1%) ---
+Loss (variance) = 2.858167e-04
+Eigenvalues:
+  λ_1 =  -0.117104  -0.615691i
+  λ_2 =  -0.111508  -0.636733i
+  λ_3 =  -0.092733  -0.647781i
+Std(Re) = 1.042314e-02, Std(Im) = 1.331070e-02
+Nelder-Mead step 10/1000 (1.0%): f(x)= 0.000285816731536
+Nelder-Mead step 20/1000 (2.0%): f(x)= 0.000285816731536
+Nelder-Mead step 30/1000 (3.0%): f(x)= 0.000285816731536
+Nelder-Mead step 40/1000 (4.0%): f(x)= 0.000285816731536
+Nelder-Mead step 50/1000 (5.0%): f(x)= 0.000239938165731
+Nelder-Mead step 60/1000 (6.0%): f(x)= 0.000162795513124
+Nelder-Mead step 70/1000 (7.0%): f(x)= 0.000130079312226
+Nelder-Mead step 80/1000 (8.0%): f(x)= 0.000094112606845
+Nelder-Mead step 90/1000 (9.0%): f(x)= 0.000070616268361
+
+--- Nelder-Mead Iteration 100/1000 (10.0%) ---
+Loss (variance) = 5.464015e-05
+Eigenvalues:
+  λ_1 =  -0.113950  -0.629533i
+  λ_2 =  -0.106111  -0.631139i
+  λ_3 =  -0.109272  -0.644382i
+Std(Re) = 3.220103e-03, Std(Im) = 6.653652e-03
+Nelder-Mead step 110/1000 (11.0%): f(x)= 0.000045556802572
+Nelder-Mead step 120/1000 (12.0%): f(x)= 0.000031187306255
+Nelder-Mead step 130/1000 (13.0%): f(x)= 0.000028396873854
+Nelder-Mead step 140/1000 (14.0%): f(x)= 0.000020157916101
+Nelder-Mead step 150/1000 (15.0%): f(x)= 0.000012515489687
+Nelder-Mead step 160/1000 (16.0%): f(x)= 0.000010942581423
+Nelder-Mead step 170/1000 (17.0%): f(x)= 0.000009496015727
+Nelder-Mead step 180/1000 (18.0%): f(x)= 0.000004782525289
+Nelder-Mead step 190/1000 (19.0%): f(x)= 0.000004703302350
+
+--- Nelder-Mead Iteration 200/1000 (20.0%) ---
+Loss (variance) = 2.737286e-06
+Eigenvalues:
+  λ_1 =  -0.108861  -0.633467i
+  λ_2 =  -0.110996  -0.634903i
+  λ_3 =  -0.109832  -0.636894i
+Std(Re) = 8.730530e-04, Std(Im) = 1.405370e-03
+Nelder-Mead step 210/1000 (21.0%): f(x)= 0.000002408441415
+Nelder-Mead step 220/1000 (22.0%): f(x)= 0.000001737491217
+Nelder-Mead step 230/1000 (23.0%): f(x)= 0.000001064293910
+Nelder-Mead step 240/1000 (24.0%): f(x)= 0.000000598251781
+Nelder-Mead step 250/1000 (25.0%): f(x)= 0.000000458205168
+Nelder-Mead step 260/1000 (26.0%): f(x)= 0.000000296174954
+Nelder-Mead step 270/1000 (27.0%): f(x)= 0.000000228268934
+Nelder-Mead step 280/1000 (28.0%): f(x)= 0.000000168202730
+Nelder-Mead step 290/1000 (29.0%): f(x)= 0.000000120295866
+
+--- Nelder-Mead Iteration 300/1000 (30.0%) ---
+Loss (variance) = 1.202959e-07
+Eigenvalues:
+  λ_1 =  -0.110024  -0.634624i
+  λ_2 =  -0.109838  -0.635228i
+  λ_3 =  -0.109794  -0.635399i
+Std(Re) = 9.951233e-05, Std(Im) = 3.322547e-04
+Nelder-Mead step 310/1000 (31.0%): f(x)= 0.000000110467268
+Nelder-Mead step 320/1000 (32.0%): f(x)= 0.000000086291465
+Nelder-Mead step 330/1000 (33.0%): f(x)= 0.000000080431742
+Nelder-Mead step 340/1000 (34.0%): f(x)= 0.000000067705574
+Nelder-Mead step 350/1000 (35.0%): f(x)= 0.000000061582844
+Nelder-Mead step 360/1000 (36.0%): f(x)= 0.000000046300355
+Nelder-Mead step 370/1000 (37.0%): f(x)= 0.000000042549079
+Nelder-Mead step 380/1000 (38.0%): f(x)= 0.000000023847481
+Nelder-Mead step 390/1000 (39.0%): f(x)= 0.000000013755839
+
+--- Nelder-Mead Iteration 400/1000 (40.0%) ---
+Loss (variance) = 1.371227e-08
+Eigenvalues:
+  λ_1 =  -0.109738  -0.635105i
+  λ_2 =  -0.109907  -0.635105i
+  λ_3 =  -0.110013  -0.635042i
+Std(Re) = 1.133043e-04, Std(Im) = 2.957034e-05
+Nelder-Mead step 410/1000 (41.0%): f(x)= 0.000000012100172
+Nelder-Mead step 420/1000 (42.0%): f(x)= 0.000000009904063
+Nelder-Mead step 430/1000 (43.0%): f(x)= 0.000000006915121
+Nelder-Mead step 440/1000 (44.0%): f(x)= 0.000000005242036
+Nelder-Mead step 450/1000 (45.0%): f(x)= 0.000000005242036
+Nelder-Mead step 460/1000 (46.0%): f(x)= 0.000000003669869
+Nelder-Mead step 470/1000 (47.0%): f(x)= 0.000000003669869
+Nelder-Mead step 480/1000 (48.0%): f(x)= 0.000000003669869
+Nelder-Mead step 490/1000 (49.0%): f(x)= 0.000000003669869
+
+--- Nelder-Mead Iteration 500/1000 (50.0%) ---
+Loss (variance) = 3.669869e-09
+Eigenvalues:
+  λ_1 =  -0.109805  -0.635106i
+  λ_2 =  -0.109911  -0.635078i
+  λ_3 =  -0.109942  -0.635069i
+Std(Re) = 5.853277e-05, Std(Im) = 1.561356e-05
+Nelder-Mead step 510/1000 (51.0%): f(x)= 0.000000003668546
+Nelder-Mead step 520/1000 (52.0%): f(x)= 0.000000003667334
+Nelder-Mead step 530/1000 (53.0%): f(x)= 0.000000003667334
+Nelder-Mead step 540/1000 (54.0%): f(x)= 0.000000003666766
+Nelder-Mead step 550/1000 (55.0%): f(x)= 0.000000003665285
+Nelder-Mead step 560/1000 (56.0%): f(x)= 0.000000003661699
+Nelder-Mead step 570/1000 (57.0%): f(x)= 0.000000003654628
+Nelder-Mead step 580/1000 (58.0%): f(x)= 0.000000003638592
+Nelder-Mead step 590/1000 (59.0%): f(x)= 0.000000003601301
+
+--- Nelder-Mead Iteration 600/1000 (60.0%) ---
+Loss (variance) = 3.548156e-09
+Eigenvalues:
+  λ_1 =  -0.109805  -0.635106i
+  λ_2 =  -0.109926  -0.635078i
+  λ_3 =  -0.109927  -0.635069i
+Std(Re) = 5.742012e-05, Std(Im) = 1.584568e-05
+Nelder-Mead step 610/1000 (61.0%): f(x)= 0.000000003548156
+Nelder-Mead step 620/1000 (62.0%): f(x)= 0.000000003548142
+Nelder-Mead step 630/1000 (63.0%): f(x)= 0.000000003543052
+Nelder-Mead step 640/1000 (64.0%): f(x)= 0.000000003534993
+Nelder-Mead step 650/1000 (65.0%): f(x)= 0.000000003527017
+Nelder-Mead step 660/1000 (66.0%): f(x)= 0.000000003516941
+Nelder-Mead step 670/1000 (67.0%): f(x)= 0.000000003499382
+Nelder-Mead step 680/1000 (68.0%): f(x)= 0.000000003472183
+Nelder-Mead step 690/1000 (69.0%): f(x)= 0.000000003383628
+
+--- Nelder-Mead Iteration 700/1000 (70.0%) ---
+Loss (variance) = 3.217507e-09
+Eigenvalues:
+  λ_1 =  -0.109811  -0.635103i
+  λ_2 =  -0.109914  -0.635089i
+  λ_3 =  -0.109934  -0.635061i
+Std(Re) = 5.387337e-05, Std(Im) = 1.775295e-05
+Nelder-Mead step 710/1000 (71.0%): f(x)= 0.000000002888181
+Nelder-Mead step 720/1000 (72.0%): f(x)= 0.000000002735757
+Nelder-Mead step 730/1000 (73.0%): f(x)= 0.000000002735757
+Nelder-Mead step 740/1000 (74.0%): f(x)= 0.000000002729737
+Nelder-Mead step 750/1000 (75.0%): f(x)= 0.000000002722762
+Nelder-Mead step 760/1000 (76.0%): f(x)= 0.000000002708816
+Nelder-Mead step 770/1000 (77.0%): f(x)= 0.000000002685628
+Nelder-Mead step 780/1000 (78.0%): f(x)= 0.000000002606328
+Nelder-Mead step 790/1000 (79.0%): f(x)= 0.000000002488346
+
+--- Nelder-Mead Iteration 800/1000 (80.0%) ---
+Loss (variance) = 2.245049e-09
+Eigenvalues:
+  λ_1 =  -0.109835  -0.635088i
+  λ_2 =  -0.109896  -0.635116i
+  λ_3 =  -0.109928  -0.635049i
+Std(Re) = 3.879229e-05, Std(Im) = 2.720675e-05
+Nelder-Mead step 810/1000 (81.0%): f(x)= 0.000000001501279
+Nelder-Mead step 820/1000 (82.0%): f(x)= 0.000000001501279
+Nelder-Mead step 830/1000 (83.0%): f(x)= 0.000000001455443
+Nelder-Mead step 840/1000 (84.0%): f(x)= 0.000000001440209
+Nelder-Mead step 850/1000 (85.0%): f(x)= 0.000000001420273
+Nelder-Mead step 860/1000 (86.0%): f(x)= 0.000000001369317
+Nelder-Mead step 870/1000 (87.0%): f(x)= 0.000000001214979
+Nelder-Mead step 880/1000 (88.0%): f(x)= 0.000000000988112
+Nelder-Mead step 890/1000 (89.0%): f(x)= 0.000000000766347
+
+--- Nelder-Mead Iteration 900/1000 (90.0%) ---
+Loss (variance) = 7.416905e-10
+Eigenvalues:
+  λ_1 =  -0.109865  -0.635102i
+  λ_2 =  -0.109878  -0.635088i
+  λ_3 =  -0.109916  -0.635063i
+Std(Re) = 2.173148e-05, Std(Im) = 1.641442e-05
+Nelder-Mead step 910/1000 (91.0%): f(x)= 0.000000000705782
+Nelder-Mead step 920/1000 (92.0%): f(x)= 0.000000000696186
+Nelder-Mead step 930/1000 (93.0%): f(x)= 0.000000000655850
+Nelder-Mead step 940/1000 (94.0%): f(x)= 0.000000000655850
+Nelder-Mead step 950/1000 (95.0%): f(x)= 0.000000000655850
+Nelder-Mead step 960/1000 (96.0%): f(x)= 0.000000000655850
+Nelder-Mead step 970/1000 (97.0%): f(x)= 0.000000000655133
+Nelder-Mead step 980/1000 (98.0%): f(x)= 0.000000000654801
+Nelder-Mead step 990/1000 (99.0%): f(x)= 0.000000000654350
+
+Nelder-Mead finished:
+  Final loss = 6.539146e-10
+  Iterations = 999
+  Status: Maximum number of iterations has been exceeded.
+✓ Nelder-Mead improved by 100.00%
+
+======================================================================
+[Phase 2.2] Powell Optimizer
+Starting from loss = 6.539146e-10
+Maxiter = 500 (or optimizer's own convergence criteria)
+======================================================================
+
+
+--- Powell Iteration 1/500 (0.2%) ---
+Loss (variance) = 6.538758e-10
+Eigenvalues:
+  λ_1 =  -0.109867  -0.635102i
+  λ_2 =  -0.109880  -0.635090i
+  λ_3 =  -0.109912  -0.635061i
+Std(Re) = 1.877550e-05, Std(Im) = 1.735962e-05
+
+Powell finished:
+  Final loss = 6.536718e-10
+  Iterations = 5
+  Status: Optimization terminated successfully.
+✓ Powell improved by 0.04%
+
+======================================================================
+Best optimizer: Final loss = 6.536718e-10
+======================================================================
+
+======================================================================
+FINAL RESULT:
+======================================================================
+
+Loss = 6.536718e-10
+
+theta0 = 5.0767 mrad
+C0     = 4.1022 (fixed)
+
+Layer Structure (nm):
+  Layer 0: Pt       =   9.500 nm
+  Layer 1: C        =  43.497 nm
+  Layer 2: Fe*      =   0.557 nm (resonant)
+  Layer 3: C        =  28.068 nm
+  Layer 4: Fe*      =   0.691 nm (resonant)
+  Layer 5: C        =  20.856 nm
+  Layer 6: Fe*      =   0.728 nm (resonant)
+  Layer 7: C        =  15.525 nm
+  Layer 8: Pt(sub)  =  10.000 nm
+
+Eigenvalue Analysis:
+  λᵢ = Re + Im·i
+  --------------------------------------------------
+  λ_1 =  -0.109860  -0.635109i
+  λ_2 =  -0.109897  -0.635075i
+  λ_3 =  -0.109902  -0.635069i
+
+  Degeneracy Check:
+    Std(Re) = 1.877471e-05  ✓
+    Std(Im) = 1.735460e-05  ✓
+
+======================================================================
+Matrix Analysis:
+======================================================================
+
+Original Green Matrix G (shape: (3, 3)):
+[[ 0.008799+0.122972j -0.004265-0.12071j   0.017021-0.008855j]
+ [-0.004265-0.12071j   0.255383+0.128078j -0.000929+0.045374j]
+ [ 0.017021-0.008855j -0.000929+0.045374j  0.065477+0.154203j]]
+
+Transformed Matrix G1 = -G - 0.5i·I (shape: (3, 3)):
+[[-0.008799-0.622972j  0.004265+0.12071j  -0.017021+0.008855j]
+ [ 0.004265+0.12071j  -0.255383-0.628078j  0.000929-0.045374j]
+ [-0.017021+0.008855j  0.000929-0.045374j -0.065477-0.654203j]]

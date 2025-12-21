@@ -17,6 +17,11 @@ build/
 *.xlsx
 *.txt
 
+# But allow results directory files
+!results/**/*.png
+!results/**/*.npz
+!results/**/*.txt
+
 # IDE
 .vscode/
 .idea/

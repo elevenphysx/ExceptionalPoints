@@ -1,0 +1,33 @@
+======================================================================
+Exceptional Point Parameters (High Precision)
+======================================================================
+
+Random Seed: 812
+Final Loss:  8.240744978086e-11
+
+theta0 = 5.09401591 mrad
+C0     = 4.10220000 (fixed)
+
+Layer Thicknesses (nm):
+--------------------------------------------------
+  Layer 0: Pt       =   8.86261001 nm
+  Layer 1: C        =  43.35679967 nm
+  Layer 2: Fe*      =   0.52585968 nm (resonant)
+  Layer 3: C        =  28.07318275 nm
+  Layer 4: Fe*      =   0.59799414 nm (resonant)
+  Layer 5: C        =  20.57440188 nm
+  Layer 6: Fe*      =   0.67483547 nm (resonant)
+  Layer 7: C        =  15.47196987 nm
+  Layer 8: Pt(sub)  = inf nm
+
+All Optimization Parameters:
+--------------------------------------------------
+  params[0] (theta0) = 5.09401591 mrad
+  params[1] (Layer 0 thickness) = 8.86261001 nm
+  params[2] (Layer 1 thickness) = 43.35679967 nm
+  params[3] (Layer 2 thickness) = 0.52585968 nm
+  params[4] (Layer 3 thickness) = 28.07318275 nm
+  params[5] (Layer 4 thickness) = 0.59799414 nm
+  params[6] (Layer 5 thickness) = 20.57440188 nm
+  params[7] (Layer 6 thickness) = 0.67483547 nm
+  params[8] (Layer 7 thickness) = 15.47196987 nm
