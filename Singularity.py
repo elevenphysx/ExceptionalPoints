@@ -191,7 +191,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
             output = f"Loss (variance) = {loss:.6e}\n"
             output += "Eigenvalues:\n"
             for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
-                output += f"  λ_{i+1} = {re:+15.8f} {im:+15.8f}i\n"
+                output += f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n"
 
             # Check degeneracy
             re_std = np.std(real_parts)
@@ -323,7 +323,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
                 output = f"Loss (variance) = {loss:.6e}\n"
                 output += "Eigenvalues:\n"
                 for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
-                    output += f"  λ_{i+1} = {re:+15.8f} {im:+15.8f}i\n"
+                    output += f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n"
 
                 # Check degeneracy
                 re_std = np.std(real_parts)
@@ -410,21 +410,21 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
     theta0, Layers, C0 = build_layers(final_result.x, fixed_materials)
 
     output += f"\nLoss = {loss:.6e}\n\n"
-    output += f"theta0 = {theta0:.8f} mrad\n"
-    output += f"C0     = {C0:.8f} (fixed)\n\n"
+    output += f"theta0 = {theta0:.15f} mrad\n"
+    output += f"C0     = {C0:.15f} (fixed)\n\n"
 
     output += "Layer Structure (nm):\n"
     layer_names = ['Pt', 'C', 'Fe*', 'C', 'Fe*', 'C', 'Fe*', 'C', 'Pt(sub)']
     for i, (name, layer) in enumerate(zip(layer_names, Layers)):
         thickness = layer[1]
         resonant = ' (resonant)' if layer[2] == 1 else ''
-        output += f"  Layer {i}: {name:8s} = {thickness:12.8f} nm{resonant}\n"
+        output += f"  Layer {i}: {name:8s} = {thickness:20.15f} nm{resonant}\n"
 
     output += "\nEigenvalue Analysis:\n"
     output += "  λᵢ = Re + Im·i\n"
     output += "  " + "-" * 50 + "\n"
     for i, (eig, re, im) in enumerate(zip(eigvals, real_parts, imag_parts)):
-        output += f"  λ_{i+1} = {re:+15.8f} {im:+15.8f}i\n"
+        output += f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n"
 
     # Check degeneracy
     re_std = np.std(real_parts)
@@ -595,18 +595,18 @@ if __name__ == "__main__":
         f.write("=" * 70 + "\n\n")
         f.write(f"Random Seed: {args.seed}\n")
         f.write(f"Final Loss:  {result.fun:.12e}\n\n")
-        f.write(f"theta0 = {theta0:.8f} mrad\n")
-        f.write(f"C0     = {C0:.8f} (fixed)\n\n")
+        f.write(f"theta0 = {theta0:.15f} mrad\n")
+        f.write(f"C0     = {C0:.15f} (fixed)\n\n")
         f.write("Layer Thicknesses (nm):\n")
         f.write("-" * 50 + "\n")
         layer_names = ['Pt', 'C', 'Fe*', 'C', 'Fe*', 'C', 'Fe*', 'C']
         for i, (name, thickness) in enumerate(zip(layer_names, thicknesses)):
             resonant = ' (resonant)' if Layers[i][2] == 1 else ''
-            f.write(f"  Layer {i}: {name:8s} = {thickness:12.8f} nm{resonant}\n")
+            f.write(f"  Layer {i}: {name:8s} = {thickness:20.15f} nm{resonant}\n")
         f.write(f"  Layer 8: Pt(sub)  = inf nm\n\n")
         f.write("All Optimization Parameters:\n")
         f.write("-" * 50 + "\n")
-        f.write(f"  params[0] (theta0) = {result.x[0]:.8f} mrad\n")
+        f.write(f"  params[0] (theta0) = {result.x[0]:.15f} mrad\n")
         for i in range(1, len(result.x)):
-            f.write(f"  params[{i}] (Layer {i-1} thickness) = {result.x[i]:.8f} nm\n")
+            f.write(f"  params[{i}] (Layer {i-1} thickness) = {result.x[i]:.15f} nm\n")
     print(f"Detailed parameters saved to: {params_txt_path}")
