@@ -766,5 +766,5 @@ if __name__ == "__main__":
         params_optimal=result.x,
         fixed_materials=fixed_materials,
         output_dir=output_dir,
-        scan_range=1e-6
+        scan_range=1e-8
     )
