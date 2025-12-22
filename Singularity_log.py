@@ -1,7 +1,8 @@
 """
-Exceptional Point Finder for Nuclear Resonance Cavity
+Exceptional Point Finder for Nuclear Resonance Cavity (Log-Loss Version)
 Structure: Pt-C-Iron-C-Iron-C-Iron-C-Pt(substrate, inf)
 Target: Find parameters where all eigenvalues degenerate (λ₁ = λ₂ = λ₃)
+Method: Logarithmic loss to balance degeneracy (1e-15) and constraints (1e0)
 """
 
 import numpy as np
@@ -60,26 +61,20 @@ def build_layers(params, fixed_materials):
 
 def objective_function(params, fixed_materials, bounds=None, return_details=False):
     """
-    Objective function: make all eigenvalues degenerate (coincide)
+    Improved Loss using logarithmic scale to balance degeneracy (1e-15) and constraints (1e0)
 
     For exceptional point: λ₁ = λ₂ = λ₃
     i.e., Re(λ₁) = Re(λ₂) = Re(λ₃) and Im(λ₁) = Im(λ₂) = Im(λ₃)
 
-    Loss = variance(Re) + variance(Im) + penalty for |Im(λ)| < 5
-    Uses smooth-min for better gradient properties
+    Loss = log10(degeneracy) + penalty/reward for Im(λ) > 5 constraint
     """
-
-    def smooth_min(x, beta=10.0):
-        """Smooth minimum function for better optimization"""
-        return -np.log(np.sum(np.exp(-beta * x))) / beta
-
     try:
-        # Check bounds if provided
+        # 1. Check bounds if provided
         if bounds is not None:
             for i, (param, (low, high)) in enumerate(zip(params, bounds)):
                 if not (low <= param <= high):
                     if return_details:
-                        return 1e10, None, None, None, None, None
+                        return 1e10, None, None, None, None, None, None, None
                     else:
                         return 1e10
 
@@ -92,32 +87,47 @@ def objective_function(params, fixed_materials, bounds=None, return_details=Fals
         # Compute eigenvalues
         eigvals = np.linalg.eigvals(G1)
 
-        # Loss: variance of real parts + variance of imaginary parts
-        # This forces all eigenvalues to collapse to the same point
         real_parts = np.real(eigvals)
         imag_parts = np.imag(eigvals)
-        loss_degeneracy = np.var(real_parts) + np.var(imag_parts)
 
-        # Constraint: all imaginary parts should be |Im(λ)| > 5
-        # Use smooth-min instead of hard min for better gradient
-        abs_imag_parts = np.abs(imag_parts)
-        min_abs_imag = smooth_min(abs_imag_parts, beta=10.0)
-        penalty_imag = np.maximum(0, 5.0 - min_abs_imag)**2
+        # 2. Compute degeneracy
+        var_re = np.var(real_parts)
+        var_im = np.var(imag_parts)
+        loss_degeneracy = var_re + var_im
 
-        # Total loss = degeneracy loss + penalty
-        penalty_weight = 0.1  # Adjustable weight
-        loss = loss_degeneracy + penalty_weight * penalty_imag
+        # 3. Key modification: take logarithm
+        # Add 1e-30 to prevent log(0)
+        # Perfect EP will make this approach -15 to -30
+        log_deg = np.log10(loss_degeneracy + 1e-30)
+
+        # 4. Imaginary part constraint (|Im(λ)| > 5)
+        min_abs_imag = np.min(np.abs(imag_parts))
+        target = 5.0
+
+        if min_abs_imag < target:
+            # If constraint not satisfied:
+            # Loss = degeneracy score (e.g., -5) + penalty weight * distance
+            # Weight 2.0 means every 1.0 difference in |Im| adds 2 to loss
+            penalty = 2.0 * (target - min_abs_imag)
+            loss = log_deg + penalty
+        else:
+            # If constraint satisfied (|Im(λ)| > 5):
+            # Give small reward to encourage further increase, but small weight (0.1)
+            reward = 0.1 * (min_abs_imag - target)
+            loss = log_deg - reward
+
+        # For debugging and output
+        penalty_val = penalty if min_abs_imag < target else -reward
 
         if return_details:
-            return loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_imag
+            return loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_val
         return loss
 
     except Exception as e:
         print(f"Error in objective: {e}")
         if return_details:
             return 1e10, None, None, None, None, None, None, None
-        else:
-            return 1e10
+        return 1e10
 
 
 def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=500, seed=812):
@@ -135,7 +145,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
     # Create output directory
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_dir = os.path.join('results', f'variance_method_{timestamp}')
+    output_dir = os.path.join('results', f'log_loss_method_{timestamp}')
     os.makedirs(output_dir, exist_ok=True)
     print(f"Output directory: {output_dir}\n")
     print(f"Random seed: {seed}")
@@ -275,16 +285,23 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
         objective_wrapper,
         bounds,
         maxiter=maxiter_de,
-        popsize=20,        # Increase population size for better exploration
-        strategy='best1bin',
-        seed=seed,         # Use defined random seed
-        disp=False,        # Disable default output, use callback instead
-        workers=1,         # Use single process to avoid pickle issues
+
+        # Modification: Increase population size for more thorough search
+        popsize=60,            # 9 params * 60 = 540 individuals, carpet-style search
+                               # Previous: 15 or 20, now 50-80 for better coverage
+
+        strategy='best1bin',   # Can also try 'rand1bin' for stronger exploration
+        mutation=(0.5, 1.0),   # Increase mutation range to prevent premature convergence
+        recombination=0.7,     # Maintain high crossover rate
+
+        seed=seed,             # Use defined random seed
+        disp=False,            # Disable default output, use callback instead
+        workers=1,             # Use single process to avoid pickle issues
         updating='immediate',
-        polish=False,      # Manual refinement later
-        callback=callback, # Display eigenvalues at each iteration
-        atol=0,            # Disable absolute tolerance
-        tol=0              # Disable relative tolerance - run to maxiter
+        polish=False,          # Manual refinement later
+        callback=callback,     # Display eigenvalues at each iteration
+        atol=0,                # Disable absolute tolerance
+        tol=0                  # Disable relative tolerance - run to maxiter
     )
 
     pbar_de.close()  # Close DE progress bar
@@ -684,7 +701,7 @@ def scan_parameters_around_optimum(params_optimal, fixed_materials, output_dir, 
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description='Exceptional Point Finder (Variance Method)')
+    parser = argparse.ArgumentParser(description='Exceptional Point Finder (Log-Loss Method)')
     parser.add_argument('-i1', '--iterations-de', type=int, default=100,
                         help='Number of iterations for DE (default: 100)')
     parser.add_argument('-i2', '--iterations-nm', type=int, default=500,

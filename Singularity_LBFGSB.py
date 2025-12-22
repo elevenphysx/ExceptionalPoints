@@ -1,7 +1,8 @@
 """
-Exceptional Point Finder for Nuclear Resonance Cavity
+Exceptional Point Finder for Nuclear Resonance Cavity (L-BFGS-B Version)
 Structure: Pt-C-Iron-C-Iron-C-Iron-C-Pt(substrate, inf)
 Target: Find parameters where all eigenvalues degenerate (λ₁ = λ₂ = λ₃)
+Algorithm: L-BFGS-B with multiple random restarts
 """
 
 import numpy as np
@@ -179,74 +180,6 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
         log_file.write(message + end)
         log_file.flush()
 
-    # Create progress bar for DE phase
-    pbar_de = tqdm(total=maxiter_de, desc="DE Progress",
-                   bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]',
-                   position=0, leave=True)
-
-    # Callback function to display progress and check convergence
-    def callback(xk, convergence=None):
-        """
-        Callback function called at each iteration
-        xk: current best solution
-        convergence: convergence metric from DE
-        """
-        iteration_count[0] += 1
-        pbar_de.update(1)  # Update progress bar
-        progress_pct = iteration_count[0] / maxiter_de * 100
-
-        # Every 100 iterations: full output with eigenvalues
-        if iteration_count[0] % 100 == 0 or iteration_count[0] == 1:
-            # Compute eigenvalues for current best solution
-            loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_imag = objective_function(
-                xk, fixed_materials, bounds=bounds, return_details=True
-            )
-
-            # Display progress (to both console and file)
-            pbar_de.write(f"\n--- Iteration {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%) ---")
-            output = f"Total Loss = {loss:.6e}\n"
-            output += f"  ├─ Degeneracy Loss = {loss_degeneracy:.6e}\n"
-            output += f"  └─ Penalty (Im>5)  = {penalty_imag:.6e} (weighted: {10.0 * penalty_imag:.6e})\n"
-            output += "Eigenvalues:\n"
-            for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
-                output += f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n"
-
-            # Check degeneracy
-            re_std = np.std(real_parts)
-            im_std = np.std(imag_parts)
-            output += f"Std(Re) = {re_std:.6e}, Std(Im) = {im_std:.6e}"
-
-            # Write to both console and file
-            pbar_de.write(output)
-            log_file.write(f"\n--- Iteration {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%) ---\n")
-            log_file.write(output + "\n")
-            log_file.flush()
-
-            # Monitor convergence (info only, no early stopping)
-            if loss < convergence_threshold:
-                msg = f"[INFO] Loss < {convergence_threshold} (continuing to maxiter)"
-                pbar_de.write(msg)
-                log_file.write(msg + "\n")
-                log_file.flush()
-
-        # Every 10 iterations (but not 100): simple loss output and record history
-        elif iteration_count[0] % 10 == 0:
-            loss, eigvals, _, _, _, _, loss_degeneracy, penalty_imag = objective_function(xk, fixed_materials, bounds=bounds, return_details=True)
-            msg = f"differential_evolution step {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%): f(x)= {loss:.15f} (degeneracy={loss_degeneracy:.6e}, penalty={penalty_imag:.6e})"
-            pbar_de.write(msg)
-            log_file.write(msg + "\n")
-            log_file.flush()
-
-            # Record history for plotting
-            if eigvals is not None:
-                history['iteration'].append(iteration_count[0])
-                history['loss'].append(loss)
-                history['phase'].append('DE')
-                history['eigvals_real'].append(np.real(eigvals).copy())
-                history['eigvals_imag'].append(np.imag(eigvals).copy())
-
-        return False  # Continue
-
     # Parameter bounds: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4]
     # C0 is fixed at 7.74 * 1.06 * 0.5 = 4.1022 (not optimized)
     bounds = [
@@ -262,7 +195,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
     ]
 
     print("=" * 70)
-    print("Starting Global Search (Differential Evolution)...")
+    print("Starting Global Search (L-BFGS-B with Random Restarts)...")
     print("Target: Find Exceptional Point where λ₁ = λ₂ = λ₃")
     print("=" * 70)
 
@@ -270,28 +203,60 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
     def objective_wrapper(params):
         return objective_function(params, fixed_materials, bounds=bounds)
 
-    # Phase 1: Global search with Differential Evolution
-    result_de = differential_evolution(
-        objective_wrapper,
-        bounds,
-        maxiter=maxiter_de,
-        popsize=20,        # Increase population size for better exploration
-        strategy='best1bin',
-        seed=seed,         # Use defined random seed
-        disp=False,        # Disable default output, use callback instead
-        workers=1,         # Use single process to avoid pickle issues
-        updating='immediate',
-        polish=False,      # Manual refinement later
-        callback=callback, # Display eigenvalues at each iteration
-        atol=0,            # Disable absolute tolerance
-        tol=0              # Disable relative tolerance - run to maxiter
-    )
+    # Phase 1: Multi-start L-BFGS-B
+    n_restarts = maxiter_de  # Use maxiter_de as number of random restarts
+    best_result = None
+    best_loss = np.inf
 
-    pbar_de.close()  # Close DE progress bar
+    print(f"\nRunning L-BFGS-B with {n_restarts} random restarts...")
+
+    for restart_idx in range(n_restarts):
+        # Generate random initial point within bounds
+        x0 = np.array([np.random.uniform(low, high) for low, high in bounds])
+
+        try:
+            # Run L-BFGS-B from this initial point
+            result = minimize(
+                objective_wrapper,
+                x0,
+                method='L-BFGS-B',
+                bounds=bounds,
+                options={'maxiter': 100, 'ftol': 1e-20, 'gtol': 1e-20}
+            )
+
+            # Output every restart
+            loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_imag = objective_function(
+                result.x, fixed_materials, bounds=bounds, return_details=True
+            )
+
+            progress_pct = (restart_idx + 1) / n_restarts * 100
+            print(f"\nRestart {restart_idx + 1}/{n_restarts} ({progress_pct:.1f}%)")
+            print(f"  Current Loss = {result.fun:.6e}")
+            print(f"  Best Loss So Far = {best_loss:.6e}")
+
+            if eigvals is not None:
+                print(f"  ├─ Degeneracy = {loss_degeneracy:.6e}")
+                print(f"  └─ Penalty    = {penalty_imag:.6e}")
+                print(f"  Eigenvalues:")
+                for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
+                    print(f"    λ_{i+1} = {re:+.6f} {im:+.6f}i")
+                print(f"  Min |Im(λ)| = {np.min(np.abs(imag_parts)):.3f}")
+
+            # Keep track of best result
+            if result.fun < best_loss:
+                best_loss = result.fun
+                best_result = result
+
+        except Exception as e:
+            print(f"Restart {restart_idx + 1} failed: {e}")
+            continue
+
+    result_de = best_result  # Use same variable name for compatibility
 
     print("\n" + "=" * 70)
-    print("Differential Evolution Result:")
+    print("L-BFGS-B Multi-Start Result:")
     print(f"Loss = {result_de.fun:.6e}")
+    print(f"Total restarts: {n_restarts}")
     print("=" * 70)
 
     # Phase 2: Local refinement (always execute for better convergence)

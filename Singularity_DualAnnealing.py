@@ -1,11 +1,12 @@
 """
-Exceptional Point Finder for Nuclear Resonance Cavity
+Exceptional Point Finder for Nuclear Resonance Cavity (Dual Annealing Version)
 Structure: Pt-C-Iron-C-Iron-C-Iron-C-Pt(substrate, inf)
 Target: Find parameters where all eigenvalues degenerate (λ₁ = λ₂ = λ₃)
+Algorithm: Dual Annealing (simulated annealing global optimization)
 """
 
 import numpy as np
-from scipy.optimize import differential_evolution, minimize
+from scipy.optimize import dual_annealing, minimize
 import matplotlib.pyplot as plt
 import sys
 import os
@@ -179,74 +180,6 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
         log_file.write(message + end)
         log_file.flush()
 
-    # Create progress bar for DE phase
-    pbar_de = tqdm(total=maxiter_de, desc="DE Progress",
-                   bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]',
-                   position=0, leave=True)
-
-    # Callback function to display progress and check convergence
-    def callback(xk, convergence=None):
-        """
-        Callback function called at each iteration
-        xk: current best solution
-        convergence: convergence metric from DE
-        """
-        iteration_count[0] += 1
-        pbar_de.update(1)  # Update progress bar
-        progress_pct = iteration_count[0] / maxiter_de * 100
-
-        # Every 100 iterations: full output with eigenvalues
-        if iteration_count[0] % 100 == 0 or iteration_count[0] == 1:
-            # Compute eigenvalues for current best solution
-            loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_imag = objective_function(
-                xk, fixed_materials, bounds=bounds, return_details=True
-            )
-
-            # Display progress (to both console and file)
-            pbar_de.write(f"\n--- Iteration {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%) ---")
-            output = f"Total Loss = {loss:.6e}\n"
-            output += f"  ├─ Degeneracy Loss = {loss_degeneracy:.6e}\n"
-            output += f"  └─ Penalty (Im>5)  = {penalty_imag:.6e} (weighted: {10.0 * penalty_imag:.6e})\n"
-            output += "Eigenvalues:\n"
-            for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
-                output += f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n"
-
-            # Check degeneracy
-            re_std = np.std(real_parts)
-            im_std = np.std(imag_parts)
-            output += f"Std(Re) = {re_std:.6e}, Std(Im) = {im_std:.6e}"
-
-            # Write to both console and file
-            pbar_de.write(output)
-            log_file.write(f"\n--- Iteration {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%) ---\n")
-            log_file.write(output + "\n")
-            log_file.flush()
-
-            # Monitor convergence (info only, no early stopping)
-            if loss < convergence_threshold:
-                msg = f"[INFO] Loss < {convergence_threshold} (continuing to maxiter)"
-                pbar_de.write(msg)
-                log_file.write(msg + "\n")
-                log_file.flush()
-
-        # Every 10 iterations (but not 100): simple loss output and record history
-        elif iteration_count[0] % 10 == 0:
-            loss, eigvals, _, _, _, _, loss_degeneracy, penalty_imag = objective_function(xk, fixed_materials, bounds=bounds, return_details=True)
-            msg = f"differential_evolution step {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%): f(x)= {loss:.15f} (degeneracy={loss_degeneracy:.6e}, penalty={penalty_imag:.6e})"
-            pbar_de.write(msg)
-            log_file.write(msg + "\n")
-            log_file.flush()
-
-            # Record history for plotting
-            if eigvals is not None:
-                history['iteration'].append(iteration_count[0])
-                history['loss'].append(loss)
-                history['phase'].append('DE')
-                history['eigvals_real'].append(np.real(eigvals).copy())
-                history['eigvals_imag'].append(np.imag(eigvals).copy())
-
-        return False  # Continue
-
     # Parameter bounds: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4]
     # C0 is fixed at 7.74 * 1.06 * 0.5 = 4.1022 (not optimized)
     bounds = [
@@ -262,7 +195,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
     ]
 
     print("=" * 70)
-    print("Starting Global Search (Differential Evolution)...")
+    print("Starting Global Search (Dual Annealing)...")
     print("Target: Find Exceptional Point where λ₁ = λ₂ = λ₃")
     print("=" * 70)
 
@@ -270,27 +203,79 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
     def objective_wrapper(params):
         return objective_function(params, fixed_materials, bounds=bounds)
 
-    # Phase 1: Global search with Differential Evolution
-    result_de = differential_evolution(
+    # Create progress bar for Dual Annealing phase
+    pbar_da = tqdm(total=maxiter_de, desc="Dual Annealing Progress",
+                   bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]',
+                   position=0, leave=True)
+
+    # Callback function for Dual Annealing
+    def da_callback(x, f, context):
+        """
+        Callback for dual_annealing
+        x: current solution
+        f: current function value
+        context: optimization context (0=accept, 1=reject, 2=reset)
+        """
+        iteration_count[0] += 1
+        pbar_da.update(1)
+        progress_pct = iteration_count[0] / maxiter_de * 100
+
+        # Every 100 iterations: full output with eigenvalues
+        if iteration_count[0] % 100 == 0 or iteration_count[0] == 1:
+            loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_imag = objective_function(
+                x, fixed_materials, bounds=bounds, return_details=True
+            )
+
+            pbar_da.write(f"\n--- Iteration {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%) ---")
+            output = f"Total Loss = {loss:.6e}\n"
+            output += f"  ├─ Degeneracy Loss = {loss_degeneracy:.6e}\n"
+            output += f"  └─ Penalty (|Im|>5) = {penalty_imag:.6e} (weighted: {0.1 * penalty_imag:.6e})\n"
+            output += "Eigenvalues:\n"
+            for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
+                output += f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n"
+
+            re_std = np.std(real_parts)
+            im_std = np.std(imag_parts)
+            output += f"Std(Re) = {re_std:.6e}, Std(Im) = {im_std:.6e}"
+
+            pbar_da.write(output)
+            log_file.write(f"\n--- Iteration {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%) ---\n")
+            log_file.write(output + "\n")
+            log_file.flush()
+
+        # Every 10 iterations (but not 100): simple loss output and record history
+        elif iteration_count[0] % 10 == 0:
+            loss, eigvals, _, _, _, _, loss_degeneracy, penalty_imag = objective_function(
+                x, fixed_materials, bounds=bounds, return_details=True
+            )
+            msg = f"dual_annealing step {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%): f(x)= {loss:.15f} (degeneracy={loss_degeneracy:.6e}, penalty={penalty_imag:.6e})"
+            pbar_da.write(msg)
+            log_file.write(msg + "\n")
+            log_file.flush()
+
+            # Record history for plotting
+            if eigvals is not None:
+                history['iteration'].append(iteration_count[0])
+                history['loss'].append(loss)
+                history['phase'].append('Dual-Annealing')
+                history['eigvals_real'].append(np.real(eigvals).copy())
+                history['eigvals_imag'].append(np.imag(eigvals).copy())
+
+    # Phase 1: Global search with Dual Annealing
+    print(f"\nRunning Dual Annealing with maxiter={maxiter_de}...\n")
+    result_de = dual_annealing(
         objective_wrapper,
         bounds,
         maxiter=maxiter_de,
-        popsize=20,        # Increase population size for better exploration
-        strategy='best1bin',
-        seed=seed,         # Use defined random seed
-        disp=False,        # Disable default output, use callback instead
-        workers=1,         # Use single process to avoid pickle issues
-        updating='immediate',
-        polish=False,      # Manual refinement later
-        callback=callback, # Display eigenvalues at each iteration
-        atol=0,            # Disable absolute tolerance
-        tol=0              # Disable relative tolerance - run to maxiter
+        seed=seed,
+        no_local_search=False,  # Use local search for refinement
+        callback=da_callback,
     )
 
-    pbar_de.close()  # Close DE progress bar
+    pbar_da.close()  # Close progress bar
 
     print("\n" + "=" * 70)
-    print("Differential Evolution Result:")
+    print("Dual Annealing Result:")
     print(f"Loss = {result_de.fun:.6e}")
     print("=" * 70)
 
