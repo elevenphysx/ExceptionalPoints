@@ -561,6 +561,112 @@ def plot_results(history, output_dir):
     plt.close()
 
 
+def scan_parameters_around_optimum(params_optimal, fixed_materials, output_dir, scan_range=1e-6):
+    """
+    Scan parameters around the optimal solution to observe eigenvalue sensitivity
+
+    Args:
+        params_optimal: Optimal parameters [theta0, t_Pt, t_C1, t_Fe1, ...]
+        fixed_materials: Material constants
+        output_dir: Directory to save scan plots
+        scan_range: Scan range around optimal value (default: 1e-6)
+    """
+    import matplotlib.pyplot as plt
+    import matplotlib as mpl
+
+    # Set publication-quality style
+    mpl.rcParams['font.size'] = 12
+    mpl.rcParams['font.family'] = 'DejaVu Sans'
+    mpl.rcParams['axes.linewidth'] = 1.5
+    mpl.rcParams['lines.linewidth'] = 2.0
+    mpl.rcParams['xtick.major.width'] = 1.5
+    mpl.rcParams['ytick.major.width'] = 1.5
+
+    # Professional color scheme (Nature journal style)
+    colors = ['#4472C4', '#ED7D31', '#70AD47']  # Blue, Orange, Green
+
+    param_names = ['theta0', 't_Pt', 't_C1', 't_Fe1', 't_C2', 't_Fe2', 't_C3', 't_Fe3', 't_C4']
+    param_labels = ['θ₀ (mrad)', 't_Pt (nm)', 't_C₁ (nm)', 't_Fe₁ (nm)',
+                    't_C₂ (nm)', 't_Fe₂ (nm)', 't_C₃ (nm)', 't_Fe₃ (nm)', 't_C₄ (nm)']
+
+    print(f"\n{'='*70}")
+    print("Parameter Sensitivity Scan")
+    print(f"Scan range: ±{scan_range:.2e} around optimal values")
+    print(f"{'='*70}\n")
+
+    for i, (param_name, param_label) in enumerate(zip(param_names, param_labels)):
+        # Scan range around optimal value
+        n_points = 21  # Including center point
+        param_values = np.linspace(
+            params_optimal[i] - scan_range,
+            params_optimal[i] + scan_range,
+            n_points
+        )
+
+        eigvals_real_list = []
+        eigvals_imag_list = []
+
+        print(f"Scanning {param_name}...")
+        for param_val in tqdm(param_values, desc=f"  {param_name}", ncols=80, leave=False):
+            # Create modified params
+            params_test = params_optimal.copy()
+            params_test[i] = param_val
+
+            # Compute eigenvalues
+            try:
+                loss, eigvals, re, im, G, G1 = objective_function(
+                    params_test, fixed_materials, return_details=True
+                )
+                eigvals_real_list.append(re)
+                eigvals_imag_list.append(im)
+            except:
+                eigvals_real_list.append([np.nan, np.nan, np.nan])
+                eigvals_imag_list.append([np.nan, np.nan, np.nan])
+
+        eigvals_real_array = np.array(eigvals_real_list)
+        eigvals_imag_array = np.array(eigvals_imag_list)
+
+        # Create figure with two subplots
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+
+        # Plot real parts
+        for j in range(3):
+            ax1.plot(param_values, eigvals_real_array[:, j], 'o-',
+                    color=colors[j], label=f'Re(λ_{j+1})',
+                    markersize=6, alpha=0.8, linewidth=2)
+
+        ax1.axvline(params_optimal[i], color='red', linestyle='--',
+                   linewidth=2, alpha=0.7, label='Optimal')
+        ax1.set_xlabel(param_label, fontsize=14, fontweight='bold')
+        ax1.set_ylabel('Re(λ)', fontsize=14, fontweight='bold')
+        ax1.set_title(f'Real Parts vs {param_label}', fontsize=16, fontweight='bold')
+        ax1.legend(fontsize=11, framealpha=0.9, loc='best')
+        ax1.grid(True, alpha=0.3, linestyle='--', linewidth=0.8)
+        ax1.tick_params(labelsize=11)
+
+        # Plot imaginary parts
+        for j in range(3):
+            ax2.plot(param_values, eigvals_imag_array[:, j], 's-',
+                    color=colors[j], label=f'Im(λ_{j+1})',
+                    markersize=6, alpha=0.8, linewidth=2)
+
+        ax2.axvline(params_optimal[i], color='red', linestyle='--',
+                   linewidth=2, alpha=0.7, label='Optimal')
+        ax2.set_xlabel(param_label, fontsize=14, fontweight='bold')
+        ax2.set_ylabel('Im(λ)', fontsize=14, fontweight='bold')
+        ax2.set_title(f'Imaginary Parts vs {param_label}', fontsize=16, fontweight='bold')
+        ax2.legend(fontsize=11, framealpha=0.9, loc='best')
+        ax2.grid(True, alpha=0.3, linestyle='--', linewidth=0.8)
+        ax2.tick_params(labelsize=11)
+
+        plt.tight_layout()
+        scan_path = os.path.join(output_dir, f'scan_{param_name}.png')
+        plt.savefig(scan_path, dpi=300, bbox_inches='tight')
+        plt.close()
+
+    print(f"\nParameter scan plots saved to: {output_dir}/scan_*.png")
+
+
 if __name__ == "__main__":
     import argparse
 
@@ -618,3 +724,16 @@ if __name__ == "__main__":
         for i in range(1, len(result.x)):
             f.write(f"  params[{i}] (Layer {i-1} thickness) = {result.x[i]:.15f} nm\n")
     print(f"Detailed parameters saved to: {params_txt_path}")
+
+    # Run parameter sensitivity scan
+    Iron = (7.298e-6, 3.33e-7)
+    Carbon = (2.257e-6, 1.230e-9)
+    Platinum = (1.713e-5, 2.518e-6)
+    fixed_materials = (Platinum, Carbon, Iron)
+
+    scan_parameters_around_optimum(
+        params_optimal=result.x,
+        fixed_materials=fixed_materials,
+        output_dir=output_dir,
+        scan_range=1e-6
+    )
