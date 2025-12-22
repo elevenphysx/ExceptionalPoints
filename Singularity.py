@@ -90,7 +90,15 @@ def objective_function(params, fixed_materials, bounds=None, return_details=Fals
         # This forces all eigenvalues to collapse to the same point
         real_parts = np.real(eigvals)
         imag_parts = np.imag(eigvals)
-        loss = np.var(real_parts) + np.var(imag_parts)
+        loss_degeneracy = np.var(real_parts) + np.var(imag_parts)
+
+        # Constraint: all imaginary parts should be > 5
+        min_imag = np.min(imag_parts)
+        penalty_imag = max(0, 5.0 - min_imag)**2
+
+        # Total loss = degeneracy loss + penalty
+        penalty_weight = 1000.0  # Adjustable weight
+        loss = loss_degeneracy + penalty_weight * penalty_imag
 
         if return_details:
             return loss, eigvals, real_parts, imag_parts, G, G1
