@@ -66,7 +66,8 @@ def objective_function(params, fixed_materials, bounds=None, return_details=Fals
     For exceptional point: λ₁ = λ₂ = λ₃
     i.e., Re(λ₁) = Re(λ₂) = Re(λ₃) and Im(λ₁) = Im(λ₂) = Im(λ₃)
 
-    Loss = log10(degeneracy) + penalty/reward for Im(λ) > 5 constraint
+    Constraints: |Re(λᵢ)| > 5 and |Im(λᵢ)| > 5 for all i
+    Loss = log10(degeneracy) + penalty/reward for constraint satisfaction
     """
     try:
         # 1. Check bounds if provided
@@ -100,24 +101,28 @@ def objective_function(params, fixed_materials, bounds=None, return_details=Fals
         # Perfect EP will make this approach -15 to -30
         log_deg = np.log10(loss_degeneracy + 1e-30)
 
-        # 4. Imaginary part constraint (|Im(λ)| > 5)
+        # 4. Constraints (|Re(λ)| > 5 and |Im(λ)| > 5)
+        min_abs_real = np.min(np.abs(real_parts))
         min_abs_imag = np.min(np.abs(imag_parts))
         target = 5.0
 
-        if min_abs_imag < target:
+        penalty_real = max(0, target - min_abs_real)
+        penalty_imag = max(0, target - min_abs_imag)
+
+        if penalty_real > 0 or penalty_imag > 0:
             # If constraint not satisfied:
             # Loss = degeneracy score (e.g., -5) + penalty weight * distance
-            # Weight 2.0 means every 1.0 difference in |Im| adds 2 to loss
-            penalty = 2.0 * (target - min_abs_imag)
+            # Weight 2.0 means every 1.0 difference adds 2 to loss
+            penalty = 2.0 * (penalty_real + penalty_imag)
             loss = log_deg + penalty
         else:
-            # If constraint satisfied (|Im(λ)| > 5):
+            # If constraint satisfied (|Re(λ)| > 5 and |Im(λ)| > 5):
             # Give small reward to encourage further increase, but small weight (0.1)
-            reward = 0.1 * (min_abs_imag - target)
+            reward = 0.1 * ((min_abs_real - target) + (min_abs_imag - target))
             loss = log_deg - reward
 
         # For debugging and output
-        penalty_val = penalty if min_abs_imag < target else -reward
+        penalty_val = penalty if (penalty_real > 0 or penalty_imag > 0) else -reward
 
         if return_details:
             return loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_val
@@ -322,7 +327,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
     optimizers = [
         ('Nelder-Mead', {'maxiter': maxiter_nm, 'disp': True,
-                        'xatol': 1e-20, 'fatol': 1e-20, 'adaptive': False}),  # Extremely small tolerances - run to maxiter
+                        'xatol': 0, 'fatol': 0, 'adaptive': True}),  # Set tolerances to 0, use adaptive for better exploration
         # ('Powell', {'maxiter': maxiter_powell, 'disp': True,
         #            'ftol': 0, 'xtol': 0}),  # Temporarily disabled - early stopping issue
     ]
@@ -766,5 +771,5 @@ if __name__ == "__main__":
         params_optimal=result.x,
         fixed_materials=fixed_materials,
         output_dir=output_dir,
-        scan_range=1e-8
+        scan_range=1e-6
     )

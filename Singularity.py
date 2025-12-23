@@ -58,14 +58,15 @@ def build_layers(params, fixed_materials):
     return theta0, Layers, C0
 
 
-def objective_function(params, fixed_materials, bounds=None, return_details=False):
+def objective_function(params, fixed_materials, bounds=None, return_details=False, threshold=5.0, penalty_weight=0.1):
     """
     Objective function: make all eigenvalues degenerate (coincide)
 
     For exceptional point: λ₁ = λ₂ = λ₃
     i.e., Re(λ₁) = Re(λ₂) = Re(λ₃) and Im(λ₁) = Im(λ₂) = Im(λ₃)
 
-    Loss = variance(Re) + variance(Im) + penalty for |Im(λ)| < 5
+    Constraints: |Re(λᵢ)| > threshold and |Im(λᵢ)| > threshold for all i
+    Loss = variance(Re) + variance(Im) + constraint penalties
     Uses smooth-min for better gradient properties
     """
 
@@ -98,18 +99,20 @@ def objective_function(params, fixed_materials, bounds=None, return_details=Fals
         imag_parts = np.imag(eigvals)
         loss_degeneracy = np.var(real_parts) + np.var(imag_parts)
 
-        # Constraint: all imaginary parts should be |Im(λ)| > 5
+        # Constraint: all real and imaginary parts should be |Re(λ)| > threshold and |Im(λ)| > threshold
         # Use smooth-min instead of hard min for better gradient
+        abs_real_parts = np.abs(real_parts)
         abs_imag_parts = np.abs(imag_parts)
+        min_abs_real = smooth_min(abs_real_parts, beta=10.0)
         min_abs_imag = smooth_min(abs_imag_parts, beta=10.0)
-        penalty_imag = np.maximum(0, 5.0 - min_abs_imag)**2
+        penalty_real = np.maximum(0, threshold - min_abs_real)**2
+        penalty_imag = np.maximum(0, threshold - min_abs_imag)**2
 
         # Total loss = degeneracy loss + penalty
-        penalty_weight = 0.1  # Adjustable weight
-        loss = loss_degeneracy + penalty_weight * penalty_imag
+        loss = loss_degeneracy + penalty_weight * (penalty_real + penalty_imag)
 
         if return_details:
-            return loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_imag
+            return loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, (penalty_real, penalty_imag)
         return loss
 
     except Exception as e:
@@ -120,7 +123,7 @@ def objective_function(params, fixed_materials, bounds=None, return_details=Fals
             return 1e10
 
 
-def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=500, seed=812):
+def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=500, seed=812, threshold=5.0, penalty_weight=0.1):
     """
     Main optimization routine using Differential Evolution
 
@@ -129,13 +132,14 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
         maxiter_nm: Maximum iterations for Nelder-Mead (default: 500)
         maxiter_powell: Maximum iterations for Powell (default: 500)
         seed: Random seed for reproducibility (default: 812)
+        threshold: Constraint threshold for |Re| and |Im| (default: 5.0)
+        penalty_weight: Weight for constraint penalties (default: 0.1)
     """
     # Random seed for reproducibility
     np.random.seed(seed)
 
     # Create output directory
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_dir = os.path.join('results', f'variance_method_{timestamp}')
+    output_dir = os.path.join('results', f'DE_s{seed}_i1-{maxiter_de}_i2-{maxiter_nm}_thr{threshold:.1f}_pw{penalty_weight:.2f}')
     os.makedirs(output_dir, exist_ok=True)
     print(f"Output directory: {output_dir}\n")
     print(f"Random seed: {seed}")
@@ -198,15 +202,16 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
         # Every 100 iterations: full output with eigenvalues
         if iteration_count[0] % 100 == 0 or iteration_count[0] == 1:
             # Compute eigenvalues for current best solution
-            loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_imag = objective_function(
-                xk, fixed_materials, bounds=bounds, return_details=True
+            loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, (penalty_real, penalty_imag) = objective_function(
+                xk, fixed_materials, bounds=bounds, return_details=True, threshold=threshold, penalty_weight=penalty_weight
             )
 
             # Display progress (to both console and file)
             pbar_de.write(f"\n--- Iteration {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%) ---")
             output = f"Total Loss = {loss:.6e}\n"
             output += f"  ├─ Degeneracy Loss = {loss_degeneracy:.6e}\n"
-            output += f"  └─ Penalty (Im>5)  = {penalty_imag:.6e} (weighted: {10.0 * penalty_imag:.6e})\n"
+            output += f"  ├─ Penalty (|Re|>{threshold}) = {penalty_real:.6e} (weighted: {penalty_weight * penalty_real:.6e})\n"
+            output += f"  └─ Penalty (|Im|>{threshold}) = {penalty_imag:.6e} (weighted: {penalty_weight * penalty_imag:.6e})\n"
             output += "Eigenvalues:\n"
             for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
                 output += f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n"
@@ -231,8 +236,9 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
         # Every 10 iterations (but not 100): simple loss output and record history
         elif iteration_count[0] % 10 == 0:
-            loss, eigvals, _, _, _, _, loss_degeneracy, penalty_imag = objective_function(xk, fixed_materials, bounds=bounds, return_details=True)
-            msg = f"differential_evolution step {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%): f(x)= {loss:.15f} (degeneracy={loss_degeneracy:.6e}, penalty={penalty_imag:.6e})"
+            loss, eigvals, _, _, _, _, loss_degeneracy, (penalty_real, penalty_imag) = objective_function(xk, fixed_materials, bounds=bounds, return_details=True, threshold=threshold, penalty_weight=penalty_weight)
+            penalty_total = penalty_real + penalty_imag
+            msg = f"differential_evolution step {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%): f(x)= {loss:.15f} (degeneracy={loss_degeneracy:.6e}, penalty_re={penalty_real:.6e}, penalty_im={penalty_imag:.6e})"
             pbar_de.write(msg)
             log_file.write(msg + "\n")
             log_file.flush()
@@ -268,7 +274,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
     # Wrapper function for multiprocessing compatibility
     def objective_wrapper(params):
-        return objective_function(params, fixed_materials, bounds=bounds)
+        return objective_function(params, fixed_materials, bounds=bounds, threshold=threshold, penalty_weight=penalty_weight)
 
     # Phase 1: Global search with Differential Evolution
     result_de = differential_evolution(
@@ -305,7 +311,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
     optimizers = [
         ('Nelder-Mead', {'maxiter': maxiter_nm, 'disp': True,
-                        'xatol': 1e-20, 'fatol': 1e-20, 'adaptive': False}),  # Extremely small tolerances - run to maxiter
+                        'xatol': 0, 'fatol': 0, 'adaptive': True}),  # Set tolerances to 0, use adaptive for better exploration
         # ('Powell', {'maxiter': maxiter_powell, 'disp': True,
         #            'ftol': 0, 'xtol': 0}),  # Temporarily disabled - early stopping issue
     ]
@@ -332,15 +338,16 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
             # Every 100 iterations: full output with eigenvalues
             if iteration_count_local[0] % 100 == 0 or iteration_count_local[0] == 1:
-                loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_imag = objective_function(
-                    xk, fixed_materials, bounds=bounds, return_details=True
+                loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, (penalty_real, penalty_imag) = objective_function(
+                    xk, fixed_materials, bounds=bounds, return_details=True, threshold=threshold, penalty_weight=penalty_weight
                 )
 
                 # Display progress (to both console and file)
                 pbar_local.write(f"\n--- {opt_name} Iteration {iteration_count_local[0]}/{opt_options['maxiter']} ({progress_pct:.1f}%) ---")
                 output = f"Total Loss = {loss:.6e}\n"
                 output += f"  ├─ Degeneracy Loss = {loss_degeneracy:.6e}\n"
-                output += f"  └─ Penalty (Im>5)  = {penalty_imag:.6e} (weighted: {10.0 * penalty_imag:.6e})\n"
+                output += f"  ├─ Penalty (|Re|>{threshold}) = {penalty_real:.6e} (weighted: {penalty_weight * penalty_real:.6e})\n"
+                output += f"  └─ Penalty (|Im|>{threshold}) = {penalty_imag:.6e} (weighted: {penalty_weight * penalty_imag:.6e})\n"
                 output += "Eigenvalues:\n"
                 for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
                     output += f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n"
@@ -364,8 +371,9 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
             # Every 10 iterations (but not 100): simple loss output and record history
             elif iteration_count_local[0] % 10 == 0:
-                loss, eigvals, _, _, _, _, loss_degeneracy, penalty_imag = objective_function(xk, fixed_materials, bounds=bounds, return_details=True)
-                msg = f"{opt_name} step {iteration_count_local[0]}/{opt_options['maxiter']} ({progress_pct:.1f}%): f(x)= {loss:.15f} (degeneracy={loss_degeneracy:.6e}, penalty={penalty_imag:.6e})"
+                loss, eigvals, _, _, _, _, loss_degeneracy, (penalty_real, penalty_imag) = objective_function(xk, fixed_materials, bounds=bounds, return_details=True, threshold=threshold, penalty_weight=penalty_weight)
+                penalty_total = penalty_real + penalty_imag
+                msg = f"{opt_name} step {iteration_count_local[0]}/{opt_options['maxiter']} ({progress_pct:.1f}%): f(x)= {loss:.15f} (degeneracy={loss_degeneracy:.6e}, penalty_re={penalty_real:.6e}, penalty_im={penalty_imag:.6e})"
                 pbar_local.write(msg)
                 log_file.write(msg + "\n")
                 log_file.flush()
@@ -423,15 +431,16 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
     output += "FINAL RESULT:\n"
     output += "=" * 70 + "\n"
 
-    loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_imag = objective_function(
-        final_result.x, fixed_materials, bounds=bounds, return_details=True
+    loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, (penalty_real, penalty_imag) = objective_function(
+        final_result.x, fixed_materials, bounds=bounds, return_details=True, threshold=threshold, penalty_weight=penalty_weight
     )
 
     theta0, Layers, C0 = build_layers(final_result.x, fixed_materials)
 
     output += f"\nTotal Loss = {loss:.6e}\n"
     output += f"  ├─ Degeneracy Loss = {loss_degeneracy:.6e}\n"
-    output += f"  └─ Penalty (Im>5)  = {penalty_imag:.6e} (weighted: {10.0 * penalty_imag:.6e})\n\n"
+    output += f"  ├─ Penalty (|Re|>{threshold}) = {penalty_real:.6e} (weighted: {penalty_weight * penalty_real:.6e})\n"
+    output += f"  └─ Penalty (|Im|>{threshold}) = {penalty_imag:.6e} (weighted: {penalty_weight * penalty_imag:.6e})\n\n"
     output += f"theta0 = {theta0:.15f} mrad\n"
     output += f"C0     = {C0:.15f} (fixed)\n\n"
 
@@ -629,7 +638,7 @@ def scan_parameters_around_optimum(params_optimal, fixed_materials, output_dir, 
             # Compute eigenvalues
             try:
                 loss, eigvals, re, im, G, G1, _, _ = objective_function(
-                    params_test, fixed_materials, return_details=True
+                    params_test, fixed_materials, return_details=True, threshold=5.0, penalty_weight=0.1
                 )
                 eigvals_real_list.append(re)
                 eigvals_imag_list.append(im)
@@ -693,13 +702,19 @@ if __name__ == "__main__":
                         help='Number of iterations for Powell (default: 500)')
     parser.add_argument('-s', '--seed', type=int, default=812,
                         help='Random seed for reproducibility (default: 812)')
+    parser.add_argument('-t', '--threshold', type=float, default=5.0,
+                        help='Constraint threshold for |Re| and |Im| (default: 5.0)')
+    parser.add_argument('-pw', '--penalty-weight', type=float, default=0.1,
+                        help='Penalty weight for constraint violations (default: 0.1)')
     args = parser.parse_args()
 
     result, theta0, Layers, C0, output_dir = optimize_exceptional_point(
         maxiter_de=args.iterations_de,
         maxiter_nm=args.iterations_nm,
         maxiter_powell=args.iterations_powell,
-        seed=args.seed
+        seed=args.seed,
+        threshold=args.threshold,
+        penalty_weight=args.penalty_weight
     )
 
     # Save results (save parameter array instead of Layers structure)
@@ -749,5 +764,5 @@ if __name__ == "__main__":
         params_optimal=result.x,
         fixed_materials=fixed_materials,
         output_dir=output_dir,
-        scan_range=1e-8
+        scan_range=1e-6
     )

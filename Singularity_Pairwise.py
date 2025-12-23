@@ -1,26 +1,23 @@
 """
-Exceptional Point Finder for Nuclear Resonance Cavity (CMA-ES Version)
+Exceptional Point Finder for Nuclear Resonance Cavity (Pairwise Distance Version)
 Structure: Pt-C-Iron-C-Iron-C-Iron-C-Pt(substrate, inf)
 Target: Find parameters where all eigenvalues degenerate (λ₁ = λ₂ = λ₃)
-Algorithm: CMA-ES (Covariance Matrix Adaptation Evolution Strategy)
+Algorithm: Differential Evolution with Pairwise Distance Metric
+
+Key Features:
+- Degeneracy Loss: Sum of pairwise distances |λ₁-λ₂| + |λ₂-λ₃| + |λ₁-λ₃|
+- Enhanced DE: Larger population (popsize=50), better exploration (strategy='rand1bin')
+- Prevents "2+1" pattern where only two eigenvalues converge
 """
 
 import numpy as np
-from scipy.optimize import minimize
+from scipy.optimize import differential_evolution, minimize
 import matplotlib.pyplot as plt
 import sys
 import os
 import importlib.util
 from datetime import datetime
 from tqdm import tqdm
-
-# Try to import cma, if not available, provide installation instructions
-try:
-    import cma
-except ImportError:
-    print("ERROR: CMA-ES requires the 'cma' package.")
-    print("Please install it with: pip install cma")
-    sys.exit(1)
 
 # Import from green function-new.py (with space in filename)
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -69,13 +66,17 @@ def build_layers(params, fixed_materials):
 
 def objective_function(params, fixed_materials, bounds=None, return_details=False, threshold=5.0, penalty_weight=0.1):
     """
-    Objective function: make all eigenvalues degenerate (coincide)
+    Objective function with Pairwise Distance Metric
 
     For exceptional point: λ₁ = λ₂ = λ₃
-    i.e., Re(λ₁) = Re(λ₂) = Re(λ₃) and Im(λ₁) = Im(λ₂) = Im(λ₃)
+
+    Degeneracy Loss: Sum of pairwise distances in complex plane
+    - |λ₁-λ₂| + |λ₂-λ₃| + |λ₁-λ₃|
+    - This forces ALL three eigenvalues to be close to each other
+    - Prevents "2+1" pattern where only two eigenvalues converge
 
     Constraints: |Re(λᵢ)| > threshold and |Im(λᵢ)| > threshold for all i
-    Loss = variance(Re) + variance(Im) + constraint penalties
+    Loss = pairwise_distances + penalty_weight * constraint_penalties
     Uses smooth-min for better gradient properties
     """
 
@@ -89,7 +90,7 @@ def objective_function(params, fixed_materials, bounds=None, return_details=Fals
             for i, (param, (low, high)) in enumerate(zip(params, bounds)):
                 if not (low <= param <= high):
                     if return_details:
-                        return 1e10, None, None, None, None, None, None, None
+                        return 1e10, None, None, None, None, None
                     else:
                         return 1e10
 
@@ -102,14 +103,23 @@ def objective_function(params, fixed_materials, bounds=None, return_details=Fals
         # Compute eigenvalues
         eigvals = np.linalg.eigvals(G1)
 
-        # Loss: variance of real parts + variance of imaginary parts
-        # This forces all eigenvalues to collapse to the same point
+        # Pairwise Distance Metric
+        # Compute all pairwise distances in complex plane
+        # This ensures each eigenvalue must be close to ALL others
+        pairwise_distances = []
+        for i in range(len(eigvals)):
+            for j in range(i + 1, len(eigvals)):
+                # Euclidean distance in complex plane
+                dist = np.abs(eigvals[i] - eigvals[j])
+                pairwise_distances.append(dist)
+
+        # Degeneracy loss: sum of all pairwise distances
+        # For 3 eigenvalues: |λ₁-λ₂| + |λ₁-λ₃| + |λ₂-λ₃|
+        loss_degeneracy = np.sum(pairwise_distances)
+
+        # Constraint penalties
         real_parts = np.real(eigvals)
         imag_parts = np.imag(eigvals)
-        loss_degeneracy = np.var(real_parts) + np.var(imag_parts)
-
-        # Constraint: all real and imaginary parts should be |Re(λ)| > threshold and |Im(λ)| > threshold
-        # Use smooth-min instead of hard min for better gradient
         abs_real_parts = np.abs(real_parts)
         abs_imag_parts = np.abs(imag_parts)
         min_abs_real = smooth_min(abs_real_parts, beta=10.0)
@@ -134,7 +144,7 @@ def objective_function(params, fixed_materials, bounds=None, return_details=Fals
 
 def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=500, seed=812, threshold=5.0, penalty_weight=0.1):
     """
-    Main optimization routine using Differential Evolution
+    Main optimization routine using Differential Evolution with Enhanced Parameters
 
     Args:
         maxiter_de: Maximum iterations for DE (default: 100)
@@ -148,11 +158,15 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
     np.random.seed(seed)
 
     # Create output directory
-    output_dir = os.path.join('results', f'CMAES_s{seed}_i1-{maxiter_de}_i2-{maxiter_nm}_thr{threshold:.1f}_pw{penalty_weight:.2f}')
+    output_dir = os.path.join('results', f'Pairwise_s{seed}_i1-{maxiter_de}_i2-{maxiter_nm}_thr{threshold:.1f}_pw{penalty_weight:.2f}')
     os.makedirs(output_dir, exist_ok=True)
     print(f"Output directory: {output_dir}\n")
     print(f"Random seed: {seed}")
-    print(f"Iterations: DE={maxiter_de}, Nelder-Mead={maxiter_nm}, Powell={maxiter_powell}\n")
+    print(f"Iterations: DE={maxiter_de}, Nelder-Mead={maxiter_nm}, Powell={maxiter_powell}")
+    print(f"Enhanced DE Parameters:")
+    print(f"  - Population size: 50 (increased from default 20)")
+    print(f"  - Strategy: rand1bin (better exploration vs best1bin)")
+    print(f"  - Degeneracy metric: Pairwise distances (prevents 2+1 pattern)\n")
 
     # Fixed material parameters (physical constants)
     Iron = (7.298e-6, 3.33e-7)
@@ -277,151 +291,36 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
     ]
 
     print("=" * 70)
-    print("Starting Global Search (CMA-ES)...")
+    print("Starting Global Search (Differential Evolution)...")
     print("Target: Find Exceptional Point where λ₁ = λ₂ = λ₃")
     print("=" * 70)
 
-    # Wrapper function for CMA-ES (must handle bounds internally)
+    # Wrapper function for multiprocessing compatibility
     def objective_wrapper(params):
         return objective_function(params, fixed_materials, bounds=bounds, threshold=threshold, penalty_weight=penalty_weight)
 
-    # Initialize CMA-ES
-    # Initial point: center of bounds
-    x0 = np.array([(low + high) / 2 for low, high in bounds])
-    # Initial standard deviation: ~20% of range
-    sigma0 = np.array([(high - low) * 0.2 for low, high in bounds])
-
-    print(f"\nInitializing CMA-ES:")
-    print(f"  Population size: ~{4 + int(3 * np.log(len(bounds)))}")
-    print(f"  Dimensions: {len(bounds)}")
-    print(f"  Max iterations: {maxiter_de}")
-    print(f"  Initial sigma: {np.mean(sigma0):.3f} (mean)\n")
-
-    # Create CMA-ES optimizer
-    es = cma.CMAEvolutionStrategy(
-        x0,
-        np.mean(sigma0),  # Use mean sigma as initial step size
-        {
-            'bounds': [list(zip(*bounds))[0], list(zip(*bounds))[1]],
-            'popsize': 4 + int(3 * np.log(len(bounds))),  # Default CMA-ES population
-            'seed': seed,
-            'verbose': -1,  # Suppress default output
-            'maxiter': maxiter_de,
-            # Disable ALL convergence criteria - only stop at maxiter
-            'ftarget': -np.inf,  # Never reach target
-            'tolfun': 0,
-            'tolx': 0,
-            'tolfunhist': 0,  # Disable function value history tolerance
-            'tolstagnation': int(1e9),
-            'tolupsigma': 1e100,
-            'tolfacupx': 1e100,
-            'tolconditioncov': 1e100,
-            'timeout': np.inf,
-            # Additional critical settings to prevent early stopping
-            'tolfacupx': 1e100,
-            'tolstagnation': int(1e9),
-            'tolupsigma': 1e100,
-            'CMA_on': True,  # Keep CMA adaptation on
-            'CMA_active': True,  # Use active CMA
-        }
+    # Phase 1: Global search with Differential Evolution
+    result_de = differential_evolution(
+        objective_wrapper,
+        bounds,
+        maxiter=maxiter_de,
+        popsize=50,        # Increased from 20 for better exploration (50 individuals for 9D space)
+        strategy='rand1bin',  # Changed from 'best1bin' for better exploration, less greedy
+        seed=seed,         # Use defined random seed
+        disp=False,        # Disable default output, use callback instead
+        workers=1,         # Use single process to avoid pickle issues
+        updating='immediate',
+        polish=False,      # Manual refinement later
+        callback=callback, # Display eigenvalues at each iteration
+        atol=0,            # Disable absolute tolerance
+        tol=0              # Disable relative tolerance - run to maxiter
     )
 
-    # Track history
-    iteration_count[0] = 0
-    best_loss_so_far = np.inf
-
-    print("CMA-ES Optimization Progress:")
-    print("Note: Ignoring all CMA-ES stop conditions, running to maxiter")
-    print("-" * 70)
-
-    # Main CMA-ES loop - manually control iterations to ignore all stop conditions
-    while iteration_count[0] < maxiter_de:
-        # Check if CMA-ES wants to stop, but ignore it and continue
-        if es.stop():
-            stop_reason = es.stop()
-            print(f"\n[Ignored] CMA-ES stop condition detected at iter {iteration_count[0]}: {stop_reason}")
-            print(f"[Continuing] Forcing continuation to reach maxiter={maxiter_de}\n")
-            log_file.write(f"[Ignored] CMA-ES stop at iter {iteration_count[0]}: {stop_reason}\n")
-            log_file.flush()
-
-        solutions = es.ask()
-        fitness = [objective_wrapper(x) for x in solutions]
-        es.tell(solutions, fitness)
-
-        iteration_count[0] += 1
-
-        # Get current best
-        current_best_idx = np.argmin(fitness)
-        current_best_loss = fitness[current_best_idx]
-        current_best_x = solutions[current_best_idx]
-
-        if current_best_loss < best_loss_so_far:
-            best_loss_so_far = current_best_loss
-
-        # Output every 10 iterations
-        if iteration_count[0] % 10 == 0:
-            loss, eigvals, _, _, _, _, loss_degeneracy, (penalty_real, penalty_imag) = objective_function(
-                current_best_x, fixed_materials, bounds=bounds, return_details=True, threshold=threshold, penalty_weight=penalty_weight
-            )
-
-            progress_pct = iteration_count[0] / maxiter_de * 100
-            penalty_total = penalty_real + penalty_imag
-            msg = f"CMA-ES iter {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%): f(x)= {loss:.15f} (degeneracy={loss_degeneracy:.6e}, penalty_re={penalty_real:.6e}, penalty_im={penalty_imag:.6e})"
-            print(msg)
-            log_file.write(msg + "\n")
-            log_file.flush()
-
-            # Record history
-            if eigvals is not None:
-                history['iteration'].append(iteration_count[0])
-                history['loss'].append(loss)
-                history['phase'].append('CMA-ES')
-                history['eigvals_real'].append(np.real(eigvals).copy())
-                history['eigvals_imag'].append(np.imag(eigvals).copy())
-
-        # Detailed output every 100 iterations
-        if iteration_count[0] % 100 == 0:
-            loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, (penalty_real, penalty_imag) = objective_function(
-                current_best_x, fixed_materials, bounds=bounds, return_details=True, threshold=threshold, penalty_weight=penalty_weight
-            )
-
-            output = f"\n--- CMA-ES Iteration {iteration_count[0]}/{maxiter_de} ---\n"
-            output += f"Total Loss = {loss:.6e}\n"
-            output += f"  ├─ Degeneracy Loss = {loss_degeneracy:.6e}\n"
-            output += f"  ├─ Penalty (|Re|>{threshold}) = {penalty_real:.6e} (weighted: {penalty_weight * penalty_real:.6e})\n"
-            output += f"  └─ Penalty (|Im|>{threshold}) = {penalty_imag:.6e} (weighted: {penalty_weight * penalty_imag:.6e})\n"
-            output += "Eigenvalues:\n"
-            for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
-                output += f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n"
-
-            re_std = np.std(real_parts)
-            im_std = np.std(imag_parts)
-            output += f"Std(Re) = {re_std:.6e}, Std(Im) = {im_std:.6e}\n"
-
-            print(output)
-            log_file.write(output + "\n")
-            log_file.flush()
-
-    # CMA-ES completed full iterations
-    print(f"\nCMA-ES completed all {maxiter_de} iterations successfully!")
-    log_file.write(f"\nCMA-ES completed all {maxiter_de} iterations successfully!\n")
-    if es.stop():
-        print(f"(Note: CMA-ES internal stop conditions were ignored: {es.stop()})")
-        log_file.write(f"(Note: CMA-ES internal stop conditions were ignored: {es.stop()})\n")
-    log_file.flush()
-
-    # Get final result
-    result_de = type('Result', (), {
-        'x': es.result.xbest,
-        'fun': es.result.fbest,
-        'success': True,
-        'message': 'CMA-ES optimization completed'
-    })()
+    pbar_de.close()  # Close DE progress bar
 
     print("\n" + "=" * 70)
-    print("CMA-ES Result:")
+    print("Differential Evolution Result:")
     print(f"Loss = {result_de.fun:.6e}")
-    print(f"Total iterations: {iteration_count[0]}")
     print("=" * 70)
 
     # Phase 2: Local refinement (always execute for better convergence)
@@ -646,8 +545,8 @@ def plot_results(history, output_dir):
 
     # ===== Left plot: Loss vs Iteration =====
     # Define colors for each phase
-    phase_colors = {'CMA-ES': '#1f77b4', 'Nelder-Mead': '#ff7f0e', 'Powell': '#2ca02c'}
-    phase_names = ['CMA-ES', 'Nelder-Mead', 'Powell']
+    phase_colors = {'DE': '#1f77b4', 'Nelder-Mead': '#ff7f0e', 'Powell': '#2ca02c'}
+    phase_names = ['DE', 'Nelder-Mead', 'Powell']
 
     for phase_name in phase_names:
         mask = phases == phase_name

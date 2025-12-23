@@ -66,7 +66,8 @@ def objective_function(params, fixed_materials, bounds=None, return_details=Fals
     For exceptional point: λ₁ = λ₂ = λ₃
     i.e., Re(λ₁) = Re(λ₂) = Re(λ₃) and Im(λ₁) = Im(λ₂) = Im(λ₃)
 
-    Loss = variance(Re) + variance(Im) + penalty for |Im(λ)| < 5
+    Constraints: |Re(λᵢ)| > 5 and |Im(λᵢ)| > 5 for all i
+    Loss = variance(Re) + variance(Im) + constraint penalties
     Uses smooth-min for better gradient properties
     """
 
@@ -99,18 +100,21 @@ def objective_function(params, fixed_materials, bounds=None, return_details=Fals
         imag_parts = np.imag(eigvals)
         loss_degeneracy = np.var(real_parts) + np.var(imag_parts)
 
-        # Constraint: all imaginary parts should be |Im(λ)| > 5
+        # Constraint: all real and imaginary parts should be |Re(λ)| > 5 and |Im(λ)| > 5
         # Use smooth-min instead of hard min for better gradient
+        abs_real_parts = np.abs(real_parts)
         abs_imag_parts = np.abs(imag_parts)
+        min_abs_real = smooth_min(abs_real_parts, beta=10.0)
         min_abs_imag = smooth_min(abs_imag_parts, beta=10.0)
+        penalty_real = np.maximum(0, 5.0 - min_abs_real)**2
         penalty_imag = np.maximum(0, 5.0 - min_abs_imag)**2
 
         # Total loss = degeneracy loss + penalty
         penalty_weight = 0.1  # Adjustable weight
-        loss = loss_degeneracy + penalty_weight * penalty_imag
+        loss = loss_degeneracy + penalty_weight * (penalty_real + penalty_imag)
 
         if return_details:
-            return loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_imag
+            return loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, (penalty_real, penalty_imag)
         return loss
 
     except Exception as e:
@@ -222,13 +226,14 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
         # Every 100 iterations: full output with eigenvalues
         if iteration_count[0] % 100 == 0 or iteration_count[0] == 1:
-            loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_imag = objective_function(
+            loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, (penalty_real, penalty_imag) = objective_function(
                 x, fixed_materials, bounds=bounds, return_details=True
             )
 
             pbar_da.write(f"\n--- Iteration {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%) ---")
             output = f"Total Loss = {loss:.6e}\n"
             output += f"  ├─ Degeneracy Loss = {loss_degeneracy:.6e}\n"
+            output += f"  ├─ Penalty (|Re|>5) = {penalty_real:.6e} (weighted: {0.1 * penalty_real:.6e})\n"
             output += f"  └─ Penalty (|Im|>5) = {penalty_imag:.6e} (weighted: {0.1 * penalty_imag:.6e})\n"
             output += "Eigenvalues:\n"
             for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
@@ -245,10 +250,11 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
         # Every 10 iterations (but not 100): simple loss output and record history
         elif iteration_count[0] % 10 == 0:
-            loss, eigvals, _, _, _, _, loss_degeneracy, penalty_imag = objective_function(
+            loss, eigvals, _, _, _, _, loss_degeneracy, (penalty_real, penalty_imag) = objective_function(
                 x, fixed_materials, bounds=bounds, return_details=True
             )
-            msg = f"dual_annealing step {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%): f(x)= {loss:.15f} (degeneracy={loss_degeneracy:.6e}, penalty={penalty_imag:.6e})"
+            penalty_total = penalty_real + penalty_imag
+            msg = f"dual_annealing step {iteration_count[0]}/{maxiter_de} ({progress_pct:.1f}%): f(x)= {loss:.15f} (degeneracy={loss_degeneracy:.6e}, penalty_re={penalty_real:.6e}, penalty_im={penalty_imag:.6e})"
             pbar_da.write(msg)
             log_file.write(msg + "\n")
             log_file.flush()
@@ -290,7 +296,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
     optimizers = [
         ('Nelder-Mead', {'maxiter': maxiter_nm, 'disp': True,
-                        'xatol': 1e-20, 'fatol': 1e-20, 'adaptive': False}),  # Extremely small tolerances - run to maxiter
+                        'xatol': 0, 'fatol': 0, 'adaptive': True}),  # Set tolerances to 0, use adaptive for better exploration
         # ('Powell', {'maxiter': maxiter_powell, 'disp': True,
         #            'ftol': 0, 'xtol': 0}),  # Temporarily disabled - early stopping issue
     ]
@@ -317,7 +323,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
             # Every 100 iterations: full output with eigenvalues
             if iteration_count_local[0] % 100 == 0 or iteration_count_local[0] == 1:
-                loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_imag = objective_function(
+                loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, (penalty_real, penalty_imag) = objective_function(
                     xk, fixed_materials, bounds=bounds, return_details=True
                 )
 
@@ -325,7 +331,8 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
                 pbar_local.write(f"\n--- {opt_name} Iteration {iteration_count_local[0]}/{opt_options['maxiter']} ({progress_pct:.1f}%) ---")
                 output = f"Total Loss = {loss:.6e}\n"
                 output += f"  ├─ Degeneracy Loss = {loss_degeneracy:.6e}\n"
-                output += f"  └─ Penalty (Im>5)  = {penalty_imag:.6e} (weighted: {10.0 * penalty_imag:.6e})\n"
+                output += f"  ├─ Penalty (|Re|>5) = {penalty_real:.6e} (weighted: {0.1 * penalty_real:.6e})\n"
+                output += f"  └─ Penalty (|Im|>5) = {penalty_imag:.6e} (weighted: {0.1 * penalty_imag:.6e})\n"
                 output += "Eigenvalues:\n"
                 for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
                     output += f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n"
@@ -349,8 +356,9 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
             # Every 10 iterations (but not 100): simple loss output and record history
             elif iteration_count_local[0] % 10 == 0:
-                loss, eigvals, _, _, _, _, loss_degeneracy, penalty_imag = objective_function(xk, fixed_materials, bounds=bounds, return_details=True)
-                msg = f"{opt_name} step {iteration_count_local[0]}/{opt_options['maxiter']} ({progress_pct:.1f}%): f(x)= {loss:.15f} (degeneracy={loss_degeneracy:.6e}, penalty={penalty_imag:.6e})"
+                loss, eigvals, _, _, _, _, loss_degeneracy, (penalty_real, penalty_imag) = objective_function(xk, fixed_materials, bounds=bounds, return_details=True)
+                penalty_total = penalty_real + penalty_imag
+                msg = f"{opt_name} step {iteration_count_local[0]}/{opt_options['maxiter']} ({progress_pct:.1f}%): f(x)= {loss:.15f} (degeneracy={loss_degeneracy:.6e}, penalty_re={penalty_real:.6e}, penalty_im={penalty_imag:.6e})"
                 pbar_local.write(msg)
                 log_file.write(msg + "\n")
                 log_file.flush()
@@ -408,7 +416,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
     output += "FINAL RESULT:\n"
     output += "=" * 70 + "\n"
 
-    loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, penalty_imag = objective_function(
+    loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, (penalty_real, penalty_imag) = objective_function(
         final_result.x, fixed_materials, bounds=bounds, return_details=True
     )
 
@@ -416,7 +424,8 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
 
     output += f"\nTotal Loss = {loss:.6e}\n"
     output += f"  ├─ Degeneracy Loss = {loss_degeneracy:.6e}\n"
-    output += f"  └─ Penalty (Im>5)  = {penalty_imag:.6e} (weighted: {10.0 * penalty_imag:.6e})\n\n"
+    output += f"  ├─ Penalty (|Re|>5) = {penalty_real:.6e} (weighted: {0.1 * penalty_real:.6e})\n"
+    output += f"  └─ Penalty (|Im|>5) = {penalty_imag:.6e} (weighted: {0.1 * penalty_imag:.6e})\n\n"
     output += f"theta0 = {theta0:.15f} mrad\n"
     output += f"C0     = {C0:.15f} (fixed)\n\n"
 
@@ -734,5 +743,5 @@ if __name__ == "__main__":
         params_optimal=result.x,
         fixed_materials=fixed_materials,
         output_dir=output_dir,
-        scan_range=1e-8
+        scan_range=1e-6
     )
