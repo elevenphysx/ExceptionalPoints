@@ -1,0 +1,165 @@
+======================================================================
+Phase 1: DE Optimization (Seed: 1115)
+======================================================================
+DE Iter 1: Loss=1.917782e+01 (Deg=1.100279e+01, PenRe=1.41e+00, PenIm=8.03e+01)
+DE Iter 10: Loss=1.006798e+01 (Deg=3.200758e+00, PenRe=0.00e+00, PenIm=6.87e+01)
+DE Iter 20: Loss=8.747946e+00 (Deg=1.092695e+00, PenRe=3.67e-02, PenIm=7.65e+01)
+DE Iter 30: Loss=8.090390e+00 (Deg=8.428940e-01, PenRe=0.00e+00, PenIm=7.25e+01)
+DE Iter 40: Loss=7.544174e+00 (Deg=5.887933e-01, PenRe=0.00e+00, PenIm=6.96e+01)
+DE Iter 50: Loss=7.451626e+00 (Deg=5.209451e-01, PenRe=0.00e+00, PenIm=6.93e+01)
+DE Iter 60: Loss=7.342416e+00 (Deg=4.037225e-01, PenRe=0.00e+00, PenIm=6.94e+01)
+DE Iter 70: Loss=7.294869e+00 (Deg=3.987638e-01, PenRe=0.00e+00, PenIm=6.90e+01)
+DE Iter 80: Loss=7.277776e+00 (Deg=3.706845e-01, PenRe=0.00e+00, PenIm=6.91e+01)
+DE Iter 90: Loss=7.268985e+00 (Deg=3.566336e-01, PenRe=0.00e+00, PenIm=6.91e+01)
+DE Iter 100: Loss=7.246221e+00 (Deg=3.797533e-01, PenRe=0.00e+00, PenIm=6.87e+01)
+DE Iter 110: Loss=7.233712e+00 (Deg=3.559382e-01, PenRe=0.00e+00, PenIm=6.88e+01)
+DE Iter 120: Loss=7.230842e+00 (Deg=3.705762e-01, PenRe=0.00e+00, PenIm=6.86e+01)
+DE Iter 130: Loss=7.219623e+00 (Deg=3.735280e-01, PenRe=0.00e+00, PenIm=6.85e+01)
+DE Iter 140: Loss=7.210271e+00 (Deg=3.706311e-01, PenRe=0.00e+00, PenIm=6.84e+01)
+DE Iter 150: Loss=7.196694e+00 (Deg=3.647171e-01, PenRe=0.00e+00, PenIm=6.83e+01)
+DE Iter 160: Loss=7.187394e+00 (Deg=3.665413e-01, PenRe=0.00e+00, PenIm=6.82e+01)
+DE Iter 170: Loss=7.187394e+00 (Deg=3.665413e-01, PenRe=0.00e+00, PenIm=6.82e+01)
+DE Iter 180: Loss=7.159996e+00 (Deg=3.516429e-01, PenRe=0.00e+00, PenIm=6.81e+01)
+DE Iter 190: Loss=7.159996e+00 (Deg=3.516429e-01, PenRe=0.00e+00, PenIm=6.81e+01)
+DE Iter 200: Loss=7.159436e+00 (Deg=3.592445e-01, PenRe=0.00e+00, PenIm=6.80e+01)
+DE Iter 210: Loss=7.159436e+00 (Deg=3.592445e-01, PenRe=0.00e+00, PenIm=6.80e+01)
+DE Iter 220: Loss=7.159436e+00 (Deg=3.592445e-01, PenRe=0.00e+00, PenIm=6.80e+01)
+DE Iter 230: Loss=7.159436e+00 (Deg=3.592445e-01, PenRe=0.00e+00, PenIm=6.80e+01)
+DE Iter 240: Loss=7.150569e+00 (Deg=3.580231e-01, PenRe=0.00e+00, PenIm=6.79e+01)
+DE Iter 250: Loss=7.150569e+00 (Deg=3.580231e-01, PenRe=0.00e+00, PenIm=6.79e+01)
+DE Iter 260: Loss=7.150569e+00 (Deg=3.580231e-01, PenRe=0.00e+00, PenIm=6.79e+01)
+DE Iter 270: Loss=7.150569e+00 (Deg=3.580231e-01, PenRe=0.00e+00, PenIm=6.79e+01)
+DE Iter 280: Loss=7.150569e+00 (Deg=3.580231e-01, PenRe=0.00e+00, PenIm=6.79e+01)
+DE Iter 290: Loss=7.142456e+00 (Deg=3.619336e-01, PenRe=0.00e+00, PenIm=6.78e+01)
+DE Iter 300: Loss=7.137018e+00 (Deg=3.690939e-01, PenRe=0.00e+00, PenIm=6.77e+01)
+DE Iter 310: Loss=7.137018e+00 (Deg=3.690939e-01, PenRe=0.00e+00, PenIm=6.77e+01)
+DE Iter 320: Loss=7.122816e+00 (Deg=3.656432e-01, PenRe=0.00e+00, PenIm=6.76e+01)
+DE Iter 330: Loss=7.117551e+00 (Deg=3.506475e-01, PenRe=0.00e+00, PenIm=6.77e+01)
+DE Iter 340: Loss=7.117551e+00 (Deg=3.506475e-01, PenRe=0.00e+00, PenIm=6.77e+01)
+DE Iter 350: Loss=7.102457e+00 (Deg=3.819447e-01, PenRe=0.00e+00, PenIm=6.72e+01)
+DE Iter 360: Loss=7.102457e+00 (Deg=3.819447e-01, PenRe=0.00e+00, PenIm=6.72e+01)
+DE Iter 370: Loss=7.102457e+00 (Deg=3.819447e-01, PenRe=0.00e+00, PenIm=6.72e+01)
+DE Iter 380: Loss=7.102457e+00 (Deg=3.819447e-01, PenRe=0.00e+00, PenIm=6.72e+01)
+DE Iter 390: Loss=7.102457e+00 (Deg=3.819447e-01, PenRe=0.00e+00, PenIm=6.72e+01)
+DE Iter 400: Loss=7.102457e+00 (Deg=3.819447e-01, PenRe=0.00e+00, PenIm=6.72e+01)
+DE Iter 410: Loss=7.102457e+00 (Deg=3.819447e-01, PenRe=0.00e+00, PenIm=6.72e+01)
+DE Iter 420: Loss=7.095171e+00 (Deg=3.930780e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 430: Loss=7.095171e+00 (Deg=3.930780e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 440: Loss=7.095171e+00 (Deg=3.930780e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 450: Loss=7.095171e+00 (Deg=3.930780e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 460: Loss=7.095171e+00 (Deg=3.930780e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 470: Loss=7.095171e+00 (Deg=3.930780e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 480: Loss=7.095171e+00 (Deg=3.930780e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 490: Loss=7.095171e+00 (Deg=3.930780e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 500: Loss=7.080974e+00 (Deg=3.824373e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 510: Loss=7.080974e+00 (Deg=3.824373e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 520: Loss=7.080974e+00 (Deg=3.824373e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 530: Loss=7.080974e+00 (Deg=3.824373e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 540: Loss=7.080974e+00 (Deg=3.824373e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 550: Loss=7.080974e+00 (Deg=3.824373e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 560: Loss=7.080974e+00 (Deg=3.824373e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 570: Loss=7.080974e+00 (Deg=3.824373e-01, PenRe=0.00e+00, PenIm=6.70e+01)
+DE Iter 580: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 590: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 600: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 610: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 620: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 630: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 640: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 650: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 660: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 670: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 680: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 690: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 700: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 710: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 720: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 730: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 740: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 750: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 760: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 770: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 780: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 790: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 800: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 810: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 820: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 830: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 840: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 850: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 860: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 870: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 880: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 890: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 900: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 910: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 920: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 930: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 940: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 950: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 960: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 970: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 980: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 990: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+DE Iter 1000: Loss=7.044620e+00 (Deg=3.571620e-01, PenRe=0.00e+00, PenIm=6.69e+01)
+
+======================================================================
+Phase 2: Nelder-Mead Refinement
+======================================================================
+NM Iter 50: Loss=7.015963e+00
+NM Iter 100: Loss=7.015963e+00
+NM Iter 150: Loss=7.015963e+00
+NM Iter 200: Loss=7.015963e+00
+NM Iter 250: Loss=7.015963e+00
+NM Iter 300: Loss=7.015963e+00
+NM Iter 350: Loss=7.015963e+00
+NM Iter 400: Loss=7.015963e+00
+NM Iter 450: Loss=7.015963e+00
+NM Iter 500: Loss=7.015963e+00
+NM Iter 550: Loss=7.015963e+00
+NM Iter 600: Loss=7.015963e+00
+NM Iter 650: Loss=7.015963e+00
+NM Iter 700: Loss=7.015963e+00
+NM Iter 750: Loss=7.015963e+00
+NM Iter 800: Loss=7.015963e+00
+NM Iter 850: Loss=7.015963e+00
+NM Iter 900: Loss=7.015963e+00
+NM Iter 950: Loss=7.015963e+00
+NM Iter 1000: Loss=7.015963e+00
+NM Iter 1050: Loss=7.015963e+00
+NM Iter 1100: Loss=7.015963e+00
+NM Iter 1150: Loss=7.015963e+00
+NM Iter 1200: Loss=7.015963e+00
+NM Iter 1250: Loss=7.015963e+00
+NM Iter 1300: Loss=7.015963e+00
+NM Iter 1350: Loss=7.015963e+00
+NM Iter 1400: Loss=7.015963e+00
+NM Iter 1450: Loss=7.015963e+00
+NM Iter 1500: Loss=7.015963e+00
+NM Iter 1550: Loss=7.015963e+00
+NM Iter 1600: Loss=7.015963e+00
+NM Iter 1650: Loss=7.015963e+00
+NM Iter 1700: Loss=7.015963e+00
+NM Iter 1750: Loss=7.015963e+00
+NM Iter 1800: Loss=7.015963e+00
+NM Iter 1850: Loss=7.015963e+00
+NM Iter 1900: Loss=7.015963e+00
+NM Iter 1950: Loss=7.015963e+00
+
+======================================================================
+FINAL RESULT
+======================================================================
+Total Loss: 7.015963e+00
+Degeneracy Loss: 3.518542e-01
+Penalty Re: 0.000000e+00
+Penalty Im: 6.664109e+01
+
+Eigenvalues:
+  lambda_1 = -7.4123368435 -0.8039804179i
+  lambda_2 = -7.1285962146 -0.8069231712i
+  lambda_3 = -6.9311256483 -0.7857843810i
+
+Constraint Check:
+  Min|Re| = 6.9311 > 5.0? YES
+  Min|Im| = 0.7858 > 5.0? NO
+

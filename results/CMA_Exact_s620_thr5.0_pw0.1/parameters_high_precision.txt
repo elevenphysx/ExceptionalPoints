@@ -1,0 +1,35 @@
+======================================================================
+Exceptional Point Parameters (15-digit Precision) - Seed 620
+======================================================================
+
+Final Loss:  1.602269907039120e+01
+Degeneracy:  1.797974065287649e+00
+Penalty Re:  1.016098360667909e+02
+Penalty Im:  4.063741398424461e+01
+
+theta0 = 9.992529903192031 mrad
+C0     = 4.102200000000001 (fixed)
+
+Layer Thicknesses (nm):
+--------------------------------------------------
+  Layer 0: Pt       =    7.849717773986791 nm
+  Layer 1: C        =   15.633254944148383 nm
+  Layer 2: Fe*      =    1.130450150633531 nm (resonant)
+  Layer 3: C        =   35.553582846041401 nm
+  Layer 4: Fe*      =    2.999801860616518 nm (resonant)
+  Layer 5: C        =   18.497317979333584 nm
+  Layer 6: Fe*      =    0.847176414149581 nm (resonant)
+  Layer 7: C        =   14.993447765366582 nm
+  Layer 8: Pt(sub)  = inf nm
+
+All Optimization Parameters:
+--------------------------------------------------
+  params[0] (theta0) = 9.992529903192031 mrad
+  params[1] (Layer 0 thickness) = 7.849717773986791 nm
+  params[2] (Layer 1 thickness) = 15.633254944148383 nm
+  params[3] (Layer 2 thickness) = 1.130450150633531 nm
+  params[4] (Layer 3 thickness) = 35.553582846041401 nm
+  params[5] (Layer 4 thickness) = 2.999801860616518 nm
+  params[6] (Layer 5 thickness) = 18.497317979333584 nm
+  params[7] (Layer 6 thickness) = 0.847176414149581 nm
+  params[8] (Layer 7 thickness) = 14.993447765366582 nm

@@ -1,0 +1,217 @@
+======================================================================
+Phase 1: CMA-ES Optimization (Seed: 640)
+======================================================================
+CMA Gen 1: Loss=2.104371e+01 (Deg=1.941962e+00, PenRe=1.33e+02, PenIm=5.77e+01)
+CMA Gen 10: Loss=2.058385e+01 (Deg=2.772817e+00, PenRe=1.06e+02, PenIm=7.25e+01)
+CMA Gen 20: Loss=1.953066e+01 (Deg=2.072237e+00, PenRe=1.09e+02, PenIm=6.59e+01)
+CMA Gen 30: Loss=1.874088e+01 (Deg=2.023717e+00, PenRe=1.07e+02, PenIm=6.04e+01)
+CMA Gen 40: Loss=1.872001e+01 (Deg=2.663279e+00, PenRe=1.04e+02, PenIm=5.70e+01)
+CMA Gen 50: Loss=1.837414e+01 (Deg=1.689028e+00, PenRe=1.10e+02, PenIm=5.67e+01)
+CMA Gen 60: Loss=1.800614e+01 (Deg=1.431242e+00, PenRe=1.10e+02, PenIm=5.60e+01)
+CMA Gen 70: Loss=1.744995e+01 (Deg=1.838259e+00, PenRe=1.04e+02, PenIm=5.20e+01)
+CMA Gen 80: Loss=1.728578e+01 (Deg=1.686847e+00, PenRe=1.07e+02, PenIm=4.94e+01)
+CMA Gen 90: Loss=1.712019e+01 (Deg=1.751187e+00, PenRe=1.06e+02, PenIm=4.75e+01)
+CMA Gen 100: Loss=1.681934e+01 (Deg=1.429751e+00, PenRe=1.09e+02, PenIm=4.53e+01)
+CMA Gen 110: Loss=1.672705e+01 (Deg=1.551460e+00, PenRe=1.08e+02, PenIm=4.42e+01)
+CMA Gen 120: Loss=1.667629e+01 (Deg=1.661514e+00, PenRe=1.07e+02, PenIm=4.36e+01)
+CMA Gen 130: Loss=1.662249e+01 (Deg=1.527295e+00, PenRe=1.09e+02, PenIm=4.22e+01)
+CMA Gen 140: Loss=1.659120e+01 (Deg=1.387636e+00, PenRe=1.10e+02, PenIm=4.23e+01)
+CMA Gen 150: Loss=1.657803e+01 (Deg=1.349203e+00, PenRe=1.10e+02, PenIm=4.20e+01)
+CMA Gen 160: Loss=1.654466e+01 (Deg=1.430319e+00, PenRe=1.09e+02, PenIm=4.18e+01)
+CMA Gen 170: Loss=1.650320e+01 (Deg=1.447779e+00, PenRe=1.09e+02, PenIm=4.14e+01)
+CMA Gen 180: Loss=1.649572e+01 (Deg=1.463676e+00, PenRe=1.09e+02, PenIm=4.13e+01)
+CMA Gen 190: Loss=1.647406e+01 (Deg=1.513894e+00, PenRe=1.09e+02, PenIm=4.10e+01)
+CMA Gen 200: Loss=1.645998e+01 (Deg=1.534442e+00, PenRe=1.08e+02, PenIm=4.10e+01)
+CMA Gen 210: Loss=1.643641e+01 (Deg=1.605280e+00, PenRe=1.08e+02, PenIm=4.07e+01)
+CMA Gen 220: Loss=1.642854e+01 (Deg=1.623029e+00, PenRe=1.07e+02, PenIm=4.06e+01)
+CMA Gen 230: Loss=1.642029e+01 (Deg=1.657125e+00, PenRe=1.07e+02, PenIm=4.05e+01)
+CMA Gen 240: Loss=1.641371e+01 (Deg=1.684197e+00, PenRe=1.07e+02, PenIm=4.04e+01)
+CMA Gen 250: Loss=1.640393e+01 (Deg=1.767907e+00, PenRe=1.06e+02, PenIm=4.02e+01)
+CMA Gen 260: Loss=1.637760e+01 (Deg=2.042822e+00, PenRe=1.04e+02, PenIm=3.97e+01)
+CMA Gen 270: Loss=1.637760e+01 (Deg=2.042822e+00, PenRe=1.04e+02, PenIm=3.97e+01)
+CMA Gen 280: Loss=1.637656e+01 (Deg=2.069598e+00, PenRe=1.03e+02, PenIm=3.97e+01)
+CMA Gen 290: Loss=1.636973e+01 (Deg=2.156777e+00, PenRe=1.03e+02, PenIm=3.95e+01)
+CMA Gen 300: Loss=1.636592e+01 (Deg=2.159631e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 310: Loss=1.636573e+01 (Deg=2.154648e+00, PenRe=1.03e+02, PenIm=3.95e+01)
+CMA Gen 320: Loss=1.636428e+01 (Deg=2.166840e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 330: Loss=1.636337e+01 (Deg=2.174519e+00, PenRe=1.02e+02, PenIm=3.94e+01)
+CMA Gen 340: Loss=1.636236e+01 (Deg=2.174257e+00, PenRe=1.02e+02, PenIm=3.94e+01)
+CMA Gen 350: Loss=1.636113e+01 (Deg=2.171839e+00, PenRe=1.02e+02, PenIm=3.94e+01)
+CMA Gen 360: Loss=1.636042e+01 (Deg=2.150310e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 370: Loss=1.635913e+01 (Deg=2.121508e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 380: Loss=1.635831e+01 (Deg=2.121396e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 390: Loss=1.635749e+01 (Deg=2.114441e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 400: Loss=1.635688e+01 (Deg=2.114300e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 410: Loss=1.635655e+01 (Deg=2.114677e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 420: Loss=1.635607e+01 (Deg=2.102819e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 430: Loss=1.635571e+01 (Deg=2.110786e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 440: Loss=1.635521e+01 (Deg=2.109785e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 450: Loss=1.635488e+01 (Deg=2.110697e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 460: Loss=1.635471e+01 (Deg=2.116638e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 470: Loss=1.635460e+01 (Deg=2.111294e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 480: Loss=1.635428e+01 (Deg=2.109850e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 490: Loss=1.635399e+01 (Deg=2.113558e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 500: Loss=1.635381e+01 (Deg=2.109160e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 510: Loss=1.635349e+01 (Deg=2.109559e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 520: Loss=1.635312e+01 (Deg=2.107687e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 530: Loss=1.635200e+01 (Deg=2.104056e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 540: Loss=1.635019e+01 (Deg=2.091776e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 550: Loss=1.634813e+01 (Deg=2.088550e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 560: Loss=1.634573e+01 (Deg=2.077271e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 570: Loss=1.634336e+01 (Deg=2.070462e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 580: Loss=1.634069e+01 (Deg=2.059079e+00, PenRe=1.03e+02, PenIm=3.94e+01)
+CMA Gen 590: Loss=1.633558e+01 (Deg=2.042156e+00, PenRe=1.04e+02, PenIm=3.94e+01)
+CMA Gen 600: Loss=1.632638e+01 (Deg=1.999392e+00, PenRe=1.04e+02, PenIm=3.95e+01)
+CMA Gen 610: Loss=1.631418e+01 (Deg=1.948859e+00, PenRe=1.04e+02, PenIm=3.94e+01)
+CMA Gen 620: Loss=1.630193e+01 (Deg=1.914713e+00, PenRe=1.04e+02, PenIm=3.95e+01)
+CMA Gen 630: Loss=1.628349e+01 (Deg=1.821802e+00, PenRe=1.05e+02, PenIm=3.95e+01)
+CMA Gen 640: Loss=1.625396e+01 (Deg=1.646866e+00, PenRe=1.06e+02, PenIm=3.96e+01)
+CMA Gen 650: Loss=1.623343e+01 (Deg=1.471946e+00, PenRe=1.08e+02, PenIm=3.97e+01)
+CMA Gen 660: Loss=1.621179e+01 (Deg=1.376860e+00, PenRe=1.09e+02, PenIm=3.98e+01)
+CMA Gen 670: Loss=1.619065e+01 (Deg=1.329360e+00, PenRe=1.09e+02, PenIm=3.98e+01)
+CMA Gen 680: Loss=1.618489e+01 (Deg=1.285349e+00, PenRe=1.09e+02, PenIm=3.97e+01)
+CMA Gen 690: Loss=1.617753e+01 (Deg=1.246806e+00, PenRe=1.10e+02, PenIm=3.98e+01)
+CMA Gen 700: Loss=1.617114e+01 (Deg=1.242629e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 710: Loss=1.616886e+01 (Deg=1.234137e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 720: Loss=1.616711e+01 (Deg=1.225673e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 730: Loss=1.616660e+01 (Deg=1.220745e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 740: Loss=1.616588e+01 (Deg=1.222701e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 750: Loss=1.616549e+01 (Deg=1.221189e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 760: Loss=1.616507e+01 (Deg=1.220729e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 770: Loss=1.616485e+01 (Deg=1.218536e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 780: Loss=1.616474e+01 (Deg=1.217887e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 790: Loss=1.616462e+01 (Deg=1.217700e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 800: Loss=1.616456e+01 (Deg=1.217341e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 810: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 820: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 830: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 840: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 850: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 860: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 870: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 880: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 890: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 900: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 910: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 920: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 930: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 940: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 950: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 960: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 970: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 980: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 990: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1000: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1010: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1020: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1030: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1040: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1050: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1060: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1070: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1080: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1090: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1100: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1110: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1120: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1130: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1140: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1150: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1160: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1170: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1180: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1190: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1200: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1210: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1220: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1230: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1240: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1250: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1260: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1270: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1280: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1290: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1300: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1310: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1320: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1330: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1340: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1350: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1360: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1370: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1380: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1390: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1400: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1410: Loss=1.616448e+01 (Deg=1.217126e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1420: Loss=1.616448e+01 (Deg=1.217132e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1430: Loss=1.616448e+01 (Deg=1.217113e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1440: Loss=1.616448e+01 (Deg=1.217102e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1450: Loss=1.616448e+01 (Deg=1.217111e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1460: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1470: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1480: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1490: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1500: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1510: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1520: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1530: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1540: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1550: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1560: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1570: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1580: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1590: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1600: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1610: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1620: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1630: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1640: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1650: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1660: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1670: Loss=1.616448e+01 (Deg=1.217098e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1680: Loss=1.616448e+01 (Deg=1.217081e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1690: Loss=1.616448e+01 (Deg=1.217081e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1700: Loss=1.616448e+01 (Deg=1.217081e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1710: Loss=1.616448e+01 (Deg=1.217081e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+CMA Gen 1720: Loss=1.616448e+01 (Deg=1.217075e+00, PenRe=1.10e+02, PenIm=3.97e+01)
+
+======================================================================
+Phase 2: Nelder-Mead Refinement
+======================================================================
+NM Iter 50: Loss=1.616448e+01
+NM Iter 100: Loss=1.616448e+01
+NM Iter 150: Loss=1.616448e+01
+NM Iter 200: Loss=1.616448e+01
+NM Iter 250: Loss=1.616448e+01
+NM Iter 300: Loss=1.616448e+01
+NM Iter 350: Loss=1.616448e+01
+NM Iter 400: Loss=1.616448e+01
+NM Iter 450: Loss=1.616448e+01
+NM Iter 500: Loss=1.616448e+01
+NM Iter 550: Loss=1.616448e+01
+NM Iter 600: Loss=1.616448e+01
+NM Iter 650: Loss=1.616448e+01
+NM Iter 700: Loss=1.616448e+01
+NM Iter 750: Loss=1.616448e+01
+NM Iter 800: Loss=1.616448e+01
+NM Iter 850: Loss=1.616448e+01
+NM Iter 900: Loss=1.616448e+01
+NM Iter 950: Loss=1.616448e+01
+
+======================================================================
+FINAL RESULT
+======================================================================
+Total Loss: 1.616448e+01
+Degeneracy Loss: 1.217075e+00
+Penalty Re: 1.097573e+02
+Penalty Im: 3.971673e+01
+
+Eigenvalues:
+  lambda_1 = -0.2926585777 -1.2933939123i
+  lambda_2 = -0.2926585781 -1.2933623893i
+  lambda_3 = +0.4874295669 -1.2933609743i
+
+Constraint Check:
+  Min|Re| = 0.2927 > 5.0? NO
+  Min|Im| = 1.2934 > 5.0? NO
+
