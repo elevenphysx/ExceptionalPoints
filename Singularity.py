@@ -13,6 +13,18 @@ import importlib.util
 from datetime import datetime
 from tqdm import tqdm
 
+# Import shared configuration
+from config import (FIXED_MATERIALS, BOUNDS, C0_FIXED, DEFAULT_THRESHOLD,
+                    DEFAULT_PENALTY_WEIGHT, DEFAULT_DE_ITERATIONS,
+                    DEFAULT_NM_ITERATIONS, DEFAULT_SEEDS,
+                    DEFAULT_SCAN_RANGE, PARAM_NAMES, PARAM_LABELS, LAYER_NAMES)
+
+# Import common functions
+from common_functions import build_layers, objective_function as _objective_function
+
+# Import plotting utilities
+from plotting_utils import plot_optimization_history, scan_parameters_around_optimum
+
 # Import from green function-new.py (with space in filename)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 spec = importlib.util.spec_from_file_location("green_function_new",
@@ -22,134 +34,41 @@ spec.loader.exec_module(green_function_new)
 GreenFun = green_function_new.GreenFun
 
 # ============================================================
-# Objective: Find Exceptional Point where λ₁ = λ₂ = λ₃
+# Wrapper for objective_function with GreenFun
 # ============================================================
 
-def build_layers(params, fixed_materials):
-    """
-    Build layer structure from optimization parameters
+def objective_function(params, fixed_materials, return_details=False, threshold=5.0, penalty_weight=100.0, bounds=None):
+    """Wrapper that injects GreenFun into the common objective_function"""
+    return _objective_function(params, fixed_materials, GreenFun, return_details, threshold, penalty_weight, bounds)
 
-    Structure: Pt-C-Fe-C-Fe-C-Fe-C-Pt(inf)
-    params = [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4]
+# ============================================================
+# Main Optimization Logic
+# ============================================================
 
-    Returns:
-        theta0: incident angle (mrad)
-        Layers: list of (material, thickness, is_resonant)
-        C0: constant parameter (fixed)
-    """
-    theta0 = params[0]
-    thicknesses = params[1:9]  # 8 finite layers
-    C0 = 7.74 * 1.06 * 0.5  # Fixed value from original code (CFe)
-
-    Platinum, Carbon, Iron = fixed_materials
-
-    Layers = [
-        (Platinum, thicknesses[0], 0),  # Pt
-        (Carbon,   thicknesses[1], 0),  # C
-        (Iron,     thicknesses[2], 1),  # Fe (resonant)
-        (Carbon,   thicknesses[3], 0),  # C
-        (Iron,     thicknesses[4], 1),  # Fe (resonant)
-        (Carbon,   thicknesses[5], 0),  # C
-        (Iron,     thicknesses[6], 1),  # Fe (resonant)
-        (Carbon,   thicknesses[7], 0),  # C
-        (Platinum, np.inf, 0),  # Pt substrate (infinite thickness)
-    ]
-
-    return theta0, Layers, C0
-
-
-def objective_function(params, fixed_materials, bounds=None, return_details=False, threshold=5.0, penalty_weight=0.1):
-    """
-    Objective function: make all eigenvalues degenerate (coincide)
-
-    For exceptional point: λ₁ = λ₂ = λ₃
-    i.e., Re(λ₁) = Re(λ₂) = Re(λ₃) and Im(λ₁) = Im(λ₂) = Im(λ₃)
-
-    Constraints: |Re(λᵢ)| > threshold and |Im(λᵢ)| > threshold for all i
-    Loss = variance(Re) + variance(Im) + constraint penalties
-    Uses smooth-min for better gradient properties
-    """
-
-    def smooth_min(x, beta=10.0):
-        """Smooth minimum function for better optimization"""
-        return -np.log(np.sum(np.exp(-beta * x))) / beta
-
-    try:
-        # Check bounds if provided
-        if bounds is not None:
-            for i, (param, (low, high)) in enumerate(zip(params, bounds)):
-                if not (low <= param <= high):
-                    if return_details:
-                        return 1e10, None, None, None, None, None
-                    else:
-                        return 1e10
-
-        theta0, Layers, C0 = build_layers(params, fixed_materials)
-
-        # Compute Green matrix
-        G, _ = GreenFun(theta0, Layers, C0)
-        G1 = -G - 1j * 0.5 * np.eye(G.shape[0], dtype=complex)
-
-        # Compute eigenvalues
-        eigvals = np.linalg.eigvals(G1)
-
-        # Loss: variance of real parts + variance of imaginary parts
-        # This forces all eigenvalues to collapse to the same point
-        real_parts = np.real(eigvals)
-        imag_parts = np.imag(eigvals)
-        loss_degeneracy = np.var(real_parts) + np.var(imag_parts)
-
-        # Constraint: all real and imaginary parts should be |Re(λ)| > threshold and |Im(λ)| > threshold
-        # Use smooth-min instead of hard min for better gradient
-        abs_real_parts = np.abs(real_parts)
-        abs_imag_parts = np.abs(imag_parts)
-        min_abs_real = smooth_min(abs_real_parts, beta=10.0)
-        min_abs_imag = smooth_min(abs_imag_parts, beta=10.0)
-        penalty_real = np.maximum(0, threshold - min_abs_real)**2
-        penalty_imag = np.maximum(0, threshold - min_abs_imag)**2
-
-        # Total loss = degeneracy loss + penalty
-        loss = loss_degeneracy + penalty_weight * (penalty_real + penalty_imag)
-
-        if return_details:
-            return loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, (penalty_real, penalty_imag)
-        return loss
-
-    except Exception as e:
-        print(f"Error in objective: {e}")
-        if return_details:
-            return 1e10, None, None, None, None, None, None, None
-        else:
-            return 1e10
-
-
-def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=500, seed=812, threshold=5.0, penalty_weight=0.1):
+def optimize_exceptional_point(maxiter_de=DEFAULT_DE_ITERATIONS, maxiter_nm=DEFAULT_NM_ITERATIONS,
+                              maxiter_powell=500, seed=DEFAULT_SEEDS[0], threshold=DEFAULT_THRESHOLD,
+                              penalty_weight=DEFAULT_PENALTY_WEIGHT):
     """
     Main optimization routine using Differential Evolution
 
     Args:
-        maxiter_de: Maximum iterations for DE (default: 100)
-        maxiter_nm: Maximum iterations for Nelder-Mead (default: 500)
-        maxiter_powell: Maximum iterations for Powell (default: 500)
-        seed: Random seed for reproducibility (default: 812)
-        threshold: Constraint threshold for |Re| and |Im| (default: 5.0)
-        penalty_weight: Weight for constraint penalties (default: 0.1)
+        maxiter_de: Maximum iterations for DE
+        maxiter_nm: Maximum iterations for Nelder-Mead
+        maxiter_powell: Maximum iterations for Powell
+        seed: Random seed for reproducibility
+        threshold: Constraint threshold for |Re| and |Im|
+        penalty_weight: Weight for constraint penalties
     """
-    # Random seed for reproducibility
     np.random.seed(seed)
 
-    # Create output directory
     output_dir = os.path.join('results', f'DE_s{seed}_i1-{maxiter_de}_i2-{maxiter_nm}_thr{threshold:.1f}_pw{penalty_weight:.2f}')
     os.makedirs(output_dir, exist_ok=True)
     print(f"Output directory: {output_dir}\n")
     print(f"Random seed: {seed}")
     print(f"Iterations: DE={maxiter_de}, Nelder-Mead={maxiter_nm}, Powell={maxiter_powell}\n")
 
-    # Fixed material parameters (physical constants)
-    Iron = (7.298e-6, 3.33e-7)
-    Carbon = (2.257e-6, 1.230e-9)
-    Platinum = (1.713e-5, 2.518e-6)
-    fixed_materials = (Platinum, Carbon, Iron)
+    fixed_materials = FIXED_MATERIALS
+    bounds = BOUNDS
 
     # Convergence threshold for monitoring (not for early stopping)
     convergence_threshold = 1e-10
@@ -252,25 +171,6 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
                 history['eigvals_imag'].append(np.imag(eigvals).copy())
 
         return False  # Continue
-
-    # Parameter bounds: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4]
-    # C0 is fixed at 7.74 * 1.06 * 0.5 = 4.1022 (not optimized)
-    bounds = [
-        (2.0, 10.0),     # theta0 (mrad) - user specified range
-        (0.5, 10.0),     # Pt thickness (nm)
-        (0.1, 50.0),     # C layer 1
-        (0.5, 3.0),      # Fe layer 1 (resonant)
-        (0.1, 50.0),     # C layer 2
-        (0.5, 3.0),      # Fe layer 2 (resonant)
-        (0.1, 50.0),     # C layer 3
-        (0.5, 3.0),      # Fe layer 3 (resonant)
-        (0.1, 50.0),     # C layer 4
-    ]
-
-    print("=" * 70)
-    print("Starting Global Search (Differential Evolution)...")
-    print("Target: Find Exceptional Point where λ₁ = λ₂ = λ₃")
-    print("=" * 70)
 
     # Wrapper function for multiprocessing compatibility
     def objective_wrapper(params):
@@ -482,7 +382,7 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
     log_file.flush()
 
     # Visualization
-    plot_results(history, output_dir)
+    plot_optimization_history(history, output_dir, seed, 'DE + Nelder-Mead')
 
     # Close log file
     log_file.close()
@@ -491,221 +391,22 @@ def optimize_exceptional_point(maxiter_de=100, maxiter_nm=500, maxiter_powell=50
     return final_result, theta0, Layers, C0, output_dir
 
 
-def plot_results(history, output_dir):
-    """
-    Visualize optimization history with publication-quality plots
-
-    Args:
-        history: Dictionary containing iteration, loss, phase, and eigenvalues
-        output_dir: Directory to save the figure
-    """
-    import matplotlib.pyplot as plt
-    import matplotlib as mpl
-
-    # Set publication-quality style
-    mpl.rcParams['font.size'] = 12
-    mpl.rcParams['font.family'] = 'DejaVu Sans'  # Supports Unicode subscripts
-    mpl.rcParams['axes.linewidth'] = 1.5
-    mpl.rcParams['lines.linewidth'] = 2.0
-    mpl.rcParams['xtick.major.width'] = 1.5
-    mpl.rcParams['ytick.major.width'] = 1.5
-    mpl.rcParams['xtick.major.size'] = 5
-    mpl.rcParams['ytick.major.size'] = 5
-
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
-
-    iterations = np.array(history['iteration'])
-    losses = np.array(history['loss'])
-    phases = np.array(history['phase'])
-    eigvals_real = history['eigvals_real']
-    eigvals_imag = history['eigvals_imag']
-
-    # ===== Left plot: Loss vs Iteration =====
-    # Define colors for each phase
-    phase_colors = {'DE': '#1f77b4', 'Nelder-Mead': '#ff7f0e', 'Powell': '#2ca02c'}
-    phase_names = ['DE', 'Nelder-Mead', 'Powell']
-
-    for phase_name in phase_names:
-        mask = phases == phase_name
-        if np.any(mask):
-            ax1.semilogy(iterations[mask], losses[mask], 'o-',
-                        color=phase_colors[phase_name],
-                        label=phase_name, markersize=4, alpha=0.8)
-
-    ax1.set_xlabel('Iteration', fontsize=14, fontweight='bold')
-    ax1.set_ylabel('Loss (Variance)', fontsize=14, fontweight='bold')
-    ax1.set_title('Optimization Progress', fontsize=16, fontweight='bold')
-    ax1.grid(True, alpha=0.3, linestyle='--', linewidth=0.8)
-    ax1.legend(fontsize=11, framealpha=0.9, loc='best')
-    ax1.tick_params(labelsize=11)
-
-    # ===== Right plot: Eigenvalue distances vs Iteration =====
-    distances_12 = []
-    distances_13 = []
-    distances_23 = []
-
-    for real_parts, imag_parts in zip(eigvals_real, eigvals_imag):
-        if len(real_parts) >= 3:
-            # Calculate complex distances
-            eig1 = real_parts[0] + 1j * imag_parts[0]
-            eig2 = real_parts[1] + 1j * imag_parts[1]
-            eig3 = real_parts[2] + 1j * imag_parts[2]
-
-            distances_12.append(np.abs(eig1 - eig2))
-            distances_13.append(np.abs(eig1 - eig3))
-            distances_23.append(np.abs(eig2 - eig3))
-        else:
-            distances_12.append(np.nan)
-            distances_13.append(np.nan)
-            distances_23.append(np.nan)
-
-    distances_12 = np.array(distances_12)
-    distances_13 = np.array(distances_13)
-    distances_23 = np.array(distances_23)
-
-    ax2.semilogy(iterations, distances_12, 'o-', color='#d62728',
-                label='|λ₁ - λ₂|', markersize=3, alpha=0.8)
-    ax2.semilogy(iterations, distances_13, 's-', color='#9467bd',
-                label='|λ₁ - λ₃|', markersize=3, alpha=0.8)
-    ax2.semilogy(iterations, distances_23, '^-', color='#8c564b',
-                label='|λ₂ - λ₃|', markersize=3, alpha=0.8)
-
-    ax2.set_xlabel('Iteration', fontsize=14, fontweight='bold')
-    ax2.set_ylabel('Distance', fontsize=14, fontweight='bold')
-    ax2.set_title('Eigenvalue Convergence', fontsize=16, fontweight='bold')
-    ax2.grid(True, alpha=0.3, linestyle='--', linewidth=0.8)
-    ax2.legend(fontsize=11, framealpha=0.9, loc='best')
-    ax2.tick_params(labelsize=11)
-
-    plt.tight_layout()
-    fig_path = os.path.join(output_dir, 'exceptional_point_result.png')
-    plt.savefig(fig_path, dpi=300, bbox_inches='tight')
-    print(f"\nFigure saved as: {fig_path}")
-    plt.close()
-
-
-def scan_parameters_around_optimum(params_optimal, fixed_materials, output_dir, scan_range=1e-6):
-    """
-    Scan parameters around the optimal solution to observe eigenvalue sensitivity
-
-    Args:
-        params_optimal: Optimal parameters [theta0, t_Pt, t_C1, t_Fe1, ...]
-        fixed_materials: Material constants
-        output_dir: Directory to save scan plots
-        scan_range: Scan range around optimal value (default: 1e-6)
-    """
-    import matplotlib.pyplot as plt
-    import matplotlib as mpl
-
-    # Set publication-quality style
-    mpl.rcParams['font.size'] = 12
-    mpl.rcParams['font.family'] = 'DejaVu Sans'
-    mpl.rcParams['axes.linewidth'] = 1.5
-    mpl.rcParams['lines.linewidth'] = 2.0
-    mpl.rcParams['xtick.major.width'] = 1.5
-    mpl.rcParams['ytick.major.width'] = 1.5
-
-    # Professional color scheme (Nature journal style)
-    colors = ['#4472C4', '#ED7D31', '#70AD47']  # Blue, Orange, Green
-
-    param_names = ['theta0', 't_Pt', 't_C1', 't_Fe1', 't_C2', 't_Fe2', 't_C3', 't_Fe3', 't_C4']
-    param_labels = ['θ₀ (mrad)', 't_Pt (nm)', 't_C₁ (nm)', 't_Fe₁ (nm)',
-                    't_C₂ (nm)', 't_Fe₂ (nm)', 't_C₃ (nm)', 't_Fe₃ (nm)', 't_C₄ (nm)']
-
-    print(f"\n{'='*70}")
-    print("Parameter Sensitivity Scan")
-    print(f"Scan range: ±{scan_range:.2e} around optimal values")
-    print(f"{'='*70}\n")
-
-    for i, (param_name, param_label) in enumerate(zip(param_names, param_labels)):
-        # Scan range around optimal value
-        n_points = 21  # Including center point
-        param_values = np.linspace(
-            params_optimal[i] - scan_range,
-            params_optimal[i] + scan_range,
-            n_points
-        )
-
-        eigvals_real_list = []
-        eigvals_imag_list = []
-
-        print(f"Scanning {param_name}...")
-        for param_val in tqdm(param_values, desc=f"  {param_name}", ncols=80, leave=False):
-            # Create modified params
-            params_test = params_optimal.copy()
-            params_test[i] = param_val
-
-            # Compute eigenvalues
-            try:
-                loss, eigvals, re, im, G, G1, _, _ = objective_function(
-                    params_test, fixed_materials, return_details=True, threshold=5.0, penalty_weight=0.1
-                )
-                eigvals_real_list.append(re)
-                eigvals_imag_list.append(im)
-            except:
-                eigvals_real_list.append([np.nan, np.nan, np.nan])
-                eigvals_imag_list.append([np.nan, np.nan, np.nan])
-
-        eigvals_real_array = np.array(eigvals_real_list)
-        eigvals_imag_array = np.array(eigvals_imag_list)
-
-        # Create figure with two subplots
-        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
-
-        # Plot real parts
-        for j in range(3):
-            ax1.plot(param_values, eigvals_real_array[:, j], 'o-',
-                    color=colors[j], label=f'Re(λ_{j+1})',
-                    markersize=6, alpha=0.8, linewidth=2)
-
-        ax1.axvline(params_optimal[i], color='red', linestyle='--',
-                   linewidth=2, alpha=0.7, label='Optimal')
-        ax1.set_xlabel(param_label, fontsize=14, fontweight='bold')
-        ax1.set_ylabel('Re(λ)', fontsize=14, fontweight='bold')
-        ax1.set_title(f'Real Parts vs {param_label}', fontsize=16, fontweight='bold')
-        ax1.legend(fontsize=11, framealpha=0.9, loc='best')
-        ax1.grid(True, alpha=0.3, linestyle='--', linewidth=0.8)
-        ax1.tick_params(labelsize=11)
-
-        # Plot imaginary parts
-        for j in range(3):
-            ax2.plot(param_values, eigvals_imag_array[:, j], 's-',
-                    color=colors[j], label=f'Im(λ_{j+1})',
-                    markersize=6, alpha=0.8, linewidth=2)
-
-        ax2.axvline(params_optimal[i], color='red', linestyle='--',
-                   linewidth=2, alpha=0.7, label='Optimal')
-        ax2.set_xlabel(param_label, fontsize=14, fontweight='bold')
-        ax2.set_ylabel('Im(λ)', fontsize=14, fontweight='bold')
-        ax2.set_title(f'Imaginary Parts vs {param_label}', fontsize=16, fontweight='bold')
-        ax2.legend(fontsize=11, framealpha=0.9, loc='best')
-        ax2.grid(True, alpha=0.3, linestyle='--', linewidth=0.8)
-        ax2.tick_params(labelsize=11)
-
-        plt.tight_layout()
-        scan_path = os.path.join(output_dir, f'scan_{param_name}.png')
-        plt.savefig(scan_path, dpi=300, bbox_inches='tight')
-        plt.close()
-
-    print(f"\nParameter scan plots saved to: {output_dir}/scan_*.png")
-
-
 if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description='Exceptional Point Finder (Variance Method)')
-    parser.add_argument('-i1', '--iterations-de', type=int, default=100,
-                        help='Number of iterations for DE (default: 100)')
-    parser.add_argument('-i2', '--iterations-nm', type=int, default=500,
-                        help='Number of iterations for Nelder-Mead (default: 500)')
+    parser.add_argument('-i1', '--iterations-de', type=int, default=DEFAULT_DE_ITERATIONS,
+                        help='Number of iterations for DE')
+    parser.add_argument('-i2', '--iterations-nm', type=int, default=DEFAULT_NM_ITERATIONS,
+                        help='Number of iterations for Nelder-Mead')
     parser.add_argument('-i3', '--iterations-powell', type=int, default=500,
-                        help='Number of iterations for Powell (default: 500)')
-    parser.add_argument('-s', '--seed', type=int, default=812,
-                        help='Random seed for reproducibility (default: 812)')
-    parser.add_argument('-t', '--threshold', type=float, default=5.0,
-                        help='Constraint threshold for |Re| and |Im| (default: 5.0)')
-    parser.add_argument('-pw', '--penalty-weight', type=float, default=0.1,
-                        help='Penalty weight for constraint violations (default: 0.1)')
+                        help='Number of iterations for Powell')
+    parser.add_argument('-s', '--seed', type=int, default=DEFAULT_SEEDS[0],
+                        help='Random seed for reproducibility')
+    parser.add_argument('-t', '--threshold', type=float, default=DEFAULT_THRESHOLD,
+                        help='Constraint threshold for |Re| and |Im|')
+    parser.add_argument('-pw', '--penalty-weight', type=float, default=DEFAULT_PENALTY_WEIGHT,
+                        help='Penalty weight for constraint violations')
     args = parser.parse_args()
 
     result, theta0, Layers, C0, output_dir = optimize_exceptional_point(
@@ -755,14 +456,13 @@ if __name__ == "__main__":
     print(f"Detailed parameters saved to: {params_txt_path}")
 
     # Run parameter sensitivity scan
-    Iron = (7.298e-6, 3.33e-7)
-    Carbon = (2.257e-6, 1.230e-9)
-    Platinum = (1.713e-5, 2.518e-6)
-    fixed_materials = (Platinum, Carbon, Iron)
-
     scan_parameters_around_optimum(
         params_optimal=result.x,
-        fixed_materials=fixed_materials,
+        objective_func=objective_function,
+        fixed_materials=FIXED_MATERIALS,
         output_dir=output_dir,
-        scan_range=1e-6
+        scan_range=DEFAULT_SCAN_RANGE,
+        n_points=21,
+        threshold=args.threshold,
+        penalty_weight=args.penalty_weight
     )

@@ -386,6 +386,7 @@ def RGreenMagnetic(B0, theta0_mrad, layers, C0, Delta):
     g1 = np.array([1.0 * I * (p[i] + r0 * q[i]) * qleft * np.sqrt(n0 * tl[i]) for i in range(nl)], dtype=complex)
     return Refle2(r0, G1, Delta, 1.0, g1)
 
+# C0 = const parameters: theta0_mrad Layers:list = length: 8 (-1:inf)
 def GreenFun(theta0_mrad, Layers, C0):
    
     theta0 = float(theta0_mrad)
@@ -602,6 +603,7 @@ def plot_eigs_scan_theta(Layers, CFe):
 
     for theta0 in np.arange(5.40, 5.45 + 1e-12, 0.001):
         G, _ = GreenFun(theta0, Layers, CFe)
+        # G1->matrix 3 times 3
         G1 = -G - 1j * 0.5 * np.eye(G.shape[0], dtype=complex)
 
         eigvals = np.linalg.eigvals(G1)
