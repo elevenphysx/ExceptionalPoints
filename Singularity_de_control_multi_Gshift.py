@@ -46,12 +46,22 @@ except Exception as e:
     sys.exit(1)
 
 # ============================================================
+# Module-level wrapper for multiprocessing (must be picklable)
+# ============================================================
+
+def _objective_wrapper_for_de(params):
+    """
+    Module-level wrapper that can be pickled for multiprocessing.
+    Uses module-level GreenFun and FIXED_MATERIALS.
+    """
+    return objective_function_control(params, FIXED_MATERIALS, GreenFun)
+
+
+# ============================================================
 # Main Optimization Logic (Single Seed)
 # ============================================================
 
 def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verbose=True):
-    from functools import partial
-
     np.random.seed(seed)
 
     output_dir = os.path.join('results', f'DE_Control_Gshift_w{n_workers}_s{seed}_DE{maxiter_de}_LB{maxiter_lbfgsb}')
@@ -62,11 +72,6 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
 
     fixed_materials = FIXED_MATERIALS
     bounds = BOUNDS
-
-    # Create a partial function that embeds fixed_materials AND GreenFun (works with multiprocessing)
-    objective_for_de = partial(objective_function_control,
-                              fixed_materials=fixed_materials,
-                              GreenFun=GreenFun)
 
     log_file_path = os.path.join(output_dir, 'optimization_log.txt')
     log_file = open(log_file_path, 'w', encoding='utf-8')
@@ -122,7 +127,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
     log_print(f"Using workers={n_workers}", console=verbose)
 
     result_de = differential_evolution(
-        objective_for_de,
+        _objective_wrapper_for_de,  # Use module-level wrapper (can be pickled)
         bounds,
         maxiter=maxiter_de,
         popsize=25,
