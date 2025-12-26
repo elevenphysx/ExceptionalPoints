@@ -2,7 +2,7 @@
 Exceptional Point Finder - DE + L-BFGS-B (Control_N Algorithm, -G-0.5i Matrix)
 Uses Control_N.py's objective function (variance-based) and constraints
 With shifted matrix: -G - 0.5j*I and constraint |Im(λ)| >= 5
-With multi-core parallel execution and plotting utilities
+With multi-worker parallel execution and plotting utilities
 """
 
 import numpy as np
@@ -11,9 +11,6 @@ import sys
 import os
 import importlib.util
 from tqdm import tqdm
-import concurrent.futures
-import time
-import argparse
 
 # Import shared configuration
 from config import FIXED_MATERIALS, C0_FIXED, DEFAULT_SEEDS, PARAM_NAMES, PARAM_LABELS, LAYER_NAMES
@@ -144,12 +141,12 @@ def _objective_wrapper(p):
 # Main Optimization Logic (Single Seed)
 # ============================================================
 
-def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, verbose=True):
+def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verbose=True):
     from functools import partial
 
     np.random.seed(seed)
 
-    output_dir = os.path.join('results', f'DE_Control_Gshift_s{seed}_DE{maxiter_de}_LB{maxiter_lbfgsb}')
+    output_dir = os.path.join('results', f'DE_Control_Gshift_w{n_workers}_s{seed}_DE{maxiter_de}_LB{maxiter_lbfgsb}')
     os.makedirs(output_dir, exist_ok=True)
 
     if verbose:
@@ -212,6 +209,8 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, verbose=True):
                 history['eigvals_imag'].append(np.imag(eigvals).copy())
 
     # Control_N DE settings with multiprocessing fix
+    log_print(f"Using workers={n_workers}", console=verbose)
+
     result_de = differential_evolution(
         objective_for_de,
         bounds,
@@ -223,7 +222,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, verbose=True):
         tol=0,
         atol=0,
         updating='deferred',
-        workers=1,
+        workers=n_workers,
         polish=False,
         seed=seed,
         disp=False,
@@ -362,86 +361,30 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, verbose=True):
     return seed, final_loss, final_x
 
 
-# ============================================================
-# Parallel Execution Helpers
-# ============================================================
-
-def run_single_seed(args):
-    seed, max_de, max_lbfgsb = args
-    try:
-        _, loss, final_x = optimize_exceptional_point(
-            maxiter_de=max_de,
-            maxiter_lbfgsb=max_lbfgsb,
-            seed=seed,
-            verbose=False
-        )
-        return seed, loss, final_x, "Success"
-    except Exception as e:
-        return seed, None, None, str(e)
-
-
 if __name__ == "__main__":
-    os.environ["OMP_NUM_THREADS"] = "1"
+    import argparse
 
-    parser = argparse.ArgumentParser(description='Exceptional Point Finder (Control_N Algorithm)')
+    parser = argparse.ArgumentParser(description='Exceptional Point Finder (Control_N Algorithm, -G-0.5i Matrix)')
     parser.add_argument('-i1', type=int, default=DEFAULT_DE_ITERATIONS, help='DE iterations')
     parser.add_argument('-i2', type=int, default=DEFAULT_LBFGSB_ITERATIONS, help='L-BFGS-B iterations')
-    parser.add_argument('-w', '--workers', type=int, default=None, help='Workers')
-    parser.add_argument('-s', '--seeds', type=int, nargs='+', default=DEFAULT_SEEDS, help='Seeds')
+    parser.add_argument('-s', '--seed', type=int, default=0, help='Random seed')
+    parser.add_argument('-w', '--workers', type=int, default=5, help='Number of workers for DE')
 
     args = parser.parse_args()
 
-    task_args = [(seed, args.i1, args.i2) for seed in args.seeds]
-
     print("=" * 70)
-    print(f"Starting Parallel Optimization (Control_N Algorithm, -G-0.5i Matrix)")
-    print(f"Algorithm: DE (Control_N Settings) -> L-BFGS-B")
+    print(f"Exceptional Point Optimization (-G-0.5i Matrix, workers={args.workers})")
+    print(f"Algorithm: DE (workers={args.workers}) -> L-BFGS-B")
     print(f"Matrix: -G - 0.5j*I (shifted eigenvalues)")
-    print(f"DE Settings: maxiter={args.i1}, popsize=25, updating='deferred'")
-    print(f"Parallelization: {len(args.seeds)} seeds across {args.workers if args.workers else 'all'} cores")
+    print(f"DE Settings: maxiter={args.i1}, popsize=25, tol=0, atol=0, updating='deferred'")
+    print(f"Seed: {args.seed}")
     print(f"Constraint: |Im(λ)| >= {IMAG_MIN}")
     print("=" * 70)
 
-    start_time = time.time()
-    fixed_materials = FIXED_MATERIALS
-
-    results = []
-    with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as executor:
-        futures = {executor.submit(run_single_seed, t): t[0] for t in task_args}
-
-        for future in concurrent.futures.as_completed(futures):
-            seed_val = futures[future]
-            try:
-                seed, loss, final_x, status = future.result()
-                if status == "Success":
-                    print(f"✅ Seed {seed} Finished | Final Loss: {loss:.6e}")
-                    results.append((seed, loss, final_x))
-                else:
-                    print(f"❌ Seed {seed} Failed | Error: {status}")
-            except Exception as exc:
-                print(f"❌ Seed {seed_val} generated an exception: {exc}")
-
-    print("\n" + "=" * 70)
-    print(f"Total Time: {time.time() - start_time:.2f} seconds")
-    print("DETAILED SUMMARY (Sorted by Loss):")
-
-    results.sort(key=lambda x: x[1])
-
-    for s, l, x in results:
-        theta0, Layers, C0 = build_layers(x, fixed_materials)
-        G, _ = GreenFun(theta0, Layers, C0)
-        eigvals = np.linalg.eigvals(G)
-        re = np.real(eigvals)
-        im = np.imag(eigvals)
-        idx = np.argsort(re)
-        re = re[idx]
-        im = im[idx]
-
-        print("-" * 60)
-        print(f"Seed {s} | Loss = {l:.6e}")
-        for k in range(3):
-            print(f"   lambda_{k+1} = {re[k]:8.5f} {im[k]:+8.5f}j")
-
-    if results:
-        print("\n" + "=" * 70)
-        print(f"🏆 BEST SEED: {results[0][0]}")
+    optimize_exceptional_point(
+        maxiter_de=args.i1,
+        maxiter_lbfgsb=args.i2,
+        seed=args.seed,
+        n_workers=args.workers,
+        verbose=True
+    )
