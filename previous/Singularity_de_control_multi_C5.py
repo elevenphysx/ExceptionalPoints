@@ -1,6 +1,7 @@
 """
-Exceptional Point Finder - DE + L-BFGS-B (Control_N Algorithm)
+Exceptional Point Finder - DE + L-BFGS-B (Control_N Algorithm, C5 Bounds)
 Uses Control_N.py's objective function (variance-based) and constraints
+With alternative bounds: C layers start from 5nm (instead of 1nm)
 With multi-core parallel execution and plotting utilities
 """
 
@@ -27,30 +28,18 @@ from plotting_utils import plot_optimization_history, scan_parameters_around_opt
 # Control_N Configuration
 # ============================================================
 
-# Use Control_N bounds
+# Alternative bounds with C layers starting from 5nm
 BOUNDS = [
-    (2.0, 8.0),    # theta0 (mrad)
-    (0.5, 4.0),    # Pt
-    (1.0, 40.0),   # C
-    (0.8, 3.0),    # Fe*
-    (1.0, 40.0),   # C
-    (0.5, 3.0),    # Fe*
-    (1.0, 40.0),   # C
-    (0.5, 3.0),    # Fe*
-    (1.0, 40.0),   # C
+    (2.0, 10.0),     # theta0 (mrad)
+    (3.0, 10.0),     # Pt thickness (nm)
+    (5.0, 50.0),     # C layer 1
+    (0.5, 3.0),      # Fe layer 1 (resonant)
+    (5.0, 50.0),     # C layer 2
+    (0.5, 3.0),      # Fe layer 2 (resonant)
+    (5.0, 50.0),     # C layer 3
+    (0.5, 3.0),      # Fe layer 3 (resonant)
+    (5.0, 50.0),     # C layer 4
 ]
-
-# BOUNDS = [
-#         (2.0, 10.0),     # theta0 (mrad)
-#         (3.0, 10.0),     # Pt thickness (nm)
-#         (5.0, 50.0),     # C layer 1
-#         (0.5, 3.0),      # Fe layer 1 (resonant)
-#         (5.0, 50.0),     # C layer 2
-#         (0.5, 3.0),      # Fe layer 2 (resonant)
-#         (5.0, 50.0),     # C layer 3
-#         (0.5, 3.0),      # Fe layer 3 (resonant)
-#         (5.0, 50.0),     # C layer 4
-#     ]
 
 
 IMAG_MIN = 5.0
@@ -142,21 +131,19 @@ def _objective_wrapper(p):
 # ============================================================
 
 def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, verbose=True):
-    from functools import partial
+    global _global_fixed_materials
 
     np.random.seed(seed)
 
-    output_dir = os.path.join('results', f'DE_Control_s{seed}_DE{maxiter_de}_LB{maxiter_lbfgsb}')
+    output_dir = os.path.join('results', f'DE_Control_C5_s{seed}_DE{maxiter_de}_LB{maxiter_lbfgsb}')
     os.makedirs(output_dir, exist_ok=True)
 
     if verbose:
         print(f"--> [Seed {seed}] Output directory: {output_dir}")
 
     fixed_materials = FIXED_MATERIALS
+    _global_fixed_materials = fixed_materials
     bounds = BOUNDS
-
-    # Create a partial function that embeds fixed_materials (works with multiprocessing)
-    objective_for_de = partial(objective_function_control, fixed_materials=fixed_materials)
 
     log_file_path = os.path.join(output_dir, 'optimization_log.txt')
     log_file = open(log_file_path, 'w', encoding='utf-8')
@@ -208,17 +195,16 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, verbose=True):
                 history['eigvals_real'].append(np.real(eigvals).copy())
                 history['eigvals_imag'].append(np.imag(eigvals).copy())
 
-    # Control_N DE settings with multiprocessing fix
+    # Control_N DE settings (workers=3 per seed)
     result_de = differential_evolution(
-        objective_for_de,
+        _objective_wrapper,
         bounds,
         maxiter=maxiter_de,
         popsize=25,
         strategy='best1bin',
         mutation=(0.5, 1.0),
         recombination=0.7,
-        tol=0,
-        atol=0,
+        tol=1e-12,
         updating='deferred',
         workers=1,
         polish=False,
@@ -380,7 +366,7 @@ def run_single_seed(args):
 if __name__ == "__main__":
     os.environ["OMP_NUM_THREADS"] = "1"
 
-    parser = argparse.ArgumentParser(description='Exceptional Point Finder (Control_N Algorithm)')
+    parser = argparse.ArgumentParser(description='Exceptional Point Finder (Control_N Algorithm, C5 Bounds)')
     parser.add_argument('-i1', type=int, default=DEFAULT_DE_ITERATIONS, help='DE iterations')
     parser.add_argument('-i2', type=int, default=DEFAULT_LBFGSB_ITERATIONS, help='L-BFGS-B iterations')
     parser.add_argument('-w', '--workers', type=int, default=None, help='Workers')
@@ -391,8 +377,9 @@ if __name__ == "__main__":
     task_args = [(seed, args.i1, args.i2) for seed in args.seeds]
 
     print("=" * 70)
-    print(f"Starting Parallel Optimization (Control_N Algorithm)")
+    print(f"Starting Parallel Optimization (Control_N Algorithm, C5 Bounds)")
     print(f"Algorithm: DE (Control_N Settings) -> L-BFGS-B")
+    print(f"Bounds: C layers from 5-50nm (vs. original 1-40nm)")
     print(f"DE Settings: maxiter={args.i1}, popsize=25, updating='deferred'")
     print(f"Parallelization: {len(args.seeds)} seeds across {args.workers if args.workers else 'all'} cores")
     print(f"Constraint: Im(λ) >= {IMAG_MIN}")

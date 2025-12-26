@@ -1,6 +1,7 @@
 """
-Exceptional Point Finder - DE + L-BFGS-B (Control_N Algorithm)
+Exceptional Point Finder - DE + L-BFGS-B (Control_N Algorithm, -G-0.5i Matrix)
 Uses Control_N.py's objective function (variance-based) and constraints
+With shifted matrix: -G - 0.5j*I and constraint |Im(λ)| >= 5
 With multi-core parallel execution and plotting utilities
 """
 
@@ -86,19 +87,21 @@ except Exception as e:
 def objective_function_control(params, fixed_materials, return_details=False):
     """
     Variance-based loss matching Control_N.py
-    Loss = Σ|λ - mean(λ)|² where λ are eigenvalues of G (directly)
-    Constraint: Im(λ) >= IMAG_MIN (one-sided, not |Im(λ)|)
+    Loss = Σ|λ - mean(λ)|² where λ are eigenvalues of -G - 0.5j*I
+    Constraint: |Im(λ)| >= IMAG_MIN (absolute value, since eigenvalues shifted to negative)
     """
     try:
         theta0, Layers, C0 = build_layers(params, fixed_materials)
         G, _ = GreenFun(theta0, Layers, C0)
 
-        # Use G directly (matching Control_N exactly)
-        eigvals = np.linalg.eigvals(G)
+        # Use -G - 0.5j*I (shifted matrix)
+        I = np.eye(G.shape[0])
+        G_shifted = -G - 0.5j * I
+        eigvals = np.linalg.eigvals(G_shifted)
 
         if np.any(np.isnan(eigvals)) or np.any(np.isinf(eigvals)):
             if return_details:
-                return 1e10, eigvals, np.zeros(3), np.zeros(3), G, G, 1e10, 0.0
+                return 1e10, eigvals, np.zeros(3), np.zeros(3), G_shifted, G_shifted, 1e10, 0.0
             return 1e10
 
         # Variance-based loss (Control_N style)
@@ -106,19 +109,19 @@ def objective_function_control(params, fixed_materials, return_details=False):
         diff = eigvals - mean_eig
         spread = np.sum(diff.real**2 + diff.imag**2)
 
-        # Im(λ) >= IMAG_MIN constraint (one-sided, Control_N style)
+        # |Im(λ)| >= IMAG_MIN constraint (absolute value)
         imag_parts = np.imag(eigvals)
-        min_im = np.min(imag_parts)
+        min_abs_im = np.min(np.abs(imag_parts))
 
         penalty_imag = 0.0
-        if min_im < IMAG_MIN:
-            penalty_imag = IMAG_PENALTY * (IMAG_MIN - min_im) ** 2
+        if min_abs_im < IMAG_MIN:
+            penalty_imag = IMAG_PENALTY * (IMAG_MIN - min_abs_im) ** 2
 
         loss = spread + penalty_imag
 
         if return_details:
             real_parts = np.real(eigvals)
-            return loss, eigvals, real_parts, imag_parts, G, G, spread, penalty_imag
+            return loss, eigvals, real_parts, imag_parts, G_shifted, G_shifted, spread, penalty_imag
         return loss
 
     except Exception as e:
@@ -146,7 +149,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, verbose=True):
 
     np.random.seed(seed)
 
-    output_dir = os.path.join('results', f'DE_Control_s{seed}_DE{maxiter_de}_LB{maxiter_lbfgsb}')
+    output_dir = os.path.join('results', f'DE_Control_Gshift_s{seed}_DE{maxiter_de}_LB{maxiter_lbfgsb}')
     os.makedirs(output_dir, exist_ok=True)
 
     if verbose:
@@ -299,7 +302,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, verbose=True):
     output += "\nDegeneracy Check:\n"
     output += f"  Std(Re) = {np.std(real_parts):.6e}\n"
     output += f"  Std(Im) = {np.std(imag_parts):.6e}\n"
-    output += f"  Min Im(λ) = {np.min(imag_parts):.4f} (constraint: >= {IMAG_MIN})\n"
+    output += f"  Min |Im(λ)| = {np.min(np.abs(imag_parts)):.4f} (constraint: |Im(λ)| >= {IMAG_MIN})\n"
 
     log_print(output, console=verbose)
     log_file.close()
@@ -315,7 +318,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, verbose=True):
     params_txt_path = os.path.join(output_dir, 'parameters_high_precision.txt')
     with open(params_txt_path, 'w', encoding='utf-8') as f:
         f.write("=" * 70 + "\n")
-        f.write(f"Exceptional Point Parameters (Control_N Algorithm) - Seed {seed}\n")
+        f.write(f"Exceptional Point Parameters (Control_N Algorithm, -G-0.5i Matrix) - Seed {seed}\n")
         f.write("=" * 70 + "\n\n")
         f.write(f"Final Loss:  {final_loss:.15e}\n")
         f.write(f"Spread:      {spread:.15e}\n")
@@ -345,7 +348,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, verbose=True):
         for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
             f.write(f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n")
 
-    plot_optimization_history(history, output_dir, seed, 'DE (Control_N) + L-BFGS-B')
+    plot_optimization_history(history, output_dir, seed, 'DE (Control_N, -G-0.5i) + L-BFGS-B')
 
     scan_parameters_around_optimum(
         params_optimal=final_x,
@@ -391,11 +394,12 @@ if __name__ == "__main__":
     task_args = [(seed, args.i1, args.i2) for seed in args.seeds]
 
     print("=" * 70)
-    print(f"Starting Parallel Optimization (Control_N Algorithm)")
+    print(f"Starting Parallel Optimization (Control_N Algorithm, -G-0.5i Matrix)")
     print(f"Algorithm: DE (Control_N Settings) -> L-BFGS-B")
+    print(f"Matrix: -G - 0.5j*I (shifted eigenvalues)")
     print(f"DE Settings: maxiter={args.i1}, popsize=25, updating='deferred'")
     print(f"Parallelization: {len(args.seeds)} seeds across {args.workers if args.workers else 'all'} cores")
-    print(f"Constraint: Im(λ) >= {IMAG_MIN}")
+    print(f"Constraint: |Im(λ)| >= {IMAG_MIN}")
     print("=" * 70)
 
     start_time = time.time()

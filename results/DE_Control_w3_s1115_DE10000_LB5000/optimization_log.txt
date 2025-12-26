@@ -1,0 +1,4 @@
+======================================================================
+Phase 1: DE Optimization (Control_N Algorithm) - Seed 1115
+======================================================================
+Using workers=3 (testing multiprocessing)
