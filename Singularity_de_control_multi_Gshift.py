@@ -13,50 +13,18 @@ import importlib.util
 from tqdm import tqdm
 
 # Import shared configuration
-from config import FIXED_MATERIALS, C0_FIXED, DEFAULT_SEEDS, PARAM_NAMES, PARAM_LABELS, LAYER_NAMES
+from config import (
+    FIXED_MATERIALS, C0_FIXED, DEFAULT_SEEDS,
+    PARAM_NAMES, PARAM_LABELS, LAYER_NAMES,
+    BOUNDS, IMAG_MIN, IMAG_PENALTY,
+    DEFAULT_DE_ITERATIONS, DEFAULT_LBFGSB_ITERATIONS
+)
 
 # Import common functions
 from common_functions import build_layers
 
 # Import plotting utilities
 from plotting_utils import plot_optimization_history, scan_parameters_around_optimum
-
-# ============================================================
-# Control_N Configuration
-# ============================================================
-
-# Use Control_N bounds
-BOUNDS = [
-    (2.0, 8.0),    # theta0 (mrad)
-    (0.5, 4.0),    # Pt
-    (1.0, 40.0),   # C
-    (0.8, 3.0),    # Fe*
-    (1.0, 40.0),   # C
-    (0.5, 3.0),    # Fe*
-    (1.0, 40.0),   # C
-    (0.5, 3.0),    # Fe*
-    (1.0, 40.0),   # C
-]
-
-# BOUNDS = [
-#         (2.0, 10.0),     # theta0 (mrad)
-#         (3.0, 10.0),     # Pt thickness (nm)
-#         (5.0, 50.0),     # C layer 1
-#         (0.5, 3.0),      # Fe layer 1 (resonant)
-#         (5.0, 50.0),     # C layer 2
-#         (0.5, 3.0),      # Fe layer 2 (resonant)
-#         (5.0, 50.0),     # C layer 3
-#         (0.5, 3.0),      # Fe layer 3 (resonant)
-#         (5.0, 50.0),     # C layer 4
-#     ]
-
-
-IMAG_MIN = 5.0
-IMAG_PENALTY = 1e4
-
-# DE settings matching Control_N
-DEFAULT_DE_ITERATIONS = 100000
-DEFAULT_LBFGSB_ITERATIONS = 5000
 
 # ============================================================
 # Dynamic Import of Green Function

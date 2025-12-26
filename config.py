@@ -25,37 +25,44 @@ FIXED_MATERIALS = (Platinum, Carbon, Iron)
 C0_FIXED = 7.74 * 1.06 * 0.5
 
 # ============================================================
-# Optimization Bounds
+# Optimization Bounds (Control_N Verified Bounds)
 # ============================================================
 
 # Parameter bounds: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4]
+# These bounds are verified to work well with Control_N algorithm
 BOUNDS = [
-    (2.0, 10.0),   # theta0 (mrad)
-    (3.0, 10.0),   # Pt thickness (nm)
-    (1.0, 50.0),   # C layer 1
-    (0.5, 3.0),    # Fe layer 1 (resonant)
-    (1.0, 50.0),   # C layer 2
+    (2.0, 8.0),    # theta0 (mrad)
+    (0.5, 4.0),    # Pt thickness (nm)
+    (1.0, 40.0),   # C layer 1
+    (0.8, 3.0),    # Fe layer 1 (resonant) - first layer has tighter bound
+    (1.0, 40.0),   # C layer 2
     (0.5, 3.0),    # Fe layer 2 (resonant)
-    (1.0, 50.0),   # C layer 3
+    (1.0, 40.0),   # C layer 3
     (0.5, 3.0),    # Fe layer 3 (resonant)
-    (1.0, 50.0),   # C layer 4
+    (1.0, 40.0),   # C layer 4
 ]
+
+# ============================================================
+# Constraint Parameters
+# ============================================================
+
+# Imaginary part minimum constraint: Im(λ) >= IMAG_MIN
+IMAG_MIN = 5.0
+
+# Penalty weight for imaginary part constraint violations
+IMAG_PENALTY = 1e4
 
 # ============================================================
 # Default Optimization Parameters
 # ============================================================
 
-# Threshold for eigenvalue magnitude constraint
-DEFAULT_THRESHOLD = 5.0
+# Default iteration counts (Control_N verified values)
+DEFAULT_DE_ITERATIONS = 100000      # Differential Evolution iterations
+DEFAULT_LBFGSB_ITERATIONS = 5000    # L-BFGS-B refinement iterations
 
-# Penalty weight for constraint violations
-DEFAULT_PENALTY_WEIGHT = 100.0
-
-# Default iteration counts
+# Legacy iteration counts (kept for backward compatibility)
 DEFAULT_CMA_ITERATIONS = 300
-DEFAULT_DE_ITERATIONS = 100
 DEFAULT_NM_ITERATIONS = 500
-DEFAULT_LBFGSB_ITERATIONS = 500
 
 # Default seeds for multi-seed optimization
 DEFAULT_SEEDS = [812, 1001, 2023, 3030, 42]
