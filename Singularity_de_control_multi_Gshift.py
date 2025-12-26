@@ -30,19 +30,19 @@ from plotting_utils import plot_optimization_history, scan_parameters_around_opt
 # Dynamic Import of Green Function
 # ============================================================
 current_dir = os.path.dirname(os.path.abspath(__file__))
-green_script_path = os.path.join(current_dir, "green function-new.py")
+green_script_path = os.path.join(current_dir, "green_function.py")
 
 if not os.path.exists(green_script_path):
-    green_script_path = "green function-new.py"
+    green_script_path = "green_function.py"
 
 try:
-    spec = importlib.util.spec_from_file_location("green_function_new", green_script_path)
-    green_function_new = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(green_function_new)
-    GreenFun = green_function_new.GreenFun
+    spec = importlib.util.spec_from_file_location("green_function", green_script_path)
+    green_function_module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(green_function_module)
+    GreenFun = green_function_module.GreenFun
 except Exception as e:
     print(f"Error importing GreenFun: {e}")
-    print("Make sure 'green function-new.py' is in the same directory.")
+    print("Make sure 'green_function.py' is in the same directory.")
     sys.exit(1)
 
 # ============================================================
