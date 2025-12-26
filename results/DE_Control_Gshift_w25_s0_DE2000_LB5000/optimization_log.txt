@@ -2,3 +2,4 @@
 Phase 1: DE Optimization (Control_N Algorithm) - Seed 0
 ======================================================================
 Using workers=25
+DE Iter     1: Loss=9.034667e+04 (Spread=7.531328e+01, PenIm=9.03e+04, convergence=0.000e+00)
