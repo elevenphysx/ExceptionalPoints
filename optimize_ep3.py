@@ -1,8 +1,7 @@
 """
-Exceptional Point Finder - DE + L-BFGS-B (Control_N Algorithm, -G-0.5i Matrix)
-Uses Control_N.py's objective function (variance-based) and constraints
-With shifted matrix: -G - 0.5j*I and constraint |Im(λ)| >= 5
-With multi-worker parallel execution and plotting utilities
+Exceptional Point (EP3) Optimizer
+Two-stage optimization: Differential Evolution + L-BFGS-B
+Uses variance-based loss function with -G-0.5j*I matrix
 """
 
 import numpy as np
@@ -64,7 +63,7 @@ def _objective_wrapper_for_de(params):
 def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verbose=True):
     np.random.seed(seed)
 
-    output_dir = os.path.join('results', f'DE_Control_Gshift_w{n_workers}_s{seed}_DE{maxiter_de}_LB{maxiter_lbfgsb}')
+    output_dir = os.path.join('results', f'ep3_w{n_workers}_s{seed}_DE{maxiter_de}_LB{maxiter_lbfgsb}')
     os.makedirs(output_dir, exist_ok=True)
 
     if verbose:
@@ -87,7 +86,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
 
     # --- Phase 1: Differential Evolution (Control_N settings) ---
     log_print("=" * 70, console=False)
-    log_print(f"Phase 1: DE Optimization (Control_N Algorithm) - Seed {seed}", console=False)
+    log_print(f"Phase 1: Differential Evolution - Seed {seed}", console=False)
     log_print("=" * 70, console=False)
 
     pbar_de = tqdm(total=maxiter_de, desc=f"Seed {seed} DE", disable=not verbose)
@@ -232,7 +231,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
     params_txt_path = os.path.join(output_dir, 'parameters_high_precision.txt')
     with open(params_txt_path, 'w', encoding='utf-8') as f:
         f.write("=" * 70 + "\n")
-        f.write(f"Exceptional Point Parameters (Control_N Algorithm, -G-0.5i Matrix) - Seed {seed}\n")
+        f.write(f"Exceptional Point (EP3) Parameters - Seed {seed}\n")
         f.write("=" * 70 + "\n\n")
         f.write(f"Final Loss:  {final_loss:.15e}\n")
         f.write(f"Spread:      {spread:.15e}\n")
@@ -262,7 +261,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
         for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
             f.write(f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n")
 
-    plot_optimization_history(history, output_dir, seed, 'DE (Control_N, -G-0.5i) + L-BFGS-B')
+    plot_optimization_history(history, output_dir, seed, 'EP3 Optimizer: DE + L-BFGS-B')
 
     scan_parameters_around_optimum(
         params_optimal=final_x,
@@ -279,21 +278,18 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description='Exceptional Point Finder (Control_N Algorithm, -G-0.5i Matrix)')
+    parser = argparse.ArgumentParser(description='Exceptional Point (EP3) Optimizer')
     parser.add_argument('-i1', type=int, default=DEFAULT_DE_ITERATIONS, help='DE iterations')
     parser.add_argument('-i2', type=int, default=DEFAULT_LBFGSB_ITERATIONS, help='L-BFGS-B iterations')
     parser.add_argument('-s', '--seed', type=int, default=0, help='Random seed')
-    parser.add_argument('-w', '--workers', type=int, default=5, help='Number of workers for DE')
+    parser.add_argument('-w', '--workers', type=int, default=20, help='Number of workers for DE')
 
     args = parser.parse_args()
 
     print("=" * 70)
-    print(f"Exceptional Point Optimization (-G-0.5i Matrix, workers={args.workers})")
-    print(f"Algorithm: DE (workers={args.workers}) -> L-BFGS-B")
-    print(f"Matrix: -G - 0.5j*I (shifted eigenvalues)")
-    print(f"DE Settings: maxiter={args.i1}, popsize=25, tol=0, atol=0, updating='deferred'")
-    print(f"Seed: {args.seed}")
-    print(f"Constraint: |Im(λ)| >= {IMAG_MIN}")
+    print(f"EP3 Optimizer (workers={args.workers}, seed={args.seed})")
+    print(f"Algorithm: DE ({args.i1} iter) -> L-BFGS-B ({args.i2} iter)")
+    print(f"Matrix: -G - 0.5j*I | Constraint: |Im(λ)| >= {IMAG_MIN}")
     print("=" * 70)
 
     optimize_exceptional_point(
