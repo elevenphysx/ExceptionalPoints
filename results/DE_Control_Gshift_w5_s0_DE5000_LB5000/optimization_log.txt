@@ -1,0 +1,10 @@
+======================================================================
+Phase 1: DE Optimization (Control_N Algorithm) - Seed 0
+======================================================================
+Using workers=5
+DE Iter     1: Loss=9.034667e+04 (Spread=7.531328e+01, PenIm=9.03e+04, convergence=0.000e+00)
+DE Iter   100: Loss=5.805321e+01 (Spread=5.805321e+01, PenIm=0.00e+00, convergence=0.000e+00)
+DE Iter   200: Loss=1.612456e+01 (Spread=1.612456e+01, PenIm=0.00e+00, convergence=0.000e+00)
+DE Iter   300: Loss=6.844407e+00 (Spread=6.844407e+00, PenIm=0.00e+00, convergence=0.000e+00)
+DE Iter   400: Loss=3.318106e+00 (Spread=3.318106e+00, PenIm=0.00e+00, convergence=0.000e+00)
+DE Iter   500: Loss=2.159471e+00 (Spread=2.159471e+00, PenIm=0.00e+00, convergence=0.000e+00)

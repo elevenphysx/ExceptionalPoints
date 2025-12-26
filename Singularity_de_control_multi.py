@@ -96,16 +96,6 @@ def objective_function_control(params, fixed_materials, return_details=False):
 
 
 # ============================================================
-# Global wrapper for multiprocessing
-# ============================================================
-_global_fixed_materials = None
-
-def _objective_wrapper(p):
-    """Global wrapper for DE multiprocessing"""
-    return objective_function_control(p, _global_fixed_materials)
-
-
-# ============================================================
 # Main Optimization Logic (Single Seed)
 # ============================================================
 
