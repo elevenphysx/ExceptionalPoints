@@ -3,7 +3,7 @@ Common functions shared across all Exceptional Point optimization algorithms
 """
 
 import numpy as np
-from config import C0_FIXED
+from config import C0_FIXED, IMAG_MIN, IMAG_PENALTY
 
 
 def build_layers(params, fixed_materials):
@@ -37,85 +37,61 @@ def build_layers(params, fixed_materials):
     return theta0, Layers, C0
 
 
-def objective_function(params, fixed_materials, GreenFun, return_details=False, threshold=5.0, penalty_weight=100.0, bounds=None):
+def objective_function_control(params, fixed_materials, GreenFun, return_details=False):
     """
-    Objective function for Exceptional Point optimization
+    Variance-based loss matching Control_N.py (Verified Working Implementation)
 
-    Minimizes:
-        1. Degeneracy loss: sum of squared pairwise differences in eigenvalues
-        2. Magnitude constraint: exponential penalty if |Re| or |Im| < threshold
-        3. (Optional) Soft bounds penalty if bounds is provided
+    Loss = Σ|λ - mean(λ)|² where λ are eigenvalues of -G - 0.5j*I
+    Constraint: |Im(λ)| >= IMAG_MIN (absolute value, since eigenvalues shifted to negative)
+
+    This is the verified implementation from Singularity_de_control_multi_Gshift.py
 
     Args:
-        params: optimization parameters
-        fixed_materials: material constants
+        params: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4]
+        fixed_materials: (Platinum, Carbon, Iron) material tuples
         GreenFun: Green function calculator
         return_details: if True, return detailed breakdown
-        threshold: minimum magnitude constraint
-        penalty_weight: weight for constraint penalties
-        bounds: optional bounds for soft penalty
 
     Returns:
         loss: total loss value
-        (if return_details=True) additional: eigvals, real_parts, imag_parts, G, G1, loss_deg, penalties
+        (if return_details=True) additional: eigvals, real_parts, imag_parts, G, G_shifted, spread, penalty_imag
     """
-
-    def pairwise_diff_sq(values):
-        """Calculate sum of squared pairwise differences"""
-        diff_sum = 0.0
-        n = len(values)
-        for i in range(n):
-            for j in range(i + 1, n):
-                diff_sum += (values[i] - values[j]) ** 2
-        return diff_sum
-
     try:
         theta0, Layers, C0 = build_layers(params, fixed_materials)
         G, _ = GreenFun(theta0, Layers, C0)
-        G1 = -G - 1j * 0.5 * np.eye(G.shape[0], dtype=complex)
-        eigvals = np.linalg.eigvals(G1)
+
+        # Use -G - 0.5j*I (shifted matrix)
+        I = np.eye(G.shape[0])
+        G_shifted = -G - 0.5j * I
+        eigvals = np.linalg.eigvals(G_shifted)
 
         if np.any(np.isnan(eigvals)) or np.any(np.isinf(eigvals)):
             if return_details:
-                return 1e10, eigvals, np.zeros(3), np.zeros(3), G, G1, 1e10, (1e10, 1e10)
+                return 1e10, eigvals, np.zeros(3), np.zeros(3), G_shifted, G_shifted, 1e10, 0.0
             return 1e10
 
-        real_parts = np.real(eigvals)
+        # Variance-based loss (Control_N style)
+        mean_eig = np.mean(eigvals)
+        diff = eigvals - mean_eig
+        spread = np.sum(diff.real**2 + diff.imag**2)
+
+        # |Im(λ)| >= IMAG_MIN constraint (absolute value)
         imag_parts = np.imag(eigvals)
+        min_abs_im = np.min(np.abs(imag_parts))
 
-        loss_degeneracy = pairwise_diff_sq(real_parts) + pairwise_diff_sq(imag_parts)
+        penalty_imag = 0.0
+        if min_abs_im < IMAG_MIN:
+            penalty_imag = IMAG_PENALTY * (IMAG_MIN - min_abs_im) ** 2
 
-        # Smooth threshold penalty using softplus (always differentiable)
-        # softplus(x) = log(1 + exp(x)) is smooth approximation of max(0, x)
-        min_re = np.min(np.abs(real_parts))
-        gap_re = threshold - min_re
-        # Use scaled softplus for smooth penalty
-        penalty_real = np.log(1.0 + np.exp(np.clip(gap_re, -10, 10)))  # Clip to avoid overflow
-
-        min_im = np.min(np.abs(imag_parts))
-        gap_im = threshold - min_im
-        penalty_imag = np.log(1.0 + np.exp(np.clip(gap_im, -10, 10)))
-
-        # Optional soft bounds penalty (exponential with clipping to prevent overflow)
-        penalty_bounds = 0.0
-        if bounds is not None:
-            for p, (low, high) in zip(params, bounds):
-                if p < low:
-                    gap = low - p
-                    # Clip gap to max 20: exp(20) ≈ 4.8e8 is already huge enough
-                    penalty_bounds += (np.exp(np.clip(gap, 0, 20)) - 1.0)
-                elif p > high:
-                    gap = p - high
-                    # Clip gap to max 20 to prevent overflow
-                    penalty_bounds += (np.exp(np.clip(gap, 0, 20)) - 1.0)
-
-        loss = loss_degeneracy + penalty_weight * (penalty_real + penalty_imag + penalty_bounds)
+        loss = spread + penalty_imag
 
         if return_details:
-            return loss, eigvals, real_parts, imag_parts, G, G1, loss_degeneracy, (penalty_real, penalty_imag)
+            real_parts = np.real(eigvals)
+            return loss, eigvals, real_parts, imag_parts, G_shifted, G_shifted, spread, penalty_imag
         return loss
 
     except Exception as e:
         if return_details:
             return 1e10, None, None, None, None, None, None, None
         return 1e10
+
