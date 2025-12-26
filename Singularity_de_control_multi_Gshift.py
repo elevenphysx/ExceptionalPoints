@@ -21,7 +21,7 @@ from config import (
 )
 
 # Import common functions
-from common_functions import build_layers
+from common_functions import build_layers, objective_function_control
 
 # Import plotting utilities
 from plotting_utils import plot_optimization_history, scan_parameters_around_optimum
@@ -46,56 +46,6 @@ except Exception as e:
     sys.exit(1)
 
 # ============================================================
-# Control_N Style Objective Function (Variance-based)
-# ============================================================
-
-def objective_function_control(params, fixed_materials, return_details=False):
-    """
-    Variance-based loss matching Control_N.py
-    Loss = Σ|λ - mean(λ)|² where λ are eigenvalues of -G - 0.5j*I
-    Constraint: |Im(λ)| >= IMAG_MIN (absolute value, since eigenvalues shifted to negative)
-    """
-    try:
-        theta0, Layers, C0 = build_layers(params, fixed_materials)
-        G, _ = GreenFun(theta0, Layers, C0)
-
-        # Use -G - 0.5j*I (shifted matrix)
-        I = np.eye(G.shape[0])
-        G_shifted = -G - 0.5j * I
-        eigvals = np.linalg.eigvals(G_shifted)
-
-        if np.any(np.isnan(eigvals)) or np.any(np.isinf(eigvals)):
-            if return_details:
-                return 1e10, eigvals, np.zeros(3), np.zeros(3), G_shifted, G_shifted, 1e10, 0.0
-            return 1e10
-
-        # Variance-based loss (Control_N style)
-        mean_eig = np.mean(eigvals)
-        diff = eigvals - mean_eig
-        spread = np.sum(diff.real**2 + diff.imag**2)
-
-        # |Im(λ)| >= IMAG_MIN constraint (absolute value)
-        imag_parts = np.imag(eigvals)
-        min_abs_im = np.min(np.abs(imag_parts))
-
-        penalty_imag = 0.0
-        if min_abs_im < IMAG_MIN:
-            penalty_imag = IMAG_PENALTY * (IMAG_MIN - min_abs_im) ** 2
-
-        loss = spread + penalty_imag
-
-        if return_details:
-            real_parts = np.real(eigvals)
-            return loss, eigvals, real_parts, imag_parts, G_shifted, G_shifted, spread, penalty_imag
-        return loss
-
-    except Exception as e:
-        if return_details:
-            return 1e10, None, None, None, None, None, None, None
-        return 1e10
-
-
-# ============================================================
 # Main Optimization Logic (Single Seed)
 # ============================================================
 
@@ -113,8 +63,10 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
     fixed_materials = FIXED_MATERIALS
     bounds = BOUNDS
 
-    # Create a partial function that embeds fixed_materials (works with multiprocessing)
-    objective_for_de = partial(objective_function_control, fixed_materials=fixed_materials)
+    # Create a partial function that embeds fixed_materials AND GreenFun (works with multiprocessing)
+    objective_for_de = partial(objective_function_control,
+                              fixed_materials=fixed_materials,
+                              GreenFun=GreenFun)
 
     log_file_path = os.path.join(output_dir, 'optimization_log.txt')
     log_file = open(log_file_path, 'w', encoding='utf-8')
@@ -144,7 +96,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
         iteration_count[0] += 1
         pbar_de.update(1)
 
-        loss_current = objective_function_control(xk, fixed_materials)
+        loss_current = objective_function_control(xk, fixed_materials, GreenFun)
 
         if loss_current < best_loss_so_far:
             best_loss_so_far = loss_current
@@ -152,7 +104,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
 
         if iteration_count[0] % 100 == 0 or iteration_count[0] == 1:
             loss, eigvals, real_parts, imag_parts, _, _, spread, pen_im = objective_function_control(
-                xk, fixed_materials, return_details=True
+                xk, fixed_materials, GreenFun, return_details=True
             )
             msg = f"DE Iter {iteration_count[0]:5d}: Loss={loss:.6e} (Spread={spread:.6e}, PenIm={pen_im:.2e}, convergence={convergence if convergence else 0:.3e})"
             if verbose: pbar_de.write(msg)
@@ -207,7 +159,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
         pbar_lbfgsb.update(1)
         if lbfgsb_iter[0] % 100 == 0:
             loss, eigvals, real_parts, imag_parts, _, _, spread, pen_im = objective_function_control(
-                xk, fixed_materials, return_details=True
+                xk, fixed_materials, GreenFun, return_details=True
             )
             msg = f"L-BFGS-B Iter {lbfgsb_iter[0]}: Loss={loss:.6e}"
             if verbose: pbar_lbfgsb.write(msg)
@@ -224,7 +176,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
 
     try:
         res_lbfgsb = minimize(
-            lambda p: objective_function_control(p, fixed_materials),
+            lambda p: objective_function_control(p, fixed_materials, GreenFun),
             result_de_x,
             method='L-BFGS-B',
             bounds=bounds,
@@ -241,8 +193,8 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
         pbar_lbfgsb.close()
 
     # --- Final Output ---
-    loss, eigvals, real_parts, imag_parts, G, _, spread, pen_im = objective_function_control(
-        final_x, fixed_materials, return_details=True
+    loss, eigvals, real_parts, imag_parts, G, G_shifted, spread, pen_im = objective_function_control(
+        final_x, fixed_materials, GreenFun, return_details=True
     )
 
     theta0, Layers, C0 = build_layers(final_x, fixed_materials)
@@ -309,7 +261,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
 
     scan_parameters_around_optimum(
         params_optimal=final_x,
-        objective_func=lambda p, fm, **kw: objective_function_control(p, fm, **kw),
+        objective_func=lambda p, fm, **kw: objective_function_control(p, fm, GreenFun, **kw),
         fixed_materials=fixed_materials,
         output_dir=output_dir,
         scan_range=0.5,

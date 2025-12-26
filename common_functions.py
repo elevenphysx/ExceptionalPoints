@@ -67,7 +67,7 @@ def objective_function_control(params, fixed_materials, GreenFun, return_details
 
         if np.any(np.isnan(eigvals)) or np.any(np.isinf(eigvals)):
             if return_details:
-                return 1e10, eigvals, np.zeros(3), np.zeros(3), G_shifted, G_shifted, 1e10, 0.0
+                return 1e10, eigvals, np.zeros(3), np.zeros(3), G, G_shifted, 1e10, 0.0
             return 1e10
 
         # Variance-based loss (Control_N style)
@@ -87,7 +87,7 @@ def objective_function_control(params, fixed_materials, GreenFun, return_details
 
         if return_details:
             real_parts = np.real(eigvals)
-            return loss, eigvals, real_parts, imag_parts, G_shifted, G_shifted, spread, penalty_imag
+            return loss, eigvals, real_parts, imag_parts, G, G_shifted, spread, penalty_imag
         return loss
 
     except Exception as e:
