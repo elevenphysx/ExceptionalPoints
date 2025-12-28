@@ -90,3 +90,34 @@ PARAM_NAMES = ['theta0', 't_Pt', 't_C1', 't_Fe1', 't_C2', 't_Fe2', 't_C3', 't_Fe
 # Parameter labels for plotting (with subscripts)
 PARAM_LABELS = ['θ₀ (mrad)', 't_Pt (nm)', 't_C₁ (nm)', 't_Fe₁ (nm)',
                 't_C₂ (nm)', 't_Fe₂ (nm)', 't_C₃ (nm)', 't_Fe₃ (nm)', 't_C₄ (nm)']
+
+# ============================================================
+# EP4 Configuration (4 resonant layers)
+# ============================================================
+
+# EP4 Parameter bounds: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4, t_Fe4, t_C5]
+BOUNDS_EP4 = [
+    (2.0, 10.0),    # theta0 (mrad)
+    (0.5, 4.0),     # Pt thickness (nm)
+    (1.0, 40.0),    # C layer 1
+    (0.8, 3.0),     # Fe layer 1 (resonant)
+    (1.0, 40.0),    # C layer 2
+    (0.5, 3.0),     # Fe layer 2 (resonant)
+    (1.0, 40.0),    # C layer 3
+    (0.5, 3.0),     # Fe layer 3 (resonant)
+    (1.0, 40.0),    # C layer 4
+    (0.5, 3.0),     # Fe layer 4 (resonant)
+    (1.0, 40.0),    # C layer 5
+]
+
+# EP4 Layer names (10 layers + substrate)
+LAYER_NAMES_EP4 = ['Pt', 'C', 'Fe*', 'C', 'Fe*', 'C', 'Fe*', 'C', 'Fe*', 'C']
+
+# EP4 Parameter names
+PARAM_NAMES_EP4 = ['theta0', 't_Pt', 't_C1', 't_Fe1', 't_C2', 't_Fe2',
+                   't_C3', 't_Fe3', 't_C4', 't_Fe4', 't_C5']
+
+# EP4 Parameter labels for plotting
+PARAM_LABELS_EP4 = ['θ₀ (mrad)', 't_Pt (nm)', 't_C₁ (nm)', 't_Fe₁ (nm)',
+                    't_C₂ (nm)', 't_Fe₂ (nm)', 't_C₃ (nm)', 't_Fe₃ (nm)',
+                    't_C₄ (nm)', 't_Fe₄ (nm)', 't_C₅ (nm)']

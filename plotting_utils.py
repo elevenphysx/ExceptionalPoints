@@ -73,34 +73,33 @@ def plot_optimization_history(history, output_dir, seed, algorithm_name='Optimiz
         ax1.tick_params(labelsize=11)
 
         # Right panel: Eigenvalue distances
-        distances_12 = []
-        distances_13 = []
-        distances_23 = []
+        # Dynamically compute all pairwise distances
+        n_eigvals = len(eigvals_real[0]) if eigvals_real else 3
+        distances = {f'{i+1}-{j+1}': [] for i in range(n_eigvals) for j in range(i+1, n_eigvals)}
 
         for real_parts_iter, imag_parts_iter in zip(eigvals_real, eigvals_imag):
-            if len(real_parts_iter) >= 3:
-                eig1 = real_parts_iter[0] + 1j * imag_parts_iter[0]
-                eig2 = real_parts_iter[1] + 1j * imag_parts_iter[1]
-                eig3 = real_parts_iter[2] + 1j * imag_parts_iter[2]
+            if len(real_parts_iter) >= n_eigvals:
+                eigs = [real_parts_iter[i] + 1j * imag_parts_iter[i] for i in range(n_eigvals)]
 
-                distances_12.append(np.abs(eig1 - eig2))
-                distances_13.append(np.abs(eig1 - eig3))
-                distances_23.append(np.abs(eig2 - eig3))
+                for i in range(n_eigvals):
+                    for j in range(i+1, n_eigvals):
+                        distances[f'{i+1}-{j+1}'].append(np.abs(eigs[i] - eigs[j]))
             else:
-                distances_12.append(np.nan)
-                distances_13.append(np.nan)
-                distances_23.append(np.nan)
+                for key in distances:
+                    distances[key].append(np.nan)
 
-        distances_12 = np.array(distances_12)
-        distances_13 = np.array(distances_13)
-        distances_23 = np.array(distances_23)
-
-        ax2.semilogy(iterations, distances_12, 'o-', color=DISTANCE_COLORS[0],
-                    label='|λ₁ - λ₂|', markersize=3, alpha=0.8)
-        ax2.semilogy(iterations, distances_13, 's-', color=DISTANCE_COLORS[1],
-                    label='|λ₁ - λ₃|', markersize=3, alpha=0.8)
-        ax2.semilogy(iterations, distances_23, '^-', color=DISTANCE_COLORS[2],
-                    label='|λ₂ - λ₃|', markersize=3, alpha=0.8)
+        # Plot up to 6 distance pairs (for visibility)
+        colors = DISTANCE_COLORS + ['#ff7f0e', '#2ca02c', '#17becf']
+        markers = ['o', 's', '^', 'D', 'v', 'p']
+        plot_count = 0
+        for idx, (key, dist_values) in enumerate(distances.items()):
+            if plot_count >= 6:
+                break
+            dist_array = np.array(dist_values)
+            ax2.semilogy(iterations, dist_array, f'{markers[idx]}-',
+                        color=colors[idx % len(colors)],
+                        label=f'|λ_{key}|', markersize=3, alpha=0.8)
+            plot_count += 1
 
         ax2.set_xlabel('Iteration', fontsize=14, fontweight='bold')
         ax2.set_ylabel('Distance', fontsize=14, fontweight='bold')
@@ -124,7 +123,8 @@ def plot_optimization_history(history, output_dir, seed, algorithm_name='Optimiz
 # ============================================================
 
 def scan_parameters_around_optimum(params_optimal, objective_func, fixed_materials,
-                                   output_dir, scan_range, n_points=21, **obj_kwargs):
+                                   output_dir, scan_range, n_points=21,
+                                   param_names=None, param_labels=None, **obj_kwargs):
     """
     Scan parameter sensitivity around optimal solution
 
@@ -135,6 +135,8 @@ def scan_parameters_around_optimum(params_optimal, objective_func, fixed_materia
         output_dir: directory to save plots
         scan_range: scan range (±range around optimal)
         n_points: number of scan points (default: 21)
+        param_names: list of parameter names (default: PARAM_NAMES from config)
+        param_labels: list of parameter labels (default: PARAM_LABELS from config)
         **obj_kwargs: additional keyword arguments for objective_func (threshold, penalty_weight, etc.)
 
     Saves:
@@ -143,12 +145,21 @@ def scan_parameters_around_optimum(params_optimal, objective_func, fixed_materia
     try:
         setup_matplotlib_style()
 
-        for i, (param_name, param_label) in enumerate(zip(PARAM_NAMES, PARAM_LABELS)):
+        # Use default values if not provided
+        if param_names is None:
+            param_names = PARAM_NAMES
+        if param_labels is None:
+            param_labels = PARAM_LABELS
+
+        for i, (param_name, param_label) in enumerate(zip(param_names, param_labels)):
             param_values = np.linspace(params_optimal[i] - scan_range,
                                       params_optimal[i] + scan_range, n_points)
 
             eigvals_real_list = []
             eigvals_imag_list = []
+            n_eigvals_expected = len(params_optimal) - 8  # Estimate: EP3=3, EP4=4, etc.
+            if n_eigvals_expected < 3:
+                n_eigvals_expected = 3
 
             for param_val in param_values:
                 params_test = params_optimal.copy()
@@ -160,19 +171,23 @@ def scan_parameters_around_optimum(params_optimal, objective_func, fixed_materia
                     eigvals_real_list.append(re)
                     eigvals_imag_list.append(im)
                 except:
-                    eigvals_real_list.append([np.nan, np.nan, np.nan])
-                    eigvals_imag_list.append([np.nan, np.nan, np.nan])
+                    eigvals_real_list.append([np.nan] * n_eigvals_expected)
+                    eigvals_imag_list.append([np.nan] * n_eigvals_expected)
 
             eigvals_real_array = np.array(eigvals_real_list)
             eigvals_imag_array = np.array(eigvals_imag_list)
+
+            # Determine number of eigenvalues
+            n_eigvals = eigvals_real_array.shape[1] if eigvals_real_array.size > 0 else 3
+            colors_extended = EIGENVALUE_COLORS + ['#9467bd', '#8c564b', '#e377c2', '#7f7f7f']
 
             # Create two-panel plot
             fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
 
             # Left panel: Real parts
-            for j in range(3):
+            for j in range(n_eigvals):
                 ax1.plot(param_values, eigvals_real_array[:, j], 'o-',
-                        color=EIGENVALUE_COLORS[j], label=f'Re(λ_{j+1})',
+                        color=colors_extended[j % len(colors_extended)], label=f'Re(λ_{j+1})',
                         markersize=6, alpha=0.8, linewidth=2)
 
             ax1.axvline(params_optimal[i], color='red', linestyle='--',
@@ -183,11 +198,14 @@ def scan_parameters_around_optimum(params_optimal, objective_func, fixed_materia
             ax1.legend(fontsize=11, framealpha=0.9, loc='best')
             ax1.grid(True, alpha=0.3, linestyle='--', linewidth=0.8)
             ax1.tick_params(labelsize=11)
+            # Format x-axis to avoid overlapping labels
+            ax1.xaxis.set_major_locator(plt.MaxNLocator(6))
+            ax1.ticklabel_format(style='sci', axis='x', scilimits=(-3,3))
 
             # Right panel: Imaginary parts
-            for j in range(3):
+            for j in range(n_eigvals):
                 ax2.plot(param_values, eigvals_imag_array[:, j], 's-',
-                        color=EIGENVALUE_COLORS[j], label=f'Im(λ_{j+1})',
+                        color=colors_extended[j % len(colors_extended)], label=f'Im(λ_{j+1})',
                         markersize=6, alpha=0.8, linewidth=2)
 
             ax2.axvline(params_optimal[i], color='red', linestyle='--',
@@ -198,6 +216,9 @@ def scan_parameters_around_optimum(params_optimal, objective_func, fixed_materia
             ax2.legend(fontsize=11, framealpha=0.9, loc='best')
             ax2.grid(True, alpha=0.3, linestyle='--', linewidth=0.8)
             ax2.tick_params(labelsize=11)
+            # Format x-axis to avoid overlapping labels
+            ax2.xaxis.set_major_locator(plt.MaxNLocator(6))
+            ax2.ticklabel_format(style='sci', axis='x', scilimits=(-3,3))
 
             plt.tight_layout()
             scan_path = os.path.join(output_dir, f'scan_{param_name}.png')
