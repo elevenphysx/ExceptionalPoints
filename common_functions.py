@@ -279,3 +279,55 @@ def format_final_result_string(loss, spread, pen_im, real_parts, imag_parts, ima
 
     return output
 
+
+def run_parameter_scan(params_optimal, fixed_materials, GreenFun, output_dir,
+                       scan_range=1e-4, n_points=51, penalty_weight=None):
+    """
+    Run parameter scan around optimal solution (auto-detects EP3/EP4)
+
+    Args:
+        params_optimal: optimal parameters array
+        fixed_materials: (Platinum, Spacer, Iron) material tuples
+        GreenFun: Green function calculator
+        output_dir: directory to save scan plots
+        scan_range: scan range around optimal (default: 1e-4)
+        n_points: number of scan points (default: 51)
+        penalty_weight: penalty weight for constraint (None = use default)
+    """
+    from plotting_utils import scan_parameters_around_optimum
+    from config import PARAM_NAMES, PARAM_LABELS, PARAM_NAMES_EP4, PARAM_LABELS_EP4
+
+    # Auto-detect EP3 or EP4 based on parameter count
+    if len(params_optimal) == 9:
+        # EP3: 9 parameters
+        build_layers_func = build_layers
+        param_names = PARAM_NAMES
+        param_labels = PARAM_LABELS
+    elif len(params_optimal) == 11:
+        # EP4: 11 parameters
+        build_layers_func = build_layers_ep4
+        param_names = PARAM_NAMES_EP4
+        param_labels = PARAM_LABELS_EP4
+    else:
+        # Unknown configuration, use EP3 as default
+        build_layers_func = build_layers
+        param_names = [f"param_{i}" for i in range(len(params_optimal))]
+        param_labels = [f"Param {i}" for i in range(len(params_optimal))]
+
+    # Run scan
+    scan_parameters_around_optimum(
+        params_optimal=params_optimal,
+        objective_func=lambda p, fm, **kw: objective_function_control(
+            p, fm, GreenFun,
+            build_layers_func=build_layers_func,
+            penalty_weight=penalty_weight,
+            **kw
+        ),
+        fixed_materials=fixed_materials,
+        output_dir=output_dir,
+        scan_range=scan_range,
+        n_points=n_points,
+        param_names=param_names,
+        param_labels=param_labels
+    )
+

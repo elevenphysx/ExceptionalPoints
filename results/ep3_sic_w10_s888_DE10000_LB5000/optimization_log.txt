@@ -124,3 +124,5 @@ DE Iter  5900: Loss=2.535908e-06 (Spread=2.535908e-06, PenIm=0.00e+00, convergen
   Eigenvalues: λ1=+0.462-5.455i, λ2=+0.461-5.454i, λ3=+0.460-5.454i
 DE Iter  6000: Loss=2.535908e-06 (Spread=2.535908e-06, PenIm=0.00e+00, convergence=0.000e+00)
   Eigenvalues: λ1=+0.462-5.455i, λ2=+0.461-5.454i, λ3=+0.460-5.454i
+DE Iter  6100: Loss=2.535908e-06 (Spread=2.535908e-06, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+0.462-5.455i, λ2=+0.461-5.454i, λ3=+0.460-5.454i
