@@ -245,7 +245,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
         fixed_materials=fixed_materials,
         output_dir=output_dir,
         scan_range=0.5,
-        n_points=21
+        n_points=50
     )
 
     return seed, final_loss, final_x
