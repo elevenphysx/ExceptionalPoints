@@ -18,6 +18,9 @@ Carbon = (2.257e-6, 1.230e-9)
 # Platinum
 Platinum = (1.713e-5, 2.518e-6)
 
+# SiC
+SiC = (3.22628057e-06, 1.7340934e-08)
+
 # Fixed materials tuple (order: Platinum, Carbon, Iron)
 FIXED_MATERIALS = (Platinum, Carbon, Iron)
 
@@ -97,17 +100,17 @@ PARAM_LABELS = ['θ₀ (mrad)', 't_Pt (nm)', 't_C₁ (nm)', 't_Fe₁ (nm)',
 
 # EP4 Parameter bounds: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4, t_Fe4, t_C5]
 BOUNDS_EP4 = [
-    (2.0, 10.0),    # theta0 (mrad)
-    (0.5, 4.0),     # Pt thickness (nm)
-    (1.0, 40.0),    # C layer 1
-    (0.8, 3.0),     # Fe layer 1 (resonant)
-    (1.0, 40.0),    # C layer 2
-    (0.5, 3.0),     # Fe layer 2 (resonant)
-    (1.0, 40.0),    # C layer 3
-    (0.5, 3.0),     # Fe layer 3 (resonant)
-    (1.0, 40.0),    # C layer 4
-    (0.5, 3.0),     # Fe layer 4 (resonant)
-    (1.0, 40.0),    # C layer 5
+    (2.0, 15.0),    # theta0 (mrad)
+    (0.5, 10),    # Pt
+    (0.5, 65.0),   # C
+    (0.2, 3.5),    # Fe*
+    (0.5, 65.0),   # C
+    (0.2, 3.5),    # Fe*
+    (0.5, 65.0),   # C
+    (0.2, 3.5),    # Fe*
+    (0.5, 65.0),   # C
+    (0.2, 3.5),    # Fe*
+    (0.5, 65.0),   # C
 ]
 
 # EP4 Layer names (10 layers + substrate)

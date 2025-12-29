@@ -71,20 +71,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
         print(f"--> [Seed {seed}] Output directory: {output_dir}")
 
     fixed_materials = FIXED_MATERIALS
-    # bounds = BOUNDS_EP4
-    bounds = [
-    (2.0, 15.0),    # theta0 (mrad)
-    (0.5, 10),    # Pt
-    (0.5, 65.0),   # C
-    (0.2, 3.5),    # Fe*
-    (0.5, 65.0),   # C
-    (0.2, 3.5),    # Fe*
-    (0.5, 65.0),   # C
-    (0.2, 3.5),    # Fe*
-    (0.5, 65.0),   # C
-    (0.2, 3.5),    # Fe*
-    (0.5, 65.0),   # C
-    ]
+    bounds = BOUNDS_EP4
 
 
     log_file_path = os.path.join(output_dir, 'optimization_log.txt')

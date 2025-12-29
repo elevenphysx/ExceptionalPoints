@@ -115,7 +115,10 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
             loss, eigvals, real_parts, imag_parts, _, _, spread, pen_im = objective_function_control(
                 xk, fixed_materials, GreenFun, return_details=True
             )
-            msg = f"DE Iter {iteration_count[0]:5d}: Loss={loss:.6e} (Spread={spread:.6e}, PenIm={pen_im:.2e}, convergence={convergence if convergence else 0:.3e})"
+            # Format eigenvalues for logging
+            eigvals_str = ", ".join([f"λ{i+1}={re:+.3f}{im:+.3f}i" for i, (re, im) in enumerate(zip(real_parts, imag_parts))])
+            msg = f"DE Iter {iteration_count[0]:5d}: Loss={loss:.6e} (Spread={spread:.6e}, PenIm={pen_im:.2e}, convergence={convergence if convergence else 0:.3e})\n"
+            msg += f"  Eigenvalues: {eigvals_str}"
             if verbose: pbar_de.write(msg)
             log_file.write(msg + "\n")
             log_file.flush()  # Flush immediately for real-time logging
@@ -170,7 +173,10 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
             loss, eigvals, real_parts, imag_parts, _, _, spread, pen_im = objective_function_control(
                 xk, fixed_materials, GreenFun, return_details=True
             )
-            msg = f"L-BFGS-B Iter {lbfgsb_iter[0]}: Loss={loss:.6e}"
+            # Format eigenvalues for logging
+            eigvals_str = ", ".join([f"λ{i+1}={re:+.3f}{im:+.3f}i" for i, (re, im) in enumerate(zip(real_parts, imag_parts))])
+            msg = f"L-BFGS-B Iter {lbfgsb_iter[0]}: Loss={loss:.6e}\n"
+            msg += f"  Eigenvalues: {eigvals_str}"
             if verbose: pbar_lbfgsb.write(msg)
             log_file.write(msg + "\n")
             log_file.flush()  # Flush immediately for real-time logging

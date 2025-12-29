@@ -2,3 +2,2028 @@
 Phase 1: Differential Evolution - Seed 888
 ======================================================================
 Using workers=30
+DE Iter     1: Loss=1.735064e+05 (Spread=5.427226e+00, PenIm=1.74e+05, convergence=0.000e+00)
+  Eigenvalues: λ1=+0.634-2.656i, λ2=+1.129-0.846i, λ3=-1.073-0.835i, λ4=-0.634-1.415i
+DE Iter   100: Loss=1.156686e+05 (Spread=1.791641e+01, PenIm=1.16e+05, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-2.098i, λ2=-2.735-1.992i, λ3=+1.158-2.133i, λ4=-1.178-1.599i
+DE Iter   200: Loss=1.156686e+05 (Spread=1.791641e+01, PenIm=1.16e+05, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-2.098i, λ2=-2.735-1.992i, λ3=+1.158-2.133i, λ4=-1.178-1.599i
+DE Iter   300: Loss=9.987981e+04 (Spread=1.410852e+01, PenIm=9.99e+04, convergence=0.000e+00)
+  Eigenvalues: λ1=-2.959-1.840i, λ2=-0.266-1.962i, λ3=+2.022-1.932i, λ4=+1.089-1.895i
+DE Iter   400: Loss=9.987981e+04 (Spread=1.410852e+01, PenIm=9.99e+04, convergence=0.000e+00)
+  Eigenvalues: λ1=-2.959-1.840i, λ2=-0.266-1.962i, λ3=+2.022-1.932i, λ4=+1.089-1.895i
+DE Iter   500: Loss=5.529012e+04 (Spread=1.352386e+03, PenIm=5.39e+04, convergence=0.000e+00)
+  Eigenvalues: λ1=+33.388-16.811i, λ2=+5.889-3.073i, λ3=-6.303-2.826i, λ4=-11.504-2.678i
+DE Iter   600: Loss=5.529012e+04 (Spread=1.352386e+03, PenIm=5.39e+04, convergence=0.000e+00)
+  Eigenvalues: λ1=+33.388-16.811i, λ2=+5.889-3.073i, λ3=-6.303-2.826i, λ4=-11.504-2.678i
+DE Iter   700: Loss=5.529012e+04 (Spread=1.352386e+03, PenIm=5.39e+04, convergence=0.000e+00)
+  Eigenvalues: λ1=+33.388-16.811i, λ2=+5.889-3.073i, λ3=-6.303-2.826i, λ4=-11.504-2.678i
+DE Iter   800: Loss=5.352340e+04 (Spread=5.571014e+02, PenIm=5.30e+04, convergence=0.000e+00)
+  Eigenvalues: λ1=+18.931-6.482i, λ2=+5.371-3.081i, λ3=-6.407-3.701i, λ4=-11.424-2.699i
+DE Iter   900: Loss=1.256193e+04 (Spread=7.780982e+02, PenIm=1.18e+04, convergence=0.000e+00)
+  Eigenvalues: λ1=+22.478-9.200i, λ2=+8.483-7.454i, λ3=-4.582-4.082i, λ4=-14.056-3.914i
+DE Iter  1000: Loss=2.698383e+03 (Spread=1.052183e+03, PenIm=1.65e+03, convergence=0.000e+00)
+  Eigenvalues: λ1=+9.216-36.421i, λ2=+6.284-4.608i, λ3=-4.394-5.575i, λ4=-12.828-4.594i
+DE Iter  1100: Loss=3.087052e+02 (Spread=3.087052e+02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=-14.107-6.279i, λ2=+0.962-5.620i, λ3=+2.746-8.191i, λ4=+9.885-6.611i
+DE Iter  1200: Loss=1.327840e+02 (Spread=1.327840e+02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=-7.660-6.609i, λ2=+1.283-9.462i, λ3=+3.060-5.008i, λ4=+7.416-5.345i
+DE Iter  1300: Loss=1.260295e+02 (Spread=1.260295e+02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=-8.216-5.878i, λ2=+2.206-5.236i, λ3=+3.995-5.560i, λ4=+6.509-5.077i
+DE Iter  1400: Loss=1.259860e+02 (Spread=1.259860e+02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=-8.060-6.147i, λ2=+2.271-5.487i, λ3=+4.186-5.905i, λ4=+6.671-5.635i
+DE Iter  1500: Loss=8.674350e+01 (Spread=8.674350e+01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=-3.588-8.810i, λ2=+0.849-11.291i, λ3=+4.125-5.145i, λ4=+6.964-5.602i
+DE Iter  1600: Loss=7.330408e+01 (Spread=7.330408e+01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=-3.107-7.956i, λ2=+4.160-12.675i, λ3=+3.270-5.835i, λ4=+5.655-6.498i
+DE Iter  1700: Loss=5.113634e+01 (Spread=5.113634e+01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=-2.417-7.220i, λ2=+3.577-9.708i, λ3=+3.544-6.435i, λ4=+6.240-5.179i
+DE Iter  1800: Loss=4.076910e+01 (Spread=4.076910e+01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=-2.190-9.706i, λ2=+1.623-10.987i, λ3=+3.130-9.249i, λ4=+3.649-5.049i
+DE Iter  1900: Loss=3.510744e+01 (Spread=3.510744e+01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=-1.379-8.134i, λ2=+2.067-9.030i, λ3=+4.228-5.526i, λ4=+5.573-6.484i
+DE Iter  2000: Loss=2.610059e+01 (Spread=2.610059e+01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=-0.777-8.471i, λ2=+2.741-6.093i, λ3=+3.869-5.558i, λ4=+4.305-9.383i
+DE Iter  2100: Loss=2.173527e+01 (Spread=2.173527e+01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+1.446-10.040i, λ2=+0.604-6.836i, λ3=+3.077-5.213i, λ4=+4.038-5.560i
+DE Iter  2200: Loss=1.897483e+01 (Spread=1.897483e+01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=-0.211-7.890i, λ2=+2.481-6.290i, λ3=+3.159-5.552i, λ4=+5.321-7.407i
+DE Iter  2300: Loss=1.838508e+01 (Spread=1.838508e+01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=-0.060-7.269i, λ2=+2.825-8.196i, λ3=+2.918-5.265i, λ4=+4.642-5.084i
+DE Iter  2400: Loss=1.058610e+01 (Spread=1.058610e+01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+0.923-6.629i, λ2=+1.465-6.740i, λ3=+3.638-6.037i, λ4=+4.582-5.201i
+DE Iter  2500: Loss=1.058610e+01 (Spread=1.058610e+01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+0.923-6.629i, λ2=+1.465-6.740i, λ3=+3.638-6.037i, λ4=+4.582-5.201i
+DE Iter  2600: Loss=1.058610e+01 (Spread=1.058610e+01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+0.923-6.629i, λ2=+1.465-6.740i, λ3=+3.638-6.037i, λ4=+4.582-5.201i
+DE Iter  2700: Loss=7.814589e+00 (Spread=7.814589e+00, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+1.122-6.542i, λ2=+2.651-7.004i, λ3=+2.414-6.158i, λ4=+4.526-5.132i
+DE Iter  2800: Loss=7.814589e+00 (Spread=7.814589e+00, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+1.122-6.542i, λ2=+2.651-7.004i, λ3=+2.414-6.158i, λ4=+4.526-5.132i
+DE Iter  2900: Loss=7.814589e+00 (Spread=7.814589e+00, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+1.122-6.542i, λ2=+2.651-7.004i, λ3=+2.414-6.158i, λ4=+4.526-5.132i
+DE Iter  3000: Loss=6.183589e+00 (Spread=6.183589e+00, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+1.250-6.278i, λ2=+1.948-5.858i, λ3=+4.096-5.180i, λ4=+3.482-6.448i
+DE Iter  3100: Loss=4.838271e+00 (Spread=4.838271e+00, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+1.648-5.249i, λ2=+3.440-5.447i, λ3=+2.715-7.228i, λ4=+2.881-6.994i
+DE Iter  3200: Loss=3.026290e+00 (Spread=3.026290e+00, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+1.991-6.729i, λ2=+2.034-5.670i, λ3=+3.324-5.463i, λ4=+3.352-6.634i
+DE Iter  3300: Loss=2.727045e+00 (Spread=2.727045e+00, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+1.875-5.719i, λ2=+2.234-5.743i, λ3=+3.687-5.541i, λ4=+3.114-6.608i
+DE Iter  3400: Loss=2.025572e+00 (Spread=2.025572e+00, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+1.788-6.656i, λ2=+2.747-5.659i, λ3=+2.642-6.027i, λ4=+3.495-5.853i
+DE Iter  3500: Loss=2.025572e+00 (Spread=2.025572e+00, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+1.788-6.656i, λ2=+2.747-5.659i, λ3=+2.642-6.027i, λ4=+3.495-5.853i
+DE Iter  3600: Loss=1.604581e+00 (Spread=1.604581e+00, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.590-6.876i, λ2=+2.260-5.778i, λ3=+2.665-5.614i, λ4=+3.377-6.098i
+DE Iter  3700: Loss=9.649346e-01 (Spread=9.649346e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.274-6.606i, λ2=+2.584-6.073i, λ3=+2.790-5.686i, λ4=+3.252-5.911i
+DE Iter  3800: Loss=9.238616e-01 (Spread=9.238616e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.958-5.565i, λ2=+2.264-6.210i, λ3=+2.851-6.055i, λ4=+2.784-6.685i
+DE Iter  3900: Loss=6.801068e-01 (Spread=6.801068e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+3.133-5.592i, λ2=+2.698-5.972i, λ3=+2.414-6.277i, λ4=+2.646-6.429i
+DE Iter  4000: Loss=6.801068e-01 (Spread=6.801068e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+3.133-5.592i, λ2=+2.698-5.972i, λ3=+2.414-6.277i, λ4=+2.646-6.429i
+DE Iter  4100: Loss=6.413289e-01 (Spread=6.413289e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+3.001-5.680i, λ2=+2.585-5.829i, λ3=+2.500-6.345i, λ4=+2.789-6.526i
+DE Iter  4200: Loss=4.097558e-01 (Spread=4.097558e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.768-5.799i, λ2=+2.896-5.919i, λ3=+2.543-6.179i, λ4=+2.708-6.566i
+DE Iter  4300: Loss=4.097558e-01 (Spread=4.097558e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.768-5.799i, λ2=+2.896-5.919i, λ3=+2.543-6.179i, λ4=+2.708-6.566i
+DE Iter  4400: Loss=4.097558e-01 (Spread=4.097558e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.768-5.799i, λ2=+2.896-5.919i, λ3=+2.543-6.179i, λ4=+2.708-6.566i
+DE Iter  4500: Loss=3.755408e-01 (Spread=3.755408e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.856-5.780i, λ2=+2.752-6.042i, λ3=+2.534-6.153i, λ4=+2.784-6.563i
+DE Iter  4600: Loss=2.505305e-01 (Spread=2.505305e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.811-5.875i, λ2=+2.904-6.074i, λ3=+2.645-6.154i, λ4=+2.580-6.470i
+DE Iter  4700: Loss=2.163016e-01 (Spread=2.163016e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.825-5.851i, λ2=+2.772-6.028i, λ3=+2.575-6.400i, λ4=+2.772-6.267i
+DE Iter  4800: Loss=1.710244e-01 (Spread=1.710244e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-5.886i, λ2=+2.849-6.049i, λ3=+2.621-6.306i, λ4=+2.753-6.351i
+DE Iter  4900: Loss=1.710244e-01 (Spread=1.710244e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-5.886i, λ2=+2.849-6.049i, λ3=+2.621-6.306i, λ4=+2.753-6.351i
+DE Iter  5000: Loss=1.597784e-01 (Spread=1.597784e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.734-5.898i, λ2=+2.681-6.088i, λ3=+2.901-6.212i, λ4=+2.659-6.380i
+DE Iter  5100: Loss=1.401152e-01 (Spread=1.401152e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.787-5.897i, λ2=+2.838-6.120i, λ3=+2.615-6.210i, λ4=+2.729-6.360i
+DE Iter  5200: Loss=1.151155e-01 (Spread=1.151155e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.770-5.973i, λ2=+2.906-6.082i, λ3=+2.594-6.263i, λ4=+2.707-6.274i
+DE Iter  5300: Loss=1.151155e-01 (Spread=1.151155e-01, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.770-5.973i, λ2=+2.906-6.082i, λ3=+2.594-6.263i, λ4=+2.707-6.274i
+DE Iter  5400: Loss=9.409672e-02 (Spread=9.409672e-02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.804-5.966i, λ2=+2.859-6.136i, λ3=+2.595-6.238i, λ4=+2.721-6.264i
+DE Iter  5500: Loss=8.402843e-02 (Spread=8.402843e-02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.550-6.183i, λ2=+2.799-6.019i, λ3=+2.876-6.177i, λ4=+2.763-6.232i
+DE Iter  5600: Loss=4.584391e-02 (Spread=4.584391e-02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.668-6.088i, λ2=+2.663-6.201i, λ3=+2.787-6.098i, λ4=+2.871-6.230i
+DE Iter  5700: Loss=4.584391e-02 (Spread=4.584391e-02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.668-6.088i, λ2=+2.663-6.201i, λ3=+2.787-6.098i, λ4=+2.871-6.230i
+DE Iter  5800: Loss=4.167221e-02 (Spread=4.167221e-02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.756-6.048i, λ2=+2.857-6.142i, λ3=+2.641-6.211i, λ4=+2.728-6.210i
+DE Iter  5900: Loss=4.075118e-02 (Spread=4.075118e-02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.015i, λ2=+2.658-6.201i, λ3=+2.757-6.176i, λ4=+2.822-6.225i
+DE Iter  6000: Loss=3.718913e-02 (Spread=3.718913e-02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.742-6.029i, λ2=+2.846-6.199i, λ3=+2.705-6.174i, λ4=+2.683-6.214i
+DE Iter  6100: Loss=2.576984e-02 (Spread=2.576984e-02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.825-6.092i, λ2=+2.752-6.094i, λ3=+2.678-6.216i, λ4=+2.720-6.209i
+DE Iter  6200: Loss=1.916499e-02 (Spread=1.916499e-02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.812-6.124i, λ2=+2.726-6.101i, λ3=+2.685-6.152i, λ4=+2.753-6.237i
+DE Iter  6300: Loss=1.559549e-02 (Spread=1.559549e-02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.815-6.119i, λ2=+2.692-6.124i, λ3=+2.731-6.143i, λ4=+2.739-6.228i
+DE Iter  6400: Loss=1.492830e-02 (Spread=1.492830e-02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.672-6.125i, λ2=+2.773-6.105i, λ3=+2.782-6.168i, λ4=+2.750-6.217i
+DE Iter  6500: Loss=1.255780e-02 (Spread=1.255780e-02, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.779-6.102i, λ2=+2.706-6.128i, λ3=+2.708-6.172i, λ4=+2.785-6.212i
+DE Iter  6600: Loss=9.951387e-03 (Spread=9.951387e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.791-6.121i, λ2=+2.720-6.112i, λ3=+2.758-6.198i, λ4=+2.708-6.183i
+DE Iter  6700: Loss=9.253663e-03 (Spread=9.253663e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.108i, λ2=+2.792-6.143i, λ3=+2.730-6.154i, λ4=+2.704-6.208i
+DE Iter  6800: Loss=5.132179e-03 (Spread=5.132179e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.705-6.123i, λ2=+2.752-6.132i, λ3=+2.759-6.171i, λ4=+2.761-6.190i
+DE Iter  6900: Loss=5.132179e-03 (Spread=5.132179e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.705-6.123i, λ2=+2.752-6.132i, λ3=+2.759-6.171i, λ4=+2.761-6.190i
+DE Iter  7000: Loss=5.132179e-03 (Spread=5.132179e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.705-6.123i, λ2=+2.752-6.132i, λ3=+2.759-6.171i, λ4=+2.761-6.190i
+DE Iter  7100: Loss=4.571569e-03 (Spread=4.571569e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.759-6.124i, λ2=+2.780-6.147i, λ3=+2.713-6.161i, λ4=+2.726-6.183i
+DE Iter  7200: Loss=2.612723e-03 (Spread=2.612723e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.749-6.123i, λ2=+2.764-6.159i, λ3=+2.746-6.156i, λ4=+2.720-6.178i
+DE Iter  7300: Loss=2.612723e-03 (Spread=2.612723e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.749-6.123i, λ2=+2.764-6.159i, λ3=+2.746-6.156i, λ4=+2.720-6.178i
+DE Iter  7400: Loss=2.612723e-03 (Spread=2.612723e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.749-6.123i, λ2=+2.764-6.159i, λ3=+2.746-6.156i, λ4=+2.720-6.178i
+DE Iter  7500: Loss=2.612723e-03 (Spread=2.612723e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.749-6.123i, λ2=+2.764-6.159i, λ3=+2.746-6.156i, λ4=+2.720-6.178i
+DE Iter  7600: Loss=2.612723e-03 (Spread=2.612723e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.749-6.123i, λ2=+2.764-6.159i, λ3=+2.746-6.156i, λ4=+2.720-6.178i
+DE Iter  7700: Loss=2.291067e-03 (Spread=2.291067e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.122i, λ2=+2.761-6.156i, λ3=+2.742-6.173i, λ4=+2.724-6.165i
+DE Iter  7800: Loss=2.291067e-03 (Spread=2.291067e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.122i, λ2=+2.761-6.156i, λ3=+2.742-6.173i, λ4=+2.724-6.165i
+DE Iter  7900: Loss=2.291067e-03 (Spread=2.291067e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.122i, λ2=+2.761-6.156i, λ3=+2.742-6.173i, λ4=+2.724-6.165i
+DE Iter  8000: Loss=1.542475e-03 (Spread=1.542475e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.757-6.138i, λ2=+2.734-6.141i, λ3=+2.757-6.166i, λ4=+2.730-6.171i
+DE Iter  8100: Loss=1.542475e-03 (Spread=1.542475e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.757-6.138i, λ2=+2.734-6.141i, λ3=+2.757-6.166i, λ4=+2.730-6.171i
+DE Iter  8200: Loss=1.542475e-03 (Spread=1.542475e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.757-6.138i, λ2=+2.734-6.141i, λ3=+2.757-6.166i, λ4=+2.730-6.171i
+DE Iter  8300: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  8400: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  8500: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  8600: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  8700: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  8800: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  8900: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  9000: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  9100: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  9200: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  9300: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  9400: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  9500: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  9600: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  9700: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  9800: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter  9900: Loss=1.253056e-03 (Spread=1.253056e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.132i, λ2=+2.756-6.150i, λ3=+2.730-6.159i, λ4=+2.744-6.174i
+DE Iter 10000: Loss=1.132158e-03 (Spread=1.132158e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.133i, λ2=+2.753-6.151i, λ3=+2.733-6.156i, λ4=+2.744-6.175i
+DE Iter 10100: Loss=1.132158e-03 (Spread=1.132158e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.133i, λ2=+2.753-6.151i, λ3=+2.733-6.156i, λ4=+2.744-6.175i
+DE Iter 10200: Loss=1.132158e-03 (Spread=1.132158e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.133i, λ2=+2.753-6.151i, λ3=+2.733-6.156i, λ4=+2.744-6.175i
+DE Iter 10300: Loss=1.132158e-03 (Spread=1.132158e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.133i, λ2=+2.753-6.151i, λ3=+2.733-6.156i, λ4=+2.744-6.175i
+DE Iter 10400: Loss=1.132158e-03 (Spread=1.132158e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.133i, λ2=+2.753-6.151i, λ3=+2.733-6.156i, λ4=+2.744-6.175i
+DE Iter 10500: Loss=1.132158e-03 (Spread=1.132158e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.133i, λ2=+2.753-6.151i, λ3=+2.733-6.156i, λ4=+2.744-6.175i
+DE Iter 10600: Loss=1.132158e-03 (Spread=1.132158e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.133i, λ2=+2.753-6.151i, λ3=+2.733-6.156i, λ4=+2.744-6.175i
+DE Iter 10700: Loss=1.114369e-03 (Spread=1.114369e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.763-6.144i, λ2=+2.723-6.153i, λ3=+2.743-6.152i, λ4=+2.750-6.166i
+DE Iter 10800: Loss=1.114369e-03 (Spread=1.114369e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.763-6.144i, λ2=+2.723-6.153i, λ3=+2.743-6.152i, λ4=+2.750-6.166i
+DE Iter 10900: Loss=1.114369e-03 (Spread=1.114369e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.763-6.144i, λ2=+2.723-6.153i, λ3=+2.743-6.152i, λ4=+2.750-6.166i
+DE Iter 11000: Loss=1.114369e-03 (Spread=1.114369e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.763-6.144i, λ2=+2.723-6.153i, λ3=+2.743-6.152i, λ4=+2.750-6.166i
+DE Iter 11100: Loss=1.114369e-03 (Spread=1.114369e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.763-6.144i, λ2=+2.723-6.153i, λ3=+2.743-6.152i, λ4=+2.750-6.166i
+DE Iter 11200: Loss=1.114369e-03 (Spread=1.114369e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.763-6.144i, λ2=+2.723-6.153i, λ3=+2.743-6.152i, λ4=+2.750-6.166i
+DE Iter 11300: Loss=1.114369e-03 (Spread=1.114369e-03, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.763-6.144i, λ2=+2.723-6.153i, λ3=+2.743-6.152i, λ4=+2.750-6.166i
+DE Iter 11400: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 11500: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 11600: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 11700: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 11800: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 11900: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 12000: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 12100: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 12200: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 12300: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 12400: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 12500: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 12600: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 12700: Loss=9.877765e-04 (Spread=9.877765e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.761-6.151i, λ2=+2.752-6.144i, λ3=+2.743-6.161i, λ4=+2.722-6.159i
+DE Iter 12800: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 12900: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 13000: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 13100: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 13200: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 13300: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 13400: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 13500: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 13600: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 13700: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 13800: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 13900: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 14000: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 14100: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 14200: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 14300: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 14400: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 14500: Loss=8.349169e-04 (Spread=8.349169e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.751-6.141i, λ2=+2.753-6.152i, λ3=+2.732-6.150i, λ4=+2.743-6.173i
+DE Iter 14600: Loss=7.725056e-04 (Spread=7.725056e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.753-6.143i, λ2=+2.757-6.165i, λ3=+2.733-6.147i, λ4=+2.735-6.161i
+DE Iter 14700: Loss=7.725056e-04 (Spread=7.725056e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.753-6.143i, λ2=+2.757-6.165i, λ3=+2.733-6.147i, λ4=+2.735-6.161i
+DE Iter 14800: Loss=7.725056e-04 (Spread=7.725056e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.753-6.143i, λ2=+2.757-6.165i, λ3=+2.733-6.147i, λ4=+2.735-6.161i
+DE Iter 14900: Loss=7.725056e-04 (Spread=7.725056e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.753-6.143i, λ2=+2.757-6.165i, λ3=+2.733-6.147i, λ4=+2.735-6.161i
+DE Iter 15000: Loss=7.725056e-04 (Spread=7.725056e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.753-6.143i, λ2=+2.757-6.165i, λ3=+2.733-6.147i, λ4=+2.735-6.161i
+DE Iter 15100: Loss=7.725056e-04 (Spread=7.725056e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.753-6.143i, λ2=+2.757-6.165i, λ3=+2.733-6.147i, λ4=+2.735-6.161i
+DE Iter 15200: Loss=7.725056e-04 (Spread=7.725056e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.753-6.143i, λ2=+2.757-6.165i, λ3=+2.733-6.147i, λ4=+2.735-6.161i
+DE Iter 15300: Loss=7.725056e-04 (Spread=7.725056e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.753-6.143i, λ2=+2.757-6.165i, λ3=+2.733-6.147i, λ4=+2.735-6.161i
+DE Iter 15400: Loss=7.725056e-04 (Spread=7.725056e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.753-6.143i, λ2=+2.757-6.165i, λ3=+2.733-6.147i, λ4=+2.735-6.161i
+DE Iter 15500: Loss=7.725056e-04 (Spread=7.725056e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.753-6.143i, λ2=+2.757-6.165i, λ3=+2.733-6.147i, λ4=+2.735-6.161i
+DE Iter 15600: Loss=7.725056e-04 (Spread=7.725056e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.753-6.143i, λ2=+2.757-6.165i, λ3=+2.733-6.147i, λ4=+2.735-6.161i
+DE Iter 15700: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 15800: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 15900: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 16000: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 16100: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 16200: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 16300: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 16400: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 16500: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 16600: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 16700: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 16800: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 16900: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 17000: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 17100: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 17200: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 17300: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 17400: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 17500: Loss=7.127150e-04 (Spread=7.127150e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.739-6.141i, λ2=+2.755-6.152i, λ3=+2.754-6.161i, λ4=+2.731-6.162i
+DE Iter 17600: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 17700: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 17800: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 17900: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 18000: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 18100: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 18200: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 18300: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 18400: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 18500: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 18600: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 18700: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 18800: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 18900: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 19000: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 19100: Loss=6.594992e-04 (Spread=6.594992e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.746-6.140i, λ2=+2.757-6.151i, λ3=+2.734-6.157i, λ4=+2.740-6.167i
+DE Iter 19200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 19300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 19400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 19500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 19600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 19700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 19800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 19900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 20000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 20100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 20200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 20300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 20400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 20500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 20600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 20700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 20800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 20900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 21000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 21100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 21200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 21300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 21400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 21500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 21600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 21700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 21800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 21900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 22000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 22100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 22200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 22300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 22400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 22500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 22600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 22700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 22800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 22900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 23000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 23100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 23200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 23300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 23400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 23500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 23600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 23700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 23800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 23900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 24000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 24100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 24200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 24300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 24400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 24500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 24600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 24700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 24800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 24900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 25000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 25100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 25200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 25300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 25400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 25500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 25600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 25700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 25800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 25900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 26000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 26100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 26200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 26300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 26400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 26500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 26600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 26700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 26800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 26900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 27000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 27100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 27200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 27300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 27400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 27500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 27600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 27700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 27800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 27900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 28000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 28100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 28200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 28300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 28400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 28500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 28600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 28700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 28800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 28900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 29000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 29100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 29200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 29300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 29400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 29500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 29600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 29700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 29800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 29900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 30000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 30100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 30200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 30300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 30400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 30500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 30600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 30700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 30800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 30900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 31000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 31100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 31200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 31300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 31400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 31500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 31600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 31700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 31800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 31900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 32000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 32100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 32200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 32300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 32400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 32500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 32600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 32700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 32800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 32900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 33000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 33100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 33200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 33300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 33400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 33500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 33600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 33700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 33800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 33900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 34000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 34100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 34200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 34300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 34400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 34500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 34600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 34700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 34800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 34900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 35000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 35100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 35200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 35300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 35400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 35500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 35600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 35700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 35800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 35900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 36000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 36100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 36200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 36300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 36400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 36500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 36600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 36700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 36800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 36900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 37000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 37100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 37200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 37300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 37400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 37500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 37600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 37700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 37800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 37900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 38000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 38100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 38200: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 38300: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 38400: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 38500: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 38600: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 38700: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 38800: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 38900: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 39000: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 39100: Loss=3.914822e-04 (Spread=3.914822e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.744-6.160i, λ4=+2.736-6.160i
+DE Iter 39200: Loss=3.790223e-04 (Spread=3.790223e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.755-6.153i, λ3=+2.743-6.160i, λ4=+2.737-6.159i
+DE Iter 39300: Loss=3.784246e-04 (Spread=3.784246e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.756-6.153i, λ2=+2.743-6.143i, λ3=+2.742-6.161i, λ4=+2.737-6.158i
+DE Iter 39400: Loss=3.784246e-04 (Spread=3.784246e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.756-6.153i, λ2=+2.743-6.143i, λ3=+2.742-6.161i, λ4=+2.737-6.158i
+DE Iter 39500: Loss=3.784246e-04 (Spread=3.784246e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.756-6.153i, λ2=+2.743-6.143i, λ3=+2.742-6.161i, λ4=+2.737-6.158i
+DE Iter 39600: Loss=3.784246e-04 (Spread=3.784246e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.756-6.153i, λ2=+2.743-6.143i, λ3=+2.742-6.161i, λ4=+2.737-6.158i
+DE Iter 39700: Loss=3.773383e-04 (Spread=3.773383e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.756-6.153i, λ3=+2.743-6.161i, λ4=+2.737-6.159i
+DE Iter 39800: Loss=3.773383e-04 (Spread=3.773383e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.756-6.153i, λ3=+2.743-6.161i, λ4=+2.737-6.159i
+DE Iter 39900: Loss=3.769450e-04 (Spread=3.769450e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.756-6.153i, λ3=+2.743-6.161i, λ4=+2.737-6.159i
+DE Iter 40000: Loss=3.766204e-04 (Spread=3.766204e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.756-6.153i, λ3=+2.743-6.161i, λ4=+2.737-6.159i
+DE Iter 40100: Loss=3.763777e-04 (Spread=3.763777e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.743-6.143i, λ2=+2.756-6.153i, λ3=+2.743-6.161i, λ4=+2.737-6.159i
+DE Iter 40200: Loss=3.211344e-04 (Spread=3.211344e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.744-6.144i, λ2=+2.755-6.154i, λ3=+2.742-6.156i, λ4=+2.738-6.162i
+DE Iter 40300: Loss=3.148123e-04 (Spread=3.148123e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.744-6.144i, λ2=+2.755-6.154i, λ3=+2.741-6.155i, λ4=+2.738-6.162i
+DE Iter 40400: Loss=2.416046e-04 (Spread=2.416046e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.755-6.153i, λ2=+2.742-6.149i, λ3=+2.743-6.151i, λ4=+2.739-6.162i
+DE Iter 40500: Loss=2.413420e-04 (Spread=2.413420e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.755-6.153i, λ2=+2.742-6.149i, λ3=+2.743-6.151i, λ4=+2.739-6.162i
+DE Iter 40600: Loss=2.412735e-04 (Spread=2.412735e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.755-6.153i, λ2=+2.742-6.150i, λ3=+2.743-6.150i, λ4=+2.739-6.162i
+DE Iter 40700: Loss=2.412488e-04 (Spread=2.412488e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.755-6.153i, λ2=+2.742-6.150i, λ3=+2.743-6.150i, λ4=+2.739-6.162i
+DE Iter 40800: Loss=2.412436e-04 (Spread=2.412436e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.755-6.153i, λ2=+2.742-6.150i, λ3=+2.743-6.150i, λ4=+2.739-6.162i
+DE Iter 40900: Loss=2.412436e-04 (Spread=2.412436e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.755-6.153i, λ2=+2.742-6.150i, λ3=+2.743-6.150i, λ4=+2.739-6.162i
+DE Iter 41000: Loss=2.412436e-04 (Spread=2.412436e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.755-6.153i, λ2=+2.742-6.150i, λ3=+2.743-6.150i, λ4=+2.739-6.162i
+DE Iter 41100: Loss=2.412436e-04 (Spread=2.412436e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.755-6.153i, λ2=+2.742-6.150i, λ3=+2.743-6.150i, λ4=+2.739-6.162i
+DE Iter 41200: Loss=2.412436e-04 (Spread=2.412436e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.755-6.153i, λ2=+2.742-6.150i, λ3=+2.743-6.150i, λ4=+2.739-6.162i
+DE Iter 41300: Loss=2.412436e-04 (Spread=2.412436e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.755-6.153i, λ2=+2.742-6.150i, λ3=+2.743-6.150i, λ4=+2.739-6.162i
+DE Iter 41400: Loss=2.412380e-04 (Spread=2.412380e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.755-6.153i, λ2=+2.742-6.150i, λ3=+2.742-6.150i, λ4=+2.739-6.162i
+DE Iter 41500: Loss=2.403949e-04 (Spread=2.403949e-04, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.755-6.153i, λ2=+2.742-6.149i, λ3=+2.743-6.151i, λ4=+2.739-6.162i
+DE Iter 41600: Loss=9.096643e-05 (Spread=9.096643e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.749-6.151i, λ2=+2.747-6.153i, λ3=+2.744-6.155i, λ4=+2.738-6.157i
+DE Iter 41700: Loss=8.785879e-05 (Spread=8.785879e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.749-6.151i, λ2=+2.746-6.153i, λ3=+2.744-6.153i, λ4=+2.738-6.158i
+DE Iter 41800: Loss=8.718050e-05 (Spread=8.718050e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.749-6.151i, λ2=+2.747-6.152i, λ3=+2.745-6.154i, λ4=+2.738-6.158i
+DE Iter 41900: Loss=8.681004e-05 (Spread=8.681004e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.152i, λ3=+2.745-6.154i, λ4=+2.738-6.158i
+DE Iter 42000: Loss=8.665931e-05 (Spread=8.665931e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 42100: Loss=8.657592e-05 (Spread=8.657592e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 42200: Loss=8.657592e-05 (Spread=8.657592e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 42300: Loss=8.657592e-05 (Spread=8.657592e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 42400: Loss=8.657592e-05 (Spread=8.657592e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 42500: Loss=8.657592e-05 (Spread=8.657592e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 42600: Loss=8.656726e-05 (Spread=8.656726e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.153i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 42700: Loss=8.656726e-05 (Spread=8.656726e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.153i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 42800: Loss=8.656726e-05 (Spread=8.656726e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.153i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 42900: Loss=8.656726e-05 (Spread=8.656726e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.153i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 43000: Loss=8.654440e-05 (Spread=8.654440e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 43100: Loss=8.654440e-05 (Spread=8.654440e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 43200: Loss=8.654440e-05 (Spread=8.654440e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.748-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 43300: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 43400: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 43500: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 43600: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 43700: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 43800: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 43900: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 44000: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 44100: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 44200: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 44300: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 44400: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 44500: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 44600: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 44700: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 44800: Loss=8.653809e-05 (Spread=8.653809e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 44900: Loss=8.653537e-05 (Spread=8.653537e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 45000: Loss=8.653537e-05 (Spread=8.653537e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 45100: Loss=8.653537e-05 (Spread=8.653537e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 45200: Loss=8.653100e-05 (Spread=8.653100e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 45300: Loss=8.653100e-05 (Spread=8.653100e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 45400: Loss=8.653100e-05 (Spread=8.653100e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 45500: Loss=8.653100e-05 (Spread=8.653100e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 45600: Loss=8.653100e-05 (Spread=8.653100e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 45700: Loss=8.653100e-05 (Spread=8.653100e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 45800: Loss=8.653100e-05 (Spread=8.653100e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 45900: Loss=8.653100e-05 (Spread=8.653100e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 46000: Loss=8.653100e-05 (Spread=8.653100e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 46100: Loss=8.653100e-05 (Spread=8.653100e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.152i, λ3=+2.746-6.153i, λ4=+2.738-6.158i
+DE Iter 46200: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 46300: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 46400: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 46500: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 46600: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 46700: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 46800: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 46900: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 47000: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 47100: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 47200: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 47300: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 47400: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 47500: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 47600: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 47700: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 47800: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 47900: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 48000: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 48100: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 48200: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 48300: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 48400: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 48500: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 48600: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 48700: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 48800: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 48900: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 49000: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 49100: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 49200: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 49300: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 49400: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 49500: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 49600: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 49700: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 49800: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 49900: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 50000: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 50100: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 50200: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 50300: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 50400: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 50500: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 50600: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 50700: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 50800: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 50900: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 51000: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 51100: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 51200: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 51300: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 51400: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 51500: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 51600: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 51700: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 51800: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 51900: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 52000: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 52100: Loss=8.651482e-05 (Spread=8.651482e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.152i, λ2=+2.747-6.153i, λ3=+2.747-6.153i, λ4=+2.738-6.158i
+DE Iter 52200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 52300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 52400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 52500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 52600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 52700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 52800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 52900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 53000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 53100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 53200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 53300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 53400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 53500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 53600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 53700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 53800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 53900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 54000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 54100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 54200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 54300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 54400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 54500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 54600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 54700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 54800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 54900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 55000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 55100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 55200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 55300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 55400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 55500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 55600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 55700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 55800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 55900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 56000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 56100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 56200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 56300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 56400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 56500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 56600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 56700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 56800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 56900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 57000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 57100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 57200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 57300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 57400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 57500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 57600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 57700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 57800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 57900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 58000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 58100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 58200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 58300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 58400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 58500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 58600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 58700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 58800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 58900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 59000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 59100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 59200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 59300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 59400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 59500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 59600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 59700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 59800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 59900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 60000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 60100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 60200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 60300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 60400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 60500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 60600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 60700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 60800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 60900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 61000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 61100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 61200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 61300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 61400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 61500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 61600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 61700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 61800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 61900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 62000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 62100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 62200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 62300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 62400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 62500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 62600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 62700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 62800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 62900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 63000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 63100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 63200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 63300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 63400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 63500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 63600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 63700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 63800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 63900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 64000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 64100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 64200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 64300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 64400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 64500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 64600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 64700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 64800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 64900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 65000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 65100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 65200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 65300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 65400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 65500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 65600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 65700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 65800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 65900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 66000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 66100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 66200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 66300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 66400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 66500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 66600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 66700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 66800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 66900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 67000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 67100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 67200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 67300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 67400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 67500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 67600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 67700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 67800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 67900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 68000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 68100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 68200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 68300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 68400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 68500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 68600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 68700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 68800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 68900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 69000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 69100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 69200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 69300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 69400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 69500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 69600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 69700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 69800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 69900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 70000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 70100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 70200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 70300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 70400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 70500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 70600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 70700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 70800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 70900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 71000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 71100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 71200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 71300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 71400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 71500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 71600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 71700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 71800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 71900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 72000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 72100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 72200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 72300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 72400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 72500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 72600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 72700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 72800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 72900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 73000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 73100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 73200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 73300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 73400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 73500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 73600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 73700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 73800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 73900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 74000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 74100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 74200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 74300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 74400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 74500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 74600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 74700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 74800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 74900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 75000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 75100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 75200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 75300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 75400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 75500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 75600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 75700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 75800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 75900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 76000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 76100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 76200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 76300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 76400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 76500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 76600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 76700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 76800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 76900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 77000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 77100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 77200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 77300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 77400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 77500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 77600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 77700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 77800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 77900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 78000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 78100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 78200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 78300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 78400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 78500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 78600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 78700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 78800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 78900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 79000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 79100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 79200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 79300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 79400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 79500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 79600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 79700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 79800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 79900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 80000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 80100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 80200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 80300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 80400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 80500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 80600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 80700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 80800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 80900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 81000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 81100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 81200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 81300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 81400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 81500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 81600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 81700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 81800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 81900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 82000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 82100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 82200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 82300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 82400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 82500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 82600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 82700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 82800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 82900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 83000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 83100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 83200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 83300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 83400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 83500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 83600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 83700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 83800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 83900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 84000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 84100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 84200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 84300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 84400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 84500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 84600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 84700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 84800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 84900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 85000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 85100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 85200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 85300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 85400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 85500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 85600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 85700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 85800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 85900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 86000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 86100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 86200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 86300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 86400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 86500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 86600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 86700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 86800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 86900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 87000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 87100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 87200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 87300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 87400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 87500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 87600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 87700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 87800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 87900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 88000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 88100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 88200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 88300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 88400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 88500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 88600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 88700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 88800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 88900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 89000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 89100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 89200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 89300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 89400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 89500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 89600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 89700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 89800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 89900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 90000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 90100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 90200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 90300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 90400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 90500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 90600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 90700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 90800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 90900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 91000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 91100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 91200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 91300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 91400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 91500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 91600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 91700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 91800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 91900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 92000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 92100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 92200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 92300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 92400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 92500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 92600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 92700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 92800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 92900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 93000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 93100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 93200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 93300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 93400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 93500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 93600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 93700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 93800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 93900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 94000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 94100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 94200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 94300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 94400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 94500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 94600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 94700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 94800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 94900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 95000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 95100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 95200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 95300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 95400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 95500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 95600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 95700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 95800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 95900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 96000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 96100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 96200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 96300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 96400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 96500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 96600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 96700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 96800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 96900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 97000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 97100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 97200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 97300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 97400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 97500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 97600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 97700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 97800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 97900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 98000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 98100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 98200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 98300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 98400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 98500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 98600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 98700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 98800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 98900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 99000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 99100: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 99200: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 99300: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 99400: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 99500: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 99600: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 99700: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 99800: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 99900: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+DE Iter 100000: Loss=8.650345e-05 (Spread=8.650345e-05, PenIm=0.00e+00, convergence=0.000e+00)
+  Eigenvalues: λ1=+2.747-6.153i, λ2=+2.747-6.152i, λ3=+2.747-6.152i, λ4=+2.738-6.158i
+
+======================================================================
+Phase 2: L-BFGS-B Refinement
+======================================================================
+
+======================================================================
+FINAL RESULT
+======================================================================
+Total Loss: 8.650345e-05
+Spread (Variance): 8.650345e-05
+Penalty Im: 0.000000e+00
+
+Eigenvalues:
+  lambda_1 = +2.7465077323 -6.1526594513i
+  lambda_2 = +2.7471355033 -6.1521934728i
+  lambda_3 = +2.7469942817 -6.1523492100i
+  lambda_4 = +2.7378209443 -6.1581319539i
+
+Degeneracy Check:
+  Std(Re) = 3.929235e-03
+  Std(Im) = 2.487363e-03
+  Min |Im(λ)| = 6.1522 (constraint: |Im(λ)| >= 5.0)
+

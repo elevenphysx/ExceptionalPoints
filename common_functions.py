@@ -11,8 +11,9 @@ def build_layers(params, fixed_materials):
     Build layer structure from optimization parameters
 
     Args:
-        params: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4]
-        fixed_materials: (Platinum, Carbon, Iron) material tuples
+        params: [theta0, t_Pt, t_Spacer1, t_Fe1, t_Spacer2, t_Fe2, t_Spacer3, t_Fe3, t_Spacer4]
+        fixed_materials: (Platinum, Spacer, Iron) material tuples
+                        Spacer can be Carbon, SiC, or other materials
 
     Returns:
         theta0: incident angle (mrad)
@@ -22,16 +23,16 @@ def build_layers(params, fixed_materials):
     theta0 = params[0]
     thicknesses = params[1:9]
     C0 = C0_FIXED
-    Platinum, Carbon, Iron = fixed_materials
+    Platinum, Spacer, Iron = fixed_materials  # Generic naming: Spacer = Carbon or SiC
     Layers = [
         (Platinum, thicknesses[0], 0),
-        (Carbon,   thicknesses[1], 0),
+        (Spacer,   thicknesses[1], 0),
         (Iron,     thicknesses[2], 1),
-        (Carbon,   thicknesses[3], 0),
+        (Spacer,   thicknesses[3], 0),
         (Iron,     thicknesses[4], 1),
-        (Carbon,   thicknesses[5], 0),
+        (Spacer,   thicknesses[5], 0),
         (Iron,     thicknesses[6], 1),
-        (Carbon,   thicknesses[7], 0),
+        (Spacer,   thicknesses[7], 0),
         (Platinum, np.inf, 0),
     ]
     return theta0, Layers, C0
@@ -42,8 +43,9 @@ def build_layers_ep4(params, fixed_materials):
     Build layer structure for EP4 (4 resonant layers) from optimization parameters
 
     Args:
-        params: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4, t_Fe4, t_C5]
-        fixed_materials: (Platinum, Carbon, Iron) material tuples
+        params: [theta0, t_Pt, t_Spacer1, t_Fe1, t_Spacer2, t_Fe2, t_Spacer3, t_Fe3, t_Spacer4, t_Fe4, t_Spacer5]
+        fixed_materials: (Platinum, Spacer, Iron) material tuples
+                        Spacer can be Carbon, SiC, or other materials
 
     Returns:
         theta0: incident angle (mrad)
@@ -53,18 +55,18 @@ def build_layers_ep4(params, fixed_materials):
     theta0 = params[0]
     thicknesses = params[1:11]  # 10 thickness parameters
     C0 = C0_FIXED
-    Platinum, Carbon, Iron = fixed_materials
+    Platinum, Spacer, Iron = fixed_materials  # Generic naming: Spacer = Carbon or SiC
     Layers = [
         (Platinum, thicknesses[0], 0),  # Pt
-        (Carbon,   thicknesses[1], 0),  # C1
+        (Spacer,   thicknesses[1], 0),  # Spacer1
         (Iron,     thicknesses[2], 1),  # Fe1*
-        (Carbon,   thicknesses[3], 0),  # C2
+        (Spacer,   thicknesses[3], 0),  # Spacer2
         (Iron,     thicknesses[4], 1),  # Fe2*
-        (Carbon,   thicknesses[5], 0),  # C3
+        (Spacer,   thicknesses[5], 0),  # Spacer3
         (Iron,     thicknesses[6], 1),  # Fe3*
-        (Carbon,   thicknesses[7], 0),  # C4
+        (Spacer,   thicknesses[7], 0),  # Spacer4
         (Iron,     thicknesses[8], 1),  # Fe4*
-        (Carbon,   thicknesses[9], 0),  # C5
+        (Spacer,   thicknesses[9], 0),  # Spacer5
         (Platinum, np.inf, 0),           # Substrate
     ]
     return theta0, Layers, C0
@@ -80,9 +82,9 @@ def objective_function_control(params, fixed_materials, GreenFun, return_details
     This is the verified implementation from Singularity_de_control_multi_Gshift.py
 
     Args:
-        params: [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4] (EP3)
-                or [theta0, t_Pt, t_C1, t_Fe1, t_C2, t_Fe2, t_C3, t_Fe3, t_C4, t_Fe4, t_C5] (EP4)
-        fixed_materials: (Platinum, Carbon, Iron) material tuples
+        params: [theta0, t_Pt, t_Spacer1, t_Fe1, ...] (EP3: 9 params, EP4: 11 params)
+        fixed_materials: (Platinum, Spacer, Iron) material tuples
+                        Spacer can be Carbon, SiC, or other materials
         GreenFun: Green function calculator
         return_details: if True, return detailed breakdown
         build_layers_func: custom layer building function (default: build_layers for EP3)
