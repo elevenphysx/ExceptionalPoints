@@ -23,12 +23,11 @@ from config import (
 from common_functions import (
     build_layers, objective_function_control,
     format_eigenvalues_string, save_eigenvalues_txt,
-    save_params_npz, save_parameters_txt, format_final_result_string,
-    run_parameter_scan
+    save_params_npz, save_parameters_txt, format_final_result_string
 )
 
 # Import plotting utilities
-from plotting_utils import plot_optimization_history
+from plotting_utils import plot_optimization_history, scan_parameters_around_optimum
 
 # ============================================================
 # Dynamic Import of Green Function
@@ -240,7 +239,14 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
 
     plot_optimization_history(history, output_dir, seed, 'EP3 Optimizer: DE + L-BFGS-B')
 
-    run_parameter_scan(final_x, fixed_materials, GreenFun, output_dir)
+    scan_parameters_around_optimum(
+        params_optimal=final_x,
+        objective_func=lambda p, fm, **kw: objective_function_control(p, fm, GreenFun, **kw),
+        fixed_materials=fixed_materials,
+        output_dir=output_dir,
+        scan_range=1e-4,
+        n_points=51
+    )
 
     return seed, final_loss, final_x
 

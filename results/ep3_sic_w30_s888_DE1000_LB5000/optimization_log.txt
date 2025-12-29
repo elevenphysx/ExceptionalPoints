@@ -1,7 +1,0 @@
-======================================================================
-Phase 1: Differential Evolution - Seed 888
-======================================================================
-Using workers=30
-DE Iter     1: Loss=7.611654e+04 (Spread=1.062686e+02, PenIm=7.60e+04, convergence=0.000e+00)
-DE Iter   100: Loss=2.387916e+01 (Spread=2.387916e+01, PenIm=0.00e+00, convergence=0.000e+00)
-DE Iter   200: Loss=9.115745e+00 (Spread=9.115745e+00, PenIm=0.00e+00, convergence=0.000e+00)
