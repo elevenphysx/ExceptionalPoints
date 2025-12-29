@@ -10,7 +10,7 @@ import os
 import importlib.util
 
 # Import shared configuration
-from config import FIXED_MATERIALS, PARAM_NAMES_EP4, PARAM_LABELS_EP4
+from config import FIXED_MATERIALS, Platinum, SiC, Iron, PARAM_NAMES, PARAM_LABELS, PARAM_NAMES_EP4, PARAM_LABELS_EP4
 
 # Import common functions
 from common_functions import build_layers, build_layers_ep4, objective_function_control
@@ -90,8 +90,15 @@ def replot_scan(result_folder, scan_range=1e-4, n_points=51, use_constraint=Fals
         param_labels = [f"Param {i}" for i in range(len(params_optimal))]
         build_layers_func = build_layers  # Default to EP3
 
-    # Check if this is a no-constraint result
+    # Check if this is a SiC version (auto-detect from folder name)
     folder_name = os.path.basename(result_dir)
+    if 'sic' in folder_name.lower():
+        print("Detected: SiC spacer layer")
+        fixed_materials = (Platinum, SiC, Iron)
+    else:
+        fixed_materials = FIXED_MATERIALS
+
+    # Check if this is a no-constraint result
     if 'noconstraint' in folder_name.lower():
         print("Detected: NO CONSTRAINT result (penalty_weight=0)")
         penalty_weight = 0
@@ -102,8 +109,6 @@ def replot_scan(result_folder, scan_range=1e-4, n_points=51, use_constraint=Fals
     if use_constraint:
         penalty_weight = None
         print("Override: Using constraint (penalty_weight from config)")
-
-    fixed_materials = FIXED_MATERIALS
 
     print(f"\nReplotting parameter scan...")
     print(f"  scan_range = {scan_range}")
