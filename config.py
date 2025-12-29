@@ -75,10 +75,10 @@ DEFAULT_SEEDS = [812, 1001, 2023, 3030, 42]
 # ============================================================
 
 # Scan range for parameter sensitivity analysis (±range)
-DEFAULT_SCAN_RANGE = 1e-5
+DEFAULT_SCAN_RANGE = 1e-4
 
 # Number of points in parameter scan
-DEFAULT_SCAN_POINTS = 21
+DEFAULT_SCAN_POINTS = 51
 
 # ============================================================
 # Layer Configuration

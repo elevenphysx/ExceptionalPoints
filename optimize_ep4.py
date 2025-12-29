@@ -246,8 +246,8 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
         objective_func=lambda p, fm, **kw: objective_function_control(p, fm, GreenFun, build_layers_func=build_layers_ep4, **kw),
         fixed_materials=fixed_materials,
         output_dir=output_dir,
-        scan_range=1e-4,  # Step size: 1e-5, ±10 points around optimum
-        n_points=50,
+        scan_range=1e-4,
+        n_points=51,
         param_names=PARAM_NAMES_EP4,
         param_labels=PARAM_LABELS_EP4
     )

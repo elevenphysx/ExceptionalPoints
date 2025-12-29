@@ -244,8 +244,8 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
         objective_func=lambda p, fm, **kw: objective_function_control(p, fm, GreenFun, **kw),
         fixed_materials=fixed_materials,
         output_dir=output_dir,
-        scan_range=0.5,
-        n_points=50
+        scan_range=1e-4,
+        n_points=51
     )
 
     return seed, final_loss, final_x

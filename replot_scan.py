@@ -38,14 +38,14 @@ except Exception as e:
     sys.exit(1)
 
 
-def replot_scan(result_folder, scan_range=1e-4, n_points=21, use_constraint=False):
+def replot_scan(result_folder, scan_range=1e-4, n_points=51, use_constraint=False):
     """
     Replot parameter scan from saved results
 
     Args:
         result_folder: name or path of results folder
         scan_range: scan range around optimal value (default: 1e-4)
-        n_points: number of points to scan (default: 21)
+        n_points: number of points to scan (default: 51)
         use_constraint: whether to use |Im(λ)| >= 5.0 constraint (default: False for no-constraint results)
     """
     # Handle both absolute path and relative path
@@ -149,8 +149,8 @@ Examples:
                        help='Name or path of results folder')
     parser.add_argument('--scan-range', type=float, default=1e-4,
                        help='Scan range around optimal (default: 1e-4)')
-    parser.add_argument('--n-points', type=int, default=21,
-                       help='Number of scan points (default: 21)')
+    parser.add_argument('--n-points', type=int, default=51,
+                       help='Number of scan points (default: 51)')
     parser.add_argument('--use-constraint', action='store_true',
                        help='Force use of |Im(λ)| >= 5.0 constraint (ignore folder name)')
 
