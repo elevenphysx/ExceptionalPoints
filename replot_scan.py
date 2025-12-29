@@ -10,10 +10,13 @@ import os
 import importlib.util
 
 # Import shared configuration
-from config import FIXED_MATERIALS
+from config import FIXED_MATERIALS, PARAM_NAMES, PARAM_LABELS, PARAM_NAMES_EP4, PARAM_LABELS_EP4
 
 # Import common functions
-from common_functions import run_parameter_scan
+from common_functions import build_layers, build_layers_ep4, objective_function_control
+
+# Import plotting utilities
+from plotting_utils import scan_parameters_around_optimum
 
 # ============================================================
 # Dynamic Import of Green Function
@@ -69,13 +72,22 @@ def replot_scan(result_folder, scan_range=1e-4, n_points=51, use_constraint=Fals
     print(f"Loaded optimal parameters (loss = {loss:.6e})")
     print(f"Number of parameters: {len(params_optimal)}")
 
-    # Auto-detect EP3 or EP4
+    # Auto-detect EP3 or EP4 based on parameter count
     if len(params_optimal) == 9:
         print("Detected: EP3 (3 resonant layers)")
+        param_names = PARAM_NAMES
+        param_labels = PARAM_LABELS
+        build_layers_func = build_layers
     elif len(params_optimal) == 11:
         print("Detected: EP4 (4 resonant layers)")
+        param_names = PARAM_NAMES_EP4
+        param_labels = PARAM_LABELS_EP4
+        build_layers_func = build_layers_ep4
     else:
         print(f"Warning: Unexpected parameter count: {len(params_optimal)}")
+        param_names = [f"param_{i}" for i in range(len(params_optimal))]
+        param_labels = [f"Param {i}" for i in range(len(params_optimal))]
+        build_layers_func = build_layers
 
     # Check if this is a no-constraint result
     folder_name = os.path.basename(result_dir)
@@ -98,15 +110,21 @@ def replot_scan(result_folder, scan_range=1e-4, n_points=51, use_constraint=Fals
     print(f"  Step size = {2*scan_range/(n_points-1):.2e}")
     print(f"  Output directory: {result_dir}")
 
-    # Use unified scan function
-    run_parameter_scan(
+    # Replot using scan_parameters_around_optimum
+    scan_parameters_around_optimum(
         params_optimal=params_optimal,
+        objective_func=lambda p, fm, **kw: objective_function_control(
+            p, fm, GreenFun,
+            build_layers_func=build_layers_func,
+            penalty_weight=penalty_weight,
+            **kw
+        ),
         fixed_materials=fixed_materials,
-        GreenFun=GreenFun,
         output_dir=result_dir,
         scan_range=scan_range,
         n_points=n_points,
-        penalty_weight=penalty_weight
+        param_names=param_names,
+        param_labels=param_labels
     )
 
     print(f"\nDone! Scan plots saved in: {result_dir}")
