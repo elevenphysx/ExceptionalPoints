@@ -3,6 +3,7 @@ Common functions shared across all Exceptional Point optimization algorithms
 """
 
 import numpy as np
+import os
 from config import C0_FIXED, IMAG_MIN, IMAG_PENALTY
 
 
@@ -142,4 +143,139 @@ def objective_function_control(params, fixed_materials, GreenFun, return_details
         if return_details:
             return 1e10, None, None, None, None, None, None, None
         return 1e10
+
+
+# ============================================================
+# Output Formatting and File I/O Functions
+# ============================================================
+
+def format_eigenvalues_string(real_parts, imag_parts, precision=3):
+    """
+    Format eigenvalues as string for logging
+
+    Args:
+        real_parts: array of real parts of eigenvalues
+        imag_parts: array of imaginary parts of eigenvalues
+        precision: number of decimal places (default: 3)
+
+    Returns:
+        Formatted string like "λ1=+0.123+0.456i, λ2=+0.124+0.457i, ..."
+    """
+    return ", ".join([f"λ{i+1}={re:+.{precision}f}{im:+.{precision}f}i"
+                     for i, (re, im) in enumerate(zip(real_parts, imag_parts))])
+
+
+def save_eigenvalues_txt(output_dir, seed, real_parts, imag_parts, ep_type='EP3'):
+    """
+    Save eigenvalues to txt file with 15-digit precision
+
+    Args:
+        output_dir: directory to save the file
+        seed: random seed used for optimization
+        real_parts: array of real parts of eigenvalues
+        imag_parts: array of imaginary parts of eigenvalues
+        ep_type: type of exceptional point (e.g., 'EP3', 'EP4', 'EP3-SiC')
+    """
+    eigvals_txt_path = os.path.join(output_dir, 'eigenvalues.txt')
+    with open(eigvals_txt_path, 'w', encoding='utf-8') as f:
+        f.write("=" * 70 + "\n")
+        f.write(f"Eigenvalue Analysis ({ep_type}) - Seed {seed}\n")
+        f.write("=" * 70 + "\n\n")
+        f.write("Eigenvalues (15-digit precision):\n")
+        for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
+            f.write(f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n")
+
+
+def save_params_npz(output_dir, final_x, final_loss, eigvals, theta0, C0):
+    """
+    Save optimization results to npz file
+
+    Args:
+        output_dir: directory to save the file
+        final_x: final optimized parameters
+        final_loss: final loss value
+        eigvals: final eigenvalues
+        theta0: incident angle (mrad)
+        C0: constant parameter
+    """
+    np.savez(os.path.join(output_dir, 'params.npz'),
+             params=final_x,
+             loss=final_loss,
+             eigenvalues=eigvals,
+             theta0=theta0,
+             C0=C0)
+
+
+def save_parameters_txt(output_dir, seed, ep_name, final_x, final_loss, spread, pen_im,
+                       theta0, Layers, bounds, layer_names):
+    """
+    Save high-precision parameters to txt file
+
+    Args:
+        output_dir: directory to save the file
+        seed: random seed used for optimization
+        ep_name: name of exceptional point (e.g., 'EP3', 'EP4', 'EP3-SiC')
+        final_x: final optimized parameters
+        final_loss: final loss value
+        spread: variance component of loss
+        pen_im: imaginary penalty component of loss
+        theta0: incident angle (mrad)
+        Layers: layer structure list
+        bounds: parameter bounds
+        layer_names: list of layer names for output
+    """
+    params_txt_path = os.path.join(output_dir, 'parameters_high_precision.txt')
+    with open(params_txt_path, 'w', encoding='utf-8') as f:
+        f.write("=" * 70 + "\n")
+        f.write(f"Exceptional Point ({ep_name}) Parameters - Seed {seed}\n")
+        f.write("=" * 70 + "\n\n")
+        f.write(f"Final Loss:  {final_loss:.15e}\n")
+        f.write(f"Spread:      {spread:.15e}\n")
+        f.write(f"Penalty Im:  {pen_im:.15e}\n")
+        f.write(f"theta0 = {theta0:.15f} mrad\n")
+        f.write("-" * 50 + "\n")
+        thicknesses = [layer[1] for layer in Layers[:-1]]
+        for i, (name, thickness) in enumerate(zip(layer_names, thicknesses)):
+            resonant = ' (resonant)' if Layers[i][2] == 1 else ''
+            f.write(f"  Layer {i}: {name:8s} = {thickness:20.15f} nm{resonant}\n")
+
+        f.write("\nBounds Check:\n")
+        all_ok = True
+        for i, (val, (low, high)) in enumerate(zip(final_x, bounds)):
+            status = "OK" if low <= val <= high else "VIOLATION"
+            if status == "VIOLATION": all_ok = False
+            f.write(f"  Param {i}: {val:.4f} [{low}, {high}] -> {status}\n")
+        f.write(f"\nOverall Status: {'PASSED' if all_ok else 'FAILED'}\n")
+
+
+def format_final_result_string(loss, spread, pen_im, real_parts, imag_parts, imag_min):
+    """
+    Format final result summary string
+
+    Args:
+        loss: total loss value
+        spread: variance component of loss
+        pen_im: imaginary penalty component
+        real_parts: array of real parts of eigenvalues
+        imag_parts: array of imaginary parts of eigenvalues
+        imag_min: minimum imaginary part constraint value
+
+    Returns:
+        Formatted string with final results
+    """
+    output = "\n" + "="*70 + "\nFINAL RESULT\n" + "="*70 + "\n"
+    output += f"Total Loss: {loss:.6e}\n"
+    output += f"Spread (Variance): {spread:.6e}\n"
+    output += f"Penalty Im: {pen_im:.6e}\n\n"
+
+    output += "Eigenvalues:\n"
+    for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
+        output += f"  lambda_{i+1} = {re:+.10f} {im:+.10f}i\n"
+
+    output += "\nDegeneracy Check:\n"
+    output += f"  Std(Re) = {np.std(real_parts):.6e}\n"
+    output += f"  Std(Im) = {np.std(imag_parts):.6e}\n"
+    output += f"  Min |Im(λ)| = {np.min(np.abs(imag_parts)):.4f} (constraint: |Im(λ)| >= {imag_min})\n"
+
+    return output
 

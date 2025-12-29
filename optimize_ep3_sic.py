@@ -25,7 +25,11 @@ from config import (
 FIXED_MATERIALS_SIC = (Platinum, SiC, Iron)
 
 # Import common functions
-from common_functions import build_layers, objective_function_control
+from common_functions import (
+    build_layers, objective_function_control,
+    format_eigenvalues_string, save_eigenvalues_txt,
+    save_params_npz, save_parameters_txt, format_final_result_string
+)
 
 # Import plotting utilities
 from plotting_utils import plot_optimization_history, scan_parameters_around_optimum
@@ -116,7 +120,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
                 xk, fixed_materials, GreenFun, return_details=True
             )
             # Format eigenvalues for logging
-            eigvals_str = ", ".join([f"λ{i+1}={re:+.3f}{im:+.3f}i" for i, (re, im) in enumerate(zip(real_parts, imag_parts))])
+            eigvals_str = format_eigenvalues_string(real_parts, imag_parts)
             msg = f"DE Iter {iteration_count[0]:5d}: Loss={loss:.6e} (Spread={spread:.6e}, PenIm={pen_im:.2e}, convergence={convergence if convergence else 0:.3e})\n"
             msg += f"  Eigenvalues: {eigvals_str}"
             if verbose: pbar_de.write(msg)
@@ -174,7 +178,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
                 xk, fixed_materials, GreenFun, return_details=True
             )
             # Format eigenvalues for logging
-            eigvals_str = ", ".join([f"λ{i+1}={re:+.3f}{im:+.3f}i" for i, (re, im) in enumerate(zip(real_parts, imag_parts))])
+            eigvals_str = format_eigenvalues_string(real_parts, imag_parts)
             msg = f"L-BFGS-B Iter {lbfgsb_iter[0]}: Loss={loss:.6e}\n"
             msg += f"  Eigenvalues: {eigvals_str}"
             if verbose: pbar_lbfgsb.write(msg)
@@ -214,63 +218,29 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
 
     theta0, Layers, C0 = build_layers(final_x, fixed_materials)
 
-    output = "\n" + "="*70 + "\nFINAL RESULT\n" + "="*70 + "\n"
-    output += f"Total Loss: {loss:.6e}\n"
-    output += f"Spread (Variance): {spread:.6e}\n"
-    output += f"Penalty Im: {pen_im:.6e}\n\n"
-
-    output += "Eigenvalues:\n"
-    for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
-        output += f"  lambda_{i+1} = {re:+.10f} {im:+.10f}i\n"
-
-    output += "\nDegeneracy Check:\n"
-    output += f"  Std(Re) = {np.std(real_parts):.6e}\n"
-    output += f"  Std(Im) = {np.std(imag_parts):.6e}\n"
-    output += f"  Min |Im(λ)| = {np.min(np.abs(imag_parts)):.4f} (constraint: |Im(λ)| >= {IMAG_MIN})\n"
+    output = format_final_result_string(loss, spread, pen_im, real_parts, imag_parts, IMAG_MIN)
 
     log_print(output, console=verbose)
     log_file.close()
 
     # Save results
-    np.savez(os.path.join(output_dir, 'params.npz'),
-             params=final_x,
-             loss=final_loss,
-             eigenvalues=eigvals,
-             theta0=theta0,
-             C0=C0)
+    save_params_npz(output_dir, final_x, final_loss, eigvals, theta0, C0)
 
-    params_txt_path = os.path.join(output_dir, 'parameters_high_precision.txt')
-    with open(params_txt_path, 'w', encoding='utf-8') as f:
-        f.write("=" * 70 + "\n")
-        f.write(f"Exceptional Point (EP3-SiC) Parameters - Seed {seed}\n")
-        f.write("=" * 70 + "\n\n")
-        f.write(f"Final Loss:  {final_loss:.15e}\n")
-        f.write(f"Spread:      {spread:.15e}\n")
-        f.write(f"Penalty Im:  {pen_im:.15e}\n")
-        f.write(f"theta0 = {theta0:.15f} mrad\n")
-        f.write("-" * 50 + "\n")
-        layer_names = ['Pt', 'SiC', 'Fe*', 'SiC', 'Fe*', 'SiC', 'Fe*', 'SiC']
-        thicknesses = [layer[1] for layer in Layers[:-1]]
-        for i, (name, thickness) in enumerate(zip(layer_names, thicknesses)):
-            resonant = ' (resonant)' if Layers[i][2] == 1 else ''
-            f.write(f"  Layer {i}: {name:8s} = {thickness:20.15f} nm{resonant}\n")
+    save_parameters_txt(
+        output_dir=output_dir,
+        seed=seed,
+        ep_name='EP3-SiC',
+        final_x=final_x,
+        final_loss=final_loss,
+        spread=spread,
+        pen_im=pen_im,
+        theta0=theta0,
+        Layers=Layers,
+        bounds=bounds,
+        layer_names=['Pt', 'SiC', 'Fe*', 'SiC', 'Fe*', 'SiC', 'Fe*', 'SiC']
+    )
 
-        f.write("\nBounds Check:\n")
-        all_ok = True
-        for i, (val, (low, high)) in enumerate(zip(final_x, bounds)):
-            status = "OK" if low <= val <= high else "VIOLATION"
-            if status == "VIOLATION": all_ok = False
-            f.write(f"  Param {i}: {val:.4f} [{low}, {high}] -> {status}\n")
-        f.write(f"\nOverall Status: {'PASSED' if all_ok else 'FAILED'}\n")
-
-    eigvals_txt_path = os.path.join(output_dir, 'eigenvalues.txt')
-    with open(eigvals_txt_path, 'w', encoding='utf-8') as f:
-        f.write("=" * 70 + "\n")
-        f.write(f"Eigenvalue Analysis - Seed {seed}\n")
-        f.write("=" * 70 + "\n\n")
-        f.write("Eigenvalues (15-digit precision):\n")
-        for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
-            f.write(f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n")
+    save_eigenvalues_txt(output_dir, seed, real_parts, imag_parts, ep_type='EP3-SiC')
 
     plot_optimization_history(history, output_dir, seed, 'EP3-SiC Optimizer: DE + L-BFGS-B')
 
