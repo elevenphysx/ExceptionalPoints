@@ -1,0 +1,42 @@
+======================================================================
+Exceptional Point (EP3) Discrete Parameters - Seed 812
+Precision: 1 decimal place(s)
+======================================================================
+
+Final Loss:  1.415033499566673e+00
+Spread:      1.415033499566673e+00
+Penalty Im:  0.000000000000000e+00
+theta0 = 2.4 mrad
+--------------------------------------------------
+  Layer 0: Pt       =                  0.6 nm
+  Layer 1: C        =                 37.1 nm
+  Layer 2: Fe*      =                  0.9 nm (resonant)
+  Layer 3: C        =                 31.2 nm
+  Layer 4: Fe*      =                  1.9 nm (resonant)
+  Layer 5: C        =                 18.0 nm
+  Layer 6: Fe*      =                  1.6 nm (resonant)
+  Layer 7: C        =                 28.3 nm
+
+Parameter Values (1 decimal precision):
+  theta0   =        2.4
+  t_Pt     =        0.6
+  t_C1     =       37.1
+  t_Fe1    =        0.9
+  t_C2     =       31.2
+  t_Fe2    =        1.9
+  t_C3     =       18.0
+  t_Fe3    =        1.6
+  t_C4     =       28.3
+
+Bounds Check:
+  Param 0: 2.4 [2.0, 8.0] -> OK
+  Param 1: 0.6 [0.5, 4.0] -> OK
+  Param 2: 37.1 [1.0, 40.0] -> OK
+  Param 3: 0.9 [0.8, 3.0] -> OK
+  Param 4: 31.2 [1.0, 40.0] -> OK
+  Param 5: 1.9 [0.5, 3.0] -> OK
+  Param 6: 18.0 [1.0, 40.0] -> OK
+  Param 7: 1.6 [0.5, 3.0] -> OK
+  Param 8: 28.3 [1.0, 40.0] -> OK
+
+Overall Status: PASSED
