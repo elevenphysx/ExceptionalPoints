@@ -26,7 +26,7 @@ FIXED_MATERIALS_SIC = (Platinum, SiC, Iron)
 
 # Import common functions
 from common_functions import (
-    build_layers, objective_function_control,
+    build_layers, objective_function_control, objective_function_cached, clear_eval_cache,
     format_eigenvalues_string, save_eigenvalues_txt,
     save_params_npz, save_parameters_txt, format_final_result_string
 )
@@ -61,8 +61,9 @@ def _objective_wrapper_for_de(params):
     """
     Module-level wrapper that can be pickled for multiprocessing.
     Uses module-level GreenFun and FIXED_MATERIALS_SIC.
+    Uses cached version to avoid redundant Green function calculations.
     """
-    return objective_function_control(params, FIXED_MATERIALS_SIC, GreenFun)
+    return objective_function_cached(params, FIXED_MATERIALS_SIC, GreenFun, use_cache=True)
 
 
 # ============================================================
@@ -77,6 +78,9 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
 
     if verbose:
         print(f"--> [Seed {seed}] Output directory: {output_dir}")
+
+    # Clear evaluation cache at start of optimization
+    clear_eval_cache()
 
     fixed_materials = FIXED_MATERIALS_SIC
     bounds = BOUNDS
@@ -109,7 +113,8 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
         iteration_count[0] += 1
         pbar_de.update(1)
 
-        loss_current = objective_function_control(xk, fixed_materials, GreenFun)
+        # Use cached version - will return cached value from DE's evaluation (no redundant calculation)
+        loss_current = objective_function_cached(xk, fixed_materials, GreenFun, use_cache=True)
 
         if loss_current < best_loss_so_far:
             best_loss_so_far = loss_current

@@ -6,6 +6,31 @@ import numpy as np
 import os
 from config import C0_FIXED, IMAG_MIN, IMAG_PENALTY
 
+# ============================================================
+# Evaluation Cache for Optimization (Process-local)
+# ============================================================
+
+_EVAL_CACHE = {}
+
+def get_cache_key(params):
+    """
+    Generate cache key from parameters (rounded to avoid floating point errors)
+
+    Uses 6 decimal places which is sufficient for:
+    - Continuous optimization: preserves optimization precision
+    - Discrete optimization: captures rounded values from wrappers
+      (discrete wrappers already round before calling, so cache correctly identifies duplicates)
+
+    Returns: tuple of rounded parameters (hashable for dict key)
+    """
+    return tuple(np.round(params, decimals=6))
+
+def clear_eval_cache():
+    """Clear the evaluation cache (useful between optimization runs)"""
+    global _EVAL_CACHE
+    _EVAL_CACHE = {}
+    print(f"[Cache] Cleared evaluation cache")
+
 
 def build_layers(params, fixed_materials):
     """
@@ -143,6 +168,45 @@ def objective_function_control(params, fixed_materials, GreenFun, return_details
         if return_details:
             return 1e10, None, None, None, None, None, None, None
         return 1e10
+
+
+def objective_function_cached(params, fixed_materials, GreenFun, return_details=False,
+                               build_layers_func=None, penalty_weight=None, use_cache=True):
+    """
+    Cached wrapper for objective_function_control
+
+    Uses process-local cache to avoid redundant Green function calculations.
+    Cache is based on rounded parameters (6 decimals) for discrete optimization.
+
+    Args:
+        params: optimization parameters
+        fixed_materials: material tuple
+        GreenFun: Green function calculator
+        return_details: if True, bypass cache and return full details
+        build_layers_func: custom layer building function
+        penalty_weight: weight for imaginary constraint penalty
+        use_cache: if False, bypass cache (useful for debugging)
+
+    Returns:
+        loss value (or tuple with details if return_details=True)
+    """
+    global _EVAL_CACHE
+
+    # Bypass cache if detailed output requested or caching disabled
+    if return_details or not use_cache:
+        return objective_function_control(params, fixed_materials, GreenFun, return_details,
+                                         build_layers_func, penalty_weight)
+
+    # Check cache
+    key = get_cache_key(params)
+    if key in _EVAL_CACHE:
+        return _EVAL_CACHE[key]
+
+    # Calculate and cache
+    loss = objective_function_control(params, fixed_materials, GreenFun, return_details=False,
+                                     build_layers_func=build_layers_func, penalty_weight=penalty_weight)
+    _EVAL_CACHE[key] = loss
+    return loss
 
 
 # ============================================================

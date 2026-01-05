@@ -1,6 +1,10 @@
 """
-Exceptional Point (EP3) Optimizer
-Two-stage optimization: Differential Evolution + L-BFGS-B
+Exceptional Point (EP3) Hybrid Optimizer
+Three-stage optimization:
+1. Differential Evolution (continuous)
+2. L-BFGS-B Refinement (continuous)
+3. Discrete Local Search (discretization + greedy hill climbing)
+
 Uses variance-based loss function with -G-0.5j*I matrix
 """
 
@@ -15,7 +19,7 @@ from tqdm import tqdm
 from config import (
     FIXED_MATERIALS, C0_FIXED, DEFAULT_SEEDS,
     PARAM_NAMES, PARAM_LABELS, LAYER_NAMES,
-    BOUNDS, IMAG_MIN, IMAG_PENALTY,
+    BOUNDS_EXTENDED, IMAG_MIN, IMAG_PENALTY,
     DEFAULT_DE_ITERATIONS, DEFAULT_LBFGSB_ITERATIONS
 )
 
@@ -49,6 +53,12 @@ except Exception as e:
     sys.exit(1)
 
 # ============================================================
+# Discrete precision parameters (for final discretization stage)
+# ============================================================
+DISCRETE_PRECISION_ANGLE = 2      # Angle precision in decimal places (0.01 mrad)
+DISCRETE_PRECISION_THICKNESS = 3  # Thickness precision in decimal places (0.001 nm)
+
+# ============================================================
 # Module-level wrapper for multiprocessing (must be picklable)
 # ============================================================
 
@@ -65,20 +75,27 @@ def _objective_wrapper_for_de(params):
 # Main Optimization Logic (Single Seed)
 # ============================================================
 
-def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verbose=True):
+def optimize_exceptional_point_hybrid(maxiter_de, maxiter_lbfgsb, seed, n_workers, verbose=True):
     np.random.seed(seed)
 
-    output_dir = os.path.join('results', f'ep3_w{n_workers}_s{seed}_DE{maxiter_de}_LB{maxiter_lbfgsb}')
+    output_dir = os.path.join('results', f'ep3_hybrid_w{n_workers}_s{seed}_DE{maxiter_de}_LB{maxiter_lbfgsb}')
     os.makedirs(output_dir, exist_ok=True)
 
     if verbose:
         print(f"--> [Seed {seed}] Output directory: {output_dir}")
+        print("=" * 70)
+        print("HYBRID OPTIMIZATION (Continuous -> Discrete)")
+        print(f"Stage 1-2: Continuous optimization (DE + L-BFGS-B)")
+        print(f"Stage 3: Discretization + Local search")
+        print(f"Discrete precision: Angle={10**(-DISCRETE_PRECISION_ANGLE)} mrad, "
+              f"Thickness={10**(-DISCRETE_PRECISION_THICKNESS):.3f} nm")
+        print("=" * 70)
 
     # Clear evaluation cache at start of optimization
     clear_eval_cache()
 
     fixed_materials = FIXED_MATERIALS
-    bounds = BOUNDS
+    bounds = BOUNDS_EXTENDED  # Use extended bounds for broader search space
 
     log_file_path = os.path.join(output_dir, 'optimization_log.txt')
     log_file = open(log_file_path, 'w', encoding='utf-8')
@@ -211,6 +228,92 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
         final_loss = best_loss_so_far
         pbar_lbfgsb.close()
 
+    # Store continuous optimization result
+    continuous_optimal_x = final_x.copy()
+    continuous_optimal_loss = final_loss
+
+    # --- Phase 3: Discrete Local Search (Greedy Hill Climbing) ---
+    if verbose:
+        print(f"\n[Seed {seed}] Phase 3: Discretization + Local Search")
+        print(f"  Continuous optimal loss: {continuous_optimal_loss:.6e}")
+
+    log_print("\n" + "=" * 70, console=False)
+    log_print("Phase 3: Discrete Local Search (Greedy Hill Climbing)", console=False)
+    log_print(f"Continuous optimal: {continuous_optimal_loss:.6e}", console=False)
+    log_print("=" * 70, console=False)
+
+    # Discretize continuous solution
+    discrete_start = continuous_optimal_x.copy()
+    discrete_start[0] = np.round(discrete_start[0], decimals=DISCRETE_PRECISION_ANGLE)
+    discrete_start[1:] = np.round(discrete_start[1:], decimals=DISCRETE_PRECISION_THICKNESS)
+
+    if verbose:
+        print(f"  Discretized starting point")
+
+    best_x_local = discrete_start.copy()
+    best_loss_local = objective_function_cached(best_x_local, fixed_materials, GreenFun,
+                                                 build_layers_func=build_layers, use_cache=True)
+
+    log_print(f"Discrete starting loss: {best_loss_local:.6e}", console=False)
+
+    improved = True
+    local_iter = 0
+
+    while improved:
+        improved = False
+        local_iter += 1
+
+        for i in range(len(best_x_local)):
+            step_size = 10**(-DISCRETE_PRECISION_ANGLE) if i == 0 else 10**(-DISCRETE_PRECISION_THICKNESS)
+            precision = DISCRETE_PRECISION_ANGLE if i == 0 else DISCRETE_PRECISION_THICKNESS
+
+            # Try +step
+            test_x = best_x_local.copy()
+            test_x[i] += step_size
+            if bounds[i][0] <= test_x[i] <= bounds[i][1]:
+                test_x[i] = np.round(test_x[i], decimals=precision)
+
+                test_loss = objective_function_cached(test_x, fixed_materials, GreenFun,
+                                                     build_layers_func=build_layers, use_cache=True)
+
+                if test_loss < best_loss_local:
+                    best_x_local = test_x.copy()
+                    best_loss_local = test_loss
+                    improved = True
+                    log_print(f"  Local iter {local_iter}: param[{i}] +{step_size} -> loss={test_loss:.6e}", console=False)
+                    continue
+
+            # Try -step
+            test_x = best_x_local.copy()
+            test_x[i] -= step_size
+            if bounds[i][0] <= test_x[i] <= bounds[i][1]:
+                test_x[i] = np.round(test_x[i], decimals=precision)
+
+                test_loss = objective_function_cached(test_x, fixed_materials, GreenFun,
+                                                     build_layers_func=build_layers, use_cache=True)
+
+                if test_loss < best_loss_local:
+                    best_x_local = test_x.copy()
+                    best_loss_local = test_loss
+                    improved = True
+                    log_print(f"  Local iter {local_iter}: param[{i}] -{step_size} -> loss={test_loss:.6e}", console=False)
+
+    improvement = continuous_optimal_loss - best_loss_local
+    log_print(f"\nLocal search completed after {local_iter} iterations", console=False)
+    log_print(f"  Continuous optimal: {continuous_optimal_loss:.6e}", console=False)
+    log_print(f"  Discrete optimal:   {best_loss_local:.6e}", console=False)
+    log_print(f"  Improvement: {improvement:.6e}", console=False)
+
+    if verbose:
+        print(f"[Seed {seed}] Discrete optimization complete")
+        print(f"  Continuous: {continuous_optimal_loss:.6e}")
+        print(f"  Discrete:   {best_loss_local:.6e}")
+        print(f"  Improvement: {improvement:.6e}")
+
+    # Use discrete optimal result
+    final_x = best_x_local
+    final_loss = best_loss_local
+
     # --- Final Output ---
     loss, eigvals, real_parts, imag_parts, G, G_shifted, spread, pen_im = objective_function_control(
         final_x, fixed_materials, GreenFun, return_details=True
@@ -229,7 +332,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
     save_parameters_txt(
         output_dir=output_dir,
         seed=seed,
-        ep_name='EP3',
+        ep_name='EP3-Hybrid',
         final_x=final_x,
         final_loss=final_loss,
         spread=spread,
@@ -237,12 +340,12 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
         theta0=theta0,
         Layers=Layers,
         bounds=bounds,
-        layer_names=['Pt', 'C', 'Fe*', 'C', 'Fe*', 'C', 'Fe*', 'C']
+        layer_names=LAYER_NAMES
     )
 
-    save_eigenvalues_txt(output_dir, seed, real_parts, imag_parts, ep_type='EP3')
+    save_eigenvalues_txt(output_dir, seed, real_parts, imag_parts, ep_type='EP3-Hybrid')
 
-    plot_optimization_history(history, output_dir, seed, 'EP3 Optimizer: DE + L-BFGS-B')
+    plot_optimization_history(history, output_dir, seed, 'EP3 Hybrid Optimizer: DE + L-BFGS-B + Discrete')
 
     scan_parameters_around_optimum(
         params_optimal=final_x,
@@ -250,7 +353,9 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
         fixed_materials=fixed_materials,
         output_dir=output_dir,
         scan_range=1e-4,
-        n_points=51
+        n_points=51,
+        param_names=PARAM_NAMES,
+        param_labels=PARAM_LABELS
     )
 
     return seed, final_loss, final_x
@@ -259,7 +364,7 @@ def optimize_exceptional_point(maxiter_de, maxiter_lbfgsb, seed, n_workers, verb
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description='Exceptional Point (EP3) Optimizer')
+    parser = argparse.ArgumentParser(description='Exceptional Point (EP3) Hybrid Optimizer')
     parser.add_argument('-i1', type=int, default=DEFAULT_DE_ITERATIONS, help='DE iterations')
     parser.add_argument('-i2', type=int, default=DEFAULT_LBFGSB_ITERATIONS, help='L-BFGS-B iterations')
     parser.add_argument('-s', '--seed', type=int, default=0, help='Random seed')
@@ -268,12 +373,15 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     print("=" * 70)
-    print(f"EP3 Optimizer (workers={args.workers}, seed={args.seed})")
-    print(f"Algorithm: DE ({args.i1} iter) -> L-BFGS-B ({args.i2} iter)")
+    print(f"EP3 HYBRID Optimizer (workers={args.workers}, seed={args.seed})")
+    print(f"Algorithm: DE ({args.i1} iter) -> L-BFGS-B ({args.i2} iter) -> Discrete Local Search")
+    print(f"Bounds: BOUNDS_EXTENDED (broader search space)")
+    print(f"Discrete precision: Angle={10**(-DISCRETE_PRECISION_ANGLE)} mrad, "
+          f"Thickness={10**(-DISCRETE_PRECISION_THICKNESS):.3f} nm")
     print(f"Matrix: -G - 0.5j*I | Constraint: |Im(λ)| >= {IMAG_MIN}")
     print("=" * 70)
 
-    optimize_exceptional_point(
+    optimize_exceptional_point_hybrid(
         maxiter_de=args.i1,
         maxiter_lbfgsb=args.i2,
         seed=args.seed,

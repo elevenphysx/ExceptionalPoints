@@ -45,6 +45,19 @@ BOUNDS = [
     (1.0, 40.0),   # C layer 4
 ]
 
+# Extended bounds for discrete optimization (broader search space)
+BOUNDS_EXTENDED = [
+    (2.0, 15.0),   # theta0 (mrad) - extended range
+    (0.2, 15.0),   # Pt thickness (nm) - extended range
+    (0.2, 65.0),   # C layer 1 - extended range
+    (0.2, 5.0),    # Fe layer 1 (resonant) - extended range
+    (0.2, 65.0),   # C layer 2 - extended range
+    (0.2, 5.0),    # Fe layer 2 (resonant) - extended range
+    (0.2, 65.0),   # C layer 3 - extended range
+    (0.2, 5.0),    # Fe layer 3 (resonant) - extended range
+    (0.2, 65.0),   # C layer 4 - extended range
+]
+
 # ============================================================
 # Constraint Parameters
 # ============================================================

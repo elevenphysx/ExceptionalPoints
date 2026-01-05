@@ -13,16 +13,20 @@ import os
 import importlib.util
 from tqdm import tqdm
 
-# Import shared configuration (EP3 version)
+# Import shared configuration
 from config import (
-    FIXED_MATERIALS, C0_FIXED,
+    FIXED_MATERIALS, C0_FIXED, DEFAULT_SEEDS,
     PARAM_NAMES, PARAM_LABELS, LAYER_NAMES,
-    BOUNDS, IMAG_MIN, IMAG_PENALTY,
+    BOUNDS_EXTENDED, IMAG_MIN, IMAG_PENALTY,
     DEFAULT_DE_ITERATIONS
 )
 
 # Import common functions (EP3 version)
-from common_functions import build_layers, objective_function_control
+from common_functions import (
+    build_layers, objective_function_control, objective_function_cached, clear_eval_cache,
+    format_eigenvalues_string, save_eigenvalues_txt,
+    save_params_npz, save_parameters_txt, format_final_result_string
+)
 
 # Import plotting utilities
 from plotting_utils import plot_optimization_history, scan_parameters_around_optimum
@@ -47,9 +51,10 @@ except Exception as e:
     sys.exit(1)
 
 # ============================================================
-# Discrete precision parameter (global)
+# Discrete precision parameters (configurable)
 # ============================================================
-DISCRETE_PRECISION = 1  # Decimal places (0.1 step size)
+DISCRETE_PRECISION_ANGLE = 2      # Angle (theta0) precision in decimal places (e.g., 2 = 0.01 mrad step)
+DISCRETE_PRECISION_THICKNESS = 3  # Thickness precision in decimal places (e.g., 2 = 0.01 nm step)
 
 # ============================================================
 # Module-level wrapper for multiprocessing (must be picklable)
@@ -58,10 +63,14 @@ DISCRETE_PRECISION = 1  # Decimal places (0.1 step size)
 def _objective_wrapper_discrete(params):
     """
     Module-level wrapper with discrete precision rounding.
-    Rounds parameters to DISCRETE_PRECISION decimal places before evaluation.
+    Angle (params[0]) is rounded to DISCRETE_PRECISION_ANGLE decimal places.
+    Other parameters (thickness) are rounded to DISCRETE_PRECISION_THICKNESS decimal places.
+    Uses cached version to avoid redundant Green function calculations.
     """
-    params_rounded = np.round(params, decimals=DISCRETE_PRECISION)
-    return objective_function_control(params_rounded, FIXED_MATERIALS, GreenFun, build_layers_func=build_layers)
+    params_rounded = params.copy()
+    params_rounded[0] = np.round(params[0], decimals=DISCRETE_PRECISION_ANGLE)  # Angle
+    params_rounded[1:] = np.round(params[1:], decimals=DISCRETE_PRECISION_THICKNESS)  # Thickness
+    return objective_function_cached(params_rounded, FIXED_MATERIALS, GreenFun, build_layers_func=build_layers, use_cache=True)
 
 
 # ============================================================
@@ -71,20 +80,24 @@ def _objective_wrapper_discrete(params):
 def optimize_exceptional_point_discrete(maxiter_de, seed, n_workers, verbose=True):
     np.random.seed(seed)
 
-    output_dir = os.path.join('results', f'ep3_discrete_p{DISCRETE_PRECISION}_w{n_workers}_s{seed}_DE{maxiter_de}')
+    output_dir = os.path.join('results', f'ep3_discrete_a{DISCRETE_PRECISION_ANGLE}t{DISCRETE_PRECISION_THICKNESS}_w{n_workers}_s{seed}_DE{maxiter_de}')
     os.makedirs(output_dir, exist_ok=True)
 
     if verbose:
         print(f"--> [Seed {seed}] Output directory: {output_dir}")
         print("=" * 70)
         print(f"DISCRETE OPTIMIZATION MODE")
-        print(f"Precision: {DISCRETE_PRECISION} decimal place(s) (step = 0.{'0'*(DISCRETE_PRECISION-1)}1)")
+        print(f"Precision: Angle={10**(-DISCRETE_PRECISION_ANGLE)} mrad ({DISCRETE_PRECISION_ANGLE} decimals), "
+              f"Thickness={10**(-DISCRETE_PRECISION_THICKNESS):.1f} nm ({DISCRETE_PRECISION_THICKNESS} decimal)")
         print(f"Structure: EP3 (3 resonant layers) with Carbon spacer")
         print(f"Algorithm: Differential Evolution only (no L-BFGS-B)")
         print("=" * 70)
 
+    # Clear evaluation cache at start of optimization
+    clear_eval_cache()
+
     fixed_materials = FIXED_MATERIALS
-    bounds = BOUNDS  # EP3 bounds
+    bounds = BOUNDS_EXTENDED  # Use extended bounds for broader search space
 
     log_file_path = os.path.join(output_dir, 'optimization_log.txt')
     log_file = open(log_file_path, 'w', encoding='utf-8')
@@ -101,7 +114,8 @@ def optimize_exceptional_point_discrete(maxiter_de, seed, n_workers, verbose=Tru
     # --- Differential Evolution with Discrete Precision ---
     log_print("=" * 70, console=False)
     log_print(f"Differential Evolution (Discrete) - Seed {seed}", console=False)
-    log_print(f"Precision: {DISCRETE_PRECISION} decimal place(s)", console=False)
+    log_print(f"Precision: Angle={10**(-DISCRETE_PRECISION_ANGLE)} mrad ({DISCRETE_PRECISION_ANGLE} decimals), "
+              f"Thickness={10**(-DISCRETE_PRECISION_THICKNESS):.2f} nm ({DISCRETE_PRECISION_THICKNESS} decimals)", console=False)
     log_print("=" * 70, console=False)
 
     pbar_de = tqdm(total=maxiter_de, desc=f"Seed {seed} DE-Discrete", disable=not verbose)
@@ -115,9 +129,13 @@ def optimize_exceptional_point_discrete(maxiter_de, seed, n_workers, verbose=Tru
         iteration_count[0] += 1
         pbar_de.update(1)
 
-        # Round parameters before evaluation
-        xk_rounded = np.round(xk, decimals=DISCRETE_PRECISION)
-        loss_current = objective_function_control(xk_rounded, fixed_materials, GreenFun, build_layers_func=build_layers)
+        # Round parameters (angle: DISCRETE_PRECISION_ANGLE, thickness: DISCRETE_PRECISION_THICKNESS)
+        xk_rounded = xk.copy()
+        xk_rounded[0] = np.round(xk[0], decimals=DISCRETE_PRECISION_ANGLE)  # Angle
+        xk_rounded[1:] = np.round(xk[1:], decimals=DISCRETE_PRECISION_THICKNESS)  # Thickness
+
+        # Use cached version - will return cached value from DE's evaluation (no redundant calculation)
+        loss_current = objective_function_cached(xk_rounded, fixed_materials, GreenFun, build_layers_func=build_layers, use_cache=True)
 
         if loss_current < best_loss_so_far:
             best_loss_so_far = loss_current
@@ -128,10 +146,12 @@ def optimize_exceptional_point_discrete(maxiter_de, seed, n_workers, verbose=Tru
                 xk_rounded, fixed_materials, GreenFun, return_details=True, build_layers_func=build_layers
             )
             # Format eigenvalues for logging
-            eigvals_str = ", ".join([f"λ{i+1}={re:+.3f}{im:+.3f}i" for i, (re, im) in enumerate(zip(real_parts, imag_parts))])
+            eigvals_str = format_eigenvalues_string(real_parts, imag_parts)
 
-            # Show rounded parameters
-            params_str = ", ".join([f"{val:.1f}" for val in xk_rounded[:3]])  # Show first 3 params
+            # Show rounded parameters with correct precision
+            params_str = (f"{xk_rounded[0]:.{DISCRETE_PRECISION_ANGLE}f}, "
+                         f"{xk_rounded[1]:.{DISCRETE_PRECISION_THICKNESS}f}, "
+                         f"{xk_rounded[2]:.{DISCRETE_PRECISION_THICKNESS}f}")
 
             msg = f"DE Iter {iteration_count[0]:5d}: Loss={loss:.6e} (Spread={spread:.6e}, PenIm={pen_im:.2e})\n"
             msg += f"  Params[0:3]=[{params_str}, ...]\n"
@@ -149,14 +169,14 @@ def optimize_exceptional_point_discrete(maxiter_de, seed, n_workers, verbose=Tru
                 history['eigvals_real'].append(np.real(eigvals).copy())
                 history['eigvals_imag'].append(np.imag(eigvals).copy())
 
-    # DE settings (increased popsize for discrete optimization)
-    log_print(f"Using workers={n_workers}, popsize=150 (increased for discrete space)", console=verbose)
+    # DE settings optimized for discrete optimization
+    log_print(f"Using workers={n_workers}, popsize=100 (optimized for discrete space)", console=verbose)
 
     result_de = differential_evolution(
         _objective_wrapper_discrete,  # Use discrete wrapper
         bounds,
         maxiter=maxiter_de,
-        popsize=150,  # Increased for discrete space
+        popsize=50,
         strategy='best1bin',
         mutation=(0.5, 1.0),
         recombination=0.7,
@@ -173,10 +193,83 @@ def optimize_exceptional_point_discrete(maxiter_de, seed, n_workers, verbose=Tru
     pbar_de.close()
 
     if best_solution_so_far is None:
-        best_solution_so_far = np.round(result_de.x, decimals=DISCRETE_PRECISION)
+        best_solution_so_far = result_de.x.copy()
+        best_solution_so_far[0] = np.round(best_solution_so_far[0], decimals=DISCRETE_PRECISION_ANGLE)
+        best_solution_so_far[1:] = np.round(best_solution_so_far[1:], decimals=DISCRETE_PRECISION_THICKNESS)
 
-    # Ensure final result is rounded
-    final_x = np.round(best_solution_so_far, decimals=DISCRETE_PRECISION)
+    # Ensure final result is rounded with correct precision
+    final_x = best_solution_so_far.copy()
+    final_x[0] = np.round(final_x[0], decimals=DISCRETE_PRECISION_ANGLE)  # Angle
+    final_x[1:] = np.round(final_x[1:], decimals=DISCRETE_PRECISION_THICKNESS)  # Thickness
+
+    # --- Discrete Local Search (Greedy Hill Climbing) ---
+    if verbose:
+        print(f"\n[Seed {seed}] Starting discrete local search (greedy hill climbing)...")
+
+    log_print("\n" + "=" * 70, console=False)
+    log_print("Discrete Local Search (Greedy Hill Climbing)", console=False)
+    log_print("=" * 70, console=False)
+
+    best_x_local = final_x.copy()
+    best_loss_local = objective_function_cached(best_x_local, fixed_materials, GreenFun,
+                                                 build_layers_func=build_layers, use_cache=True)
+
+    improved = True
+    local_iter = 0
+
+    while improved:
+        improved = False
+        local_iter += 1
+
+        for i in range(len(best_x_local)):
+            step_size = 10**(-DISCRETE_PRECISION_ANGLE) if i == 0 else 10**(-DISCRETE_PRECISION_THICKNESS)
+            precision = DISCRETE_PRECISION_ANGLE if i == 0 else DISCRETE_PRECISION_THICKNESS
+
+            # Try +step
+            test_x = best_x_local.copy()
+            test_x[i] += step_size
+            if bounds[i][0] <= test_x[i] <= bounds[i][1]:
+                # Ensure proper rounding
+                test_x[i] = np.round(test_x[i], decimals=precision)
+
+                test_loss = objective_function_cached(test_x, fixed_materials, GreenFun,
+                                                     build_layers_func=build_layers, use_cache=True)
+
+                if test_loss < best_loss_local:
+                    best_x_local = test_x.copy()
+                    best_loss_local = test_loss
+                    improved = True
+                    log_print(f"  Local iter {local_iter}: param[{i}] +{step_size} -> loss={test_loss:.6e}", console=False)
+                    continue
+
+            # Try -step
+            test_x = best_x_local.copy()
+            test_x[i] -= step_size
+            if bounds[i][0] <= test_x[i] <= bounds[i][1]:
+                # Ensure proper rounding
+                test_x[i] = np.round(test_x[i], decimals=precision)
+
+                test_loss = objective_function_cached(test_x, fixed_materials, GreenFun,
+                                                     build_layers_func=build_layers, use_cache=True)
+
+                if test_loss < best_loss_local:
+                    best_x_local = test_x.copy()
+                    best_loss_local = test_loss
+                    improved = True
+                    log_print(f"  Local iter {local_iter}: param[{i}] -{step_size} -> loss={test_loss:.6e}", console=False)
+
+    improvement = best_loss_so_far - best_loss_local
+    log_print(f"\nLocal search completed after {local_iter} iterations", console=False)
+    log_print(f"  Before: {best_loss_so_far:.6e}", console=False)
+    log_print(f"  After:  {best_loss_local:.6e}", console=False)
+    log_print(f"  Improvement: {improvement:.6e} ({improvement/best_loss_so_far*100:.2f}%)", console=False)
+
+    if verbose:
+        print(f"[Seed {seed}] Local search: {best_loss_so_far:.6e} -> {best_loss_local:.6e} (Δ={improvement:.6e})")
+
+    # Use locally optimized result
+    final_x = best_x_local
+    final_loss = best_loss_local
 
     # --- Final Output ---
     loss, eigvals, real_parts, imag_parts, G, G_shifted, spread, pen_im = objective_function_control(
@@ -185,70 +278,32 @@ def optimize_exceptional_point_discrete(maxiter_de, seed, n_workers, verbose=Tru
 
     theta0, Layers, C0 = build_layers(final_x, fixed_materials)
 
-    output = "\n" + "="*70 + "\nFINAL RESULT (DISCRETE)\n" + "="*70 + "\n"
-    output += f"Precision: {DISCRETE_PRECISION} decimal place(s)\n"
-    output += f"Total Loss: {loss:.6e}\n"
-    output += f"Spread (Variance): {spread:.6e}\n"
-    output += f"Penalty Im: {pen_im:.6e}\n\n"
-
-    output += "Eigenvalues:\n"
-    for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
-        output += f"  lambda_{i+1} = {re:+.10f} {im:+.10f}i\n"
-
-    output += "\nDegeneracy Check:\n"
-    output += f"  Std(Re) = {np.std(real_parts):.6e}\n"
-    output += f"  Std(Im) = {np.std(imag_parts):.6e}\n"
-    output += f"  Min |Im(λ)| = {np.min(np.abs(imag_parts)):.4f} (constraint: |Im(λ)| >= {IMAG_MIN})\n"
+    output = format_final_result_string(loss, spread, pen_im, real_parts, imag_parts, IMAG_MIN)
+    output = "\n" + "="*70 + "\nFINAL RESULT (DISCRETE)\n" + "="*70 + "\n" + \
+             f"Precision: Angle={10**(-DISCRETE_PRECISION_ANGLE)} mrad ({DISCRETE_PRECISION_ANGLE} decimals), " \
+             f"Thickness={10**(-DISCRETE_PRECISION_THICKNESS):.2f} nm ({DISCRETE_PRECISION_THICKNESS} decimals)\n" + output
 
     log_print(output, console=verbose)
     log_file.close()
 
-    # Save results
-    np.savez(os.path.join(output_dir, 'params.npz'),
-             params=final_x,
-             loss=loss,
-             eigenvalues=eigvals,
-             theta0=theta0,
-             C0=C0,
-             precision=DISCRETE_PRECISION)
+    # Save results using common functions
+    save_params_npz(output_dir, final_x, loss, eigvals, theta0, C0)
 
-    params_txt_path = os.path.join(output_dir, 'parameters_discrete.txt')
-    with open(params_txt_path, 'w', encoding='utf-8') as f:
-        f.write("=" * 70 + "\n")
-        f.write(f"Exceptional Point (EP3) Discrete Parameters - Seed {seed}\n")
-        f.write(f"Precision: {DISCRETE_PRECISION} decimal place(s)\n")
-        f.write("=" * 70 + "\n\n")
-        f.write(f"Final Loss:  {loss:.15e}\n")
-        f.write(f"Spread:      {spread:.15e}\n")
-        f.write(f"Penalty Im:  {pen_im:.15e}\n")
-        f.write(f"theta0 = {theta0:.1f} mrad\n")
-        f.write("-" * 50 + "\n")
-        layer_names = LAYER_NAMES
-        thicknesses = [layer[1] for layer in Layers[:-1]]
-        for i, (name, thickness) in enumerate(zip(layer_names, thicknesses)):
-            resonant = ' (resonant)' if Layers[i][2] == 1 else ''
-            f.write(f"  Layer {i}: {name:8s} = {thickness:20.1f} nm{resonant}\n")
+    save_parameters_txt(
+        output_dir=output_dir,
+        seed=seed,
+        ep_name=f'EP3-Discrete-a{DISCRETE_PRECISION_ANGLE}t{DISCRETE_PRECISION_THICKNESS}',
+        final_x=final_x,
+        final_loss=loss,
+        spread=spread,
+        pen_im=pen_im,
+        theta0=theta0,
+        Layers=Layers,
+        bounds=bounds,
+        layer_names=LAYER_NAMES
+    )
 
-        f.write("\nParameter Values (1 decimal precision):\n")
-        for i, (name, val) in enumerate(zip(PARAM_NAMES, final_x)):
-            f.write(f"  {name:8s} = {val:10.1f}\n")
-
-        f.write("\nBounds Check:\n")
-        all_ok = True
-        for i, (val, (low, high)) in enumerate(zip(final_x, bounds)):
-            status = "OK" if low <= val <= high else "VIOLATION"
-            if status == "VIOLATION": all_ok = False
-            f.write(f"  Param {i}: {val:.1f} [{low}, {high}] -> {status}\n")
-        f.write(f"\nOverall Status: {'PASSED' if all_ok else 'FAILED'}\n")
-
-    eigvals_txt_path = os.path.join(output_dir, 'eigenvalues.txt')
-    with open(eigvals_txt_path, 'w', encoding='utf-8') as f:
-        f.write("=" * 70 + "\n")
-        f.write(f"Eigenvalue Analysis (Discrete) - Seed {seed}\n")
-        f.write("=" * 70 + "\n\n")
-        f.write("Eigenvalues (15-digit precision):\n")
-        for i, (re, im) in enumerate(zip(real_parts, imag_parts)):
-            f.write(f"  λ_{i+1} = {re:+22.15f} {im:+22.15f}i\n")
+    save_eigenvalues_txt(output_dir, seed, real_parts, imag_parts, ep_type=f'EP3-Discrete-a{DISCRETE_PRECISION_ANGLE}t{DISCRETE_PRECISION_THICKNESS}')
 
     plot_optimization_history(history, output_dir, seed, 'EP3 Discrete Optimizer: DE (0.1 step)')
 
@@ -258,7 +313,7 @@ def optimize_exceptional_point_discrete(maxiter_de, seed, n_workers, verbose=Tru
         fixed_materials=fixed_materials,
         output_dir=output_dir,
         scan_range=1e-4,
-        n_points=21,
+        n_points=51,
         param_names=PARAM_NAMES,
         param_labels=PARAM_LABELS
     )
@@ -269,7 +324,7 @@ def optimize_exceptional_point_discrete(maxiter_de, seed, n_workers, verbose=Tru
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description='EP3 Discrete Optimizer - 1 Decimal Place Precision')
+    parser = argparse.ArgumentParser(description=f'EP3 Discrete Optimizer - Angle: {DISCRETE_PRECISION_ANGLE} decimals, Thickness: {DISCRETE_PRECISION_THICKNESS} decimals')
     parser.add_argument('-i', '--iter', type=int, default=DEFAULT_DE_ITERATIONS*2,
                        help='DE iterations (default: 2x normal, for discrete space)')
     parser.add_argument('-s', '--seed', type=int, default=0, help='Random seed')
@@ -280,7 +335,8 @@ if __name__ == "__main__":
     print("=" * 70)
     print(f"EP3 DISCRETE Optimizer (workers={args.workers}, seed={args.seed})")
     print(f"Algorithm: Differential Evolution ONLY (no L-BFGS-B)")
-    print(f"Precision: {DISCRETE_PRECISION} decimal place (0.1 step size)")
+    print(f"Precision: Angle={10**(-DISCRETE_PRECISION_ANGLE)} mrad ({DISCRETE_PRECISION_ANGLE} decimals), "
+          f"Thickness={10**(-DISCRETE_PRECISION_THICKNESS):.2f} nm ({DISCRETE_PRECISION_THICKNESS} decimals)")
     print(f"Matrix: -G - 0.5j*I | Constraint: |Im(λ)| >= {IMAG_MIN}")
     print(f"Structure: Pt / C / Fe* / C / Fe* / C / Fe* / C / Pt(substrate)")
     print("=" * 70)
